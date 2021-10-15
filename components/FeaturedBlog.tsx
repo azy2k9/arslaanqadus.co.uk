@@ -1,44 +1,64 @@
 import Icon from '@chakra-ui/icon';
 import { Badge, Flex, Heading, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
+import { ThemeTypings } from '@chakra-ui/styled-system';
 import { FaArrowRight } from 'react-icons/fa';
 import IconButtonLink from './IconButtonLink';
 
-const FeaturedBlog = () => {
+interface IProps {
+    title: string;
+    previewText: string;
+    direction?: 'left' | 'right';
+    tags?: Array<{
+        tag: string;
+        colorScheme: ThemeTypings['colorSchemes'];
+    }>;
+}
+const FeaturedBlog = ({
+    title,
+    previewText,
+    direction = 'left',
+    tags = [],
+}: IProps) => {
     const headingSize = useBreakpointValue({ base: 'xl', lg: '2xl' });
+    const flexDirection = direction === 'left' ? 'flex-start' : 'flex-end';
 
     return (
         <Flex
             px="3rem"
-            py="4rem"
+            py="1rem"
             flexDir="column"
-            alignItems={['center', null, 'flex-start']}
+            alignItems={['center', null, flexDirection]}
         >
-            <Badge
-                colorScheme="linkedin"
-                py="0.3rem"
-                px="1rem"
-                borderRadius="lg"
-            >
-                Featured
-            </Badge>
+            <Flex>
+                {tags.map(({ tag, colorScheme }) => (
+                    <Badge
+                        key={tag}
+                        colorScheme={colorScheme}
+                        py="0.3rem"
+                        px="1rem"
+                        borderRadius="lg"
+                        mr="0.25rem"
+                    >
+                        {tag}
+                    </Badge>
+                ))}
+            </Flex>
             <Heading
                 size={headingSize}
-                textAlign="center"
+                textAlign={['center', null, direction]}
                 fontWeight="bold"
                 pt="4"
             >
-                Travelling in style, learning along the way...
+                {title}
             </Heading>
             <Text
                 pt="2rem"
                 pb="1rem"
-                textAlign={['center', null, 'left']}
+                textAlign={['center', null, direction]}
                 maxW={['container.md', null, null, 'container.lg']}
             >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-                soluta vel doloribus libero quisquam? Ab eveniet alias ipsum
-                impedit sunt inventore excepturi nostrum iure.
+                {previewText}
             </Text>
             <Flex justify="center">
                 <IconButtonLink
