@@ -1,4 +1,4 @@
-import { Flex, Heading, Text } from '@chakra-ui/layout';
+import { Badge, Flex, Heading, Text } from '@chakra-ui/layout';
 import React from 'react';
 import ChakraNextImage from './Image';
 import Link from 'next/link';
@@ -17,7 +17,7 @@ const BlogPost = ({ title, img, date, previewText }: IProps) => {
                 flexDir="column"
                 m="1rem"
                 _hover={{ cursor: 'pointer' }}
-                border="1px"
+                // border="1px"
                 p="1rem"
                 borderRadius="md"
             >
@@ -25,6 +25,36 @@ const BlogPost = ({ title, img, date, previewText }: IProps) => {
                 <Text textAlign="center" fontWeight="bold" py="0.5rem">
                     {date}
                 </Text>
+                <Flex justify="center" py="0.5rem">
+                    <Badge
+                        colorScheme="green"
+                        py="0.25rem"
+                        px="0.5rem"
+                        borderRadius="lg"
+                        mx="0.5"
+                        size="sm"
+                    >
+                        <Text fontSize="xx-small">New</Text>
+                    </Badge>
+                    <Badge
+                        colorScheme="pink"
+                        py="0.25rem"
+                        px="0.5rem"
+                        borderRadius="lg"
+                        mx="0.5"
+                    >
+                        <Text fontSize="xx-small">Tooling</Text>
+                    </Badge>
+                    <Badge
+                        colorScheme="cyan"
+                        py="0.25rem"
+                        px="0.5rem"
+                        borderRadius="lg"
+                        mx="0.5"
+                    >
+                        <Text fontSize="xx-small">React</Text>
+                    </Badge>
+                </Flex>
                 <Heading textAlign="center" size="lg">
                     {title}
                 </Heading>
