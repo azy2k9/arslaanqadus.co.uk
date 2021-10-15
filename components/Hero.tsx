@@ -31,7 +31,7 @@ const Hero = () => {
                 Travelling in style, learning along the way...
             </Heading>
             <Text
-                pt="3rem"
+                pt="2rem"
                 pb="1rem"
                 textAlign={['center', null, 'left']}
                 maxW={['container.md', null, null, 'container.lg']}
