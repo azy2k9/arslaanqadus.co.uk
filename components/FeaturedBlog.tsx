@@ -4,7 +4,7 @@ import { useBreakpointValue } from '@chakra-ui/media-query';
 import { FaArrowRight } from 'react-icons/fa';
 import IconButtonLink from './IconButtonLink';
 
-const Hero = () => {
+const FeaturedBlog = () => {
     const headingSize = useBreakpointValue({ base: 'xl', lg: '2xl' });
 
     return (
@@ -57,4 +57,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default FeaturedBlog;

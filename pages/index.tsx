@@ -4,7 +4,7 @@ import Head from 'next/head';
 import BlogPost from '../components/BlogPost';
 import BlogPostList from '../components/BlogPostList';
 import Header from '../components/Header';
-import Hero from '../components/Hero';
+import FeaturedBlog from '../components/FeaturedBlog';
 
 const Home: NextPage = () => {
     const headingSize = useBreakpointValue({ base: 'md', md: 'lg' });
@@ -17,7 +17,7 @@ const Home: NextPage = () => {
                 </Head>
             </div>
             <Header />
-            <Hero />
+            <FeaturedBlog />
             <Heading textAlign="center" size={headingSize}>
                 Some other blog posts...
             </Heading>
