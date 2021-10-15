@@ -27,13 +27,14 @@ import ButtonLink from './ButtonLink';
 const Header = () => {
     const { colorMode, toggleColorMode } = useColorMode();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const size = useBreakpointValue({ base: 'full', md: 'sm' });
+    const drawerSize = useBreakpointValue({ base: 'full', md: 'sm' });
+    const headingSize = useBreakpointValue({ base: 'sm', sm: 'md', md: 'lg', lg: 'xl' });
 
     return (
-        <Flex justify="space-between" pt="8">
+        <Flex justify="space-between" alignItems="center" pt="8">
             <Flex w="xs">
                 <Link target="_blank" href="https://twitter.com/reactdevjnr">
-                    <IconButton aria-label="Twitter" variant="ghost" ml="4">
+                    <IconButton aria-label="Twitter" variant="ghost" ml={["2", "4"]}>
                         <BsTwitter />
                     </IconButton>
                 </Link>
@@ -52,7 +53,7 @@ const Header = () => {
                 </Link>
             </Flex>
             <Flex w="md" justify="center">
-                <Heading size="lg">Arslaan Qadus</Heading>
+                <Heading size={headingSize}>Arslaan Qadus</Heading>
             </Flex>
             <Flex w="xs" justify="flex-end" mr="4">
                 <IconButton
@@ -73,7 +74,7 @@ const Header = () => {
                     isOpen={isOpen}
                     placement="right"
                     onClose={onClose}
-                    size={size}
+                    size={drawerSize}
                 >
                     <DrawerOverlay />
                     <DrawerContent>
