@@ -1,14 +1,16 @@
 import Icon from "@chakra-ui/icon";
-import { Box, Flex, Heading, Text } from "@chakra-ui/layout";
+import { Flex, Heading, Text } from "@chakra-ui/layout";
+import { useBreakpointValue } from "@chakra-ui/media-query";
 import { FaArrowRight } from "react-icons/fa";
-import ButtonLink from "./ButtonLink";
 import IconButtonLink from "./IconButtonLink";
 
 
 const Hero = () => {
+  const headingSize = useBreakpointValue({ base: 'xl', lg: '2xl' });
+
   return (
     <Flex px="1rem" py="4rem" flexDir="column">
-      <Heading px="1rem" textAlign="center" fontWeight="bold">Travelling in style, learning  along the way...</Heading>
+      <Heading size={headingSize} px="1rem" textAlign="center" fontWeight="bold">Travelling in style, learning  along the way...</Heading>
       <Text py="2rem" textAlign="center">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae soluta vel doloribus libero quisquam? Ab eveniet alias ipsum impedit sunt inventore excepturi nostrum iure. 
       </Text>
