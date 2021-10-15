@@ -12,6 +12,7 @@ import {
     DrawerBody,
     DrawerContent,
     DrawerCloseButton,
+    Icon,
 } from '@chakra-ui/react';
 import {
     BsTwitter,
@@ -20,7 +21,7 @@ import {
     BsMoonStarsFill,
     BsSunFill,
 } from 'react-icons/bs';
-import { BiMenu } from 'react-icons/bi';
+import { HiMenu } from 'react-icons/hi';
 import { CgClose } from 'react-icons/cg';
 import ButtonLink from './ButtonLink';
 
@@ -34,6 +35,11 @@ const Header = () => {
         md: 'lg',
         lg: 'xl',
     });
+    const buttonSize = useBreakpointValue({
+        base: 'sm',
+        sm: 'md',
+        md: 'lg',
+    });
 
     return (
         <Flex justify="space-between" alignItems="center" pt="8">
@@ -43,6 +49,7 @@ const Header = () => {
                         aria-label="Twitter"
                         variant="ghost"
                         ml={['2', '4']}
+                        size={buttonSize}
                     >
                         <BsTwitter />
                     </IconButton>
@@ -51,12 +58,22 @@ const Header = () => {
                     target="_blank"
                     href="https://www.linkedin.com/in/arslaan-qadus/"
                 >
-                    <IconButton aria-label="Linkedin" variant="ghost" mx="1">
+                    <IconButton
+                        aria-label="Linkedin"
+                        variant="ghost"
+                        mx="1"
+                        size={buttonSize}
+                    >
                         <BsLinkedin />
                     </IconButton>
                 </Link>
                 <Link target="_blank" href="https://github.com/azy2k9">
-                    <IconButton aria-label="Github" variant="ghost" mx="1">
+                    <IconButton
+                        aria-label="Github"
+                        variant="ghost"
+                        mx="1"
+                        size={buttonSize}
+                    >
                         <BsGithub />
                     </IconButton>
                 </Link>
@@ -64,11 +81,12 @@ const Header = () => {
             <Flex w="md" justify="center">
                 <Heading size={headingSize}>Arslaan Qadus</Heading>
             </Flex>
-            <Flex w="xs" justify="flex-end" mr="4">
+            <Flex w="xs" justify="flex-end" mr="4" alignItems="center">
                 <IconButton
                     aria-label="Github"
                     variant="ghost"
                     onClick={toggleColorMode}
+                    size={buttonSize}
                 >
                     {colorMode === 'light' ? (
                         <BsMoonStarsFill />
@@ -76,8 +94,17 @@ const Header = () => {
                         <BsSunFill />
                     )}
                 </IconButton>
-                <IconButton aria-label="menu" variant="ghost" onClick={onOpen}>
-                    {isOpen ? <CgClose /> : <BiMenu />}
+                <IconButton
+                    aria-label="menu"
+                    variant="ghost"
+                    onClick={onOpen}
+                    size={buttonSize}
+                >
+                    {isOpen ? (
+                        <Icon as={CgClose} />
+                    ) : (
+                        <Icon as={HiMenu} fontSize="xl" />
+                    )}
                 </IconButton>
                 <Drawer
                     isOpen={isOpen}
