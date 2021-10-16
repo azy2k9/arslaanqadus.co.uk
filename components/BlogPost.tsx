@@ -1,4 +1,4 @@
-import { Badge, Flex, Heading, Stack, Text } from '@chakra-ui/layout';
+import { Badge, Box, Flex, Heading, Stack, Text } from '@chakra-ui/layout';
 import React from 'react';
 import ChakraNextImage from './Image';
 import Link from 'next/link';
@@ -33,27 +33,27 @@ const BlogPost = ({
         <Link href="#" passHref>
             <Flex
                 flexDir="column"
-                m="1rem"
+                m={['1rem', '0.5rem']}
                 _hover={{ cursor: 'pointer' }}
                 boxShadow={'2xl'}
                 borderRadius="md"
             >
                 <ChakraNextImage src={img} h="250px" />
-                <Flex p="0.75rem">
+                <Box p="0.5rem">
                     {tags.map(({ tag, colorScheme }) => (
                         <Badge
                             key={tag}
                             colorScheme={colorScheme}
                             py="0.25rem"
                             px="0.5rem"
-                            mx="0.5"
+                            m="0.5"
                             borderRadius="lg"
                             size="sm"
                         >
                             <Text fontSize="xs">{tag}</Text>
                         </Badge>
                     ))}
-                </Flex>
+                </Box>
                 <Heading
                     display="flex"
                     flex="1"

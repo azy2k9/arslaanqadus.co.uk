@@ -6,7 +6,12 @@ import ScrollDown from '../components/ScrollDown';
 const Intro = () => {
     return (
         <>
-            <Flex flexDir="column" px="2rem" height={['85vh']} justify="center">
+            <Flex
+                flexDir="column"
+                px="2rem"
+                height={['83vh', '84vh']}
+                justify="center"
+            >
                 <Flex maxW="fit-content" alignSelf="center">
                     <Avatar src="/me.png" size="full" />
                 </Flex>
@@ -18,7 +23,7 @@ const Intro = () => {
                         Hi.
                     </Heading>
                     <Heading
-                        fontSize={['lg', 'xl', 'xx-large']}
+                        fontSize={['lg', 'xl', '1.75rem']}
                         fontWeight="medium"
                         pt="4"
                         textAlign="center"
@@ -35,7 +40,7 @@ const Intro = () => {
                         // @ts-ignore
                         // TODO: SPECIFY THE CORRECT SCROLL SECTION HERE.
                         document
-                            .querySelector('.blog')
+                            .querySelector('.projects')
                             .scrollIntoView({ behavior: 'smooth' })
                     }
                 />

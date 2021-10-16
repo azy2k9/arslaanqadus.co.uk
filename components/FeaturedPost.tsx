@@ -22,7 +22,7 @@ const FeaturedPost = ({
     type = 'blog',
     tags = [],
 }: IProps) => {
-    const headingSize = useBreakpointValue({ base: 'xl', lg: '2xl' });
+    const headingSize = useBreakpointValue(['xl']);
     const imageSize = useBreakpointValue(['sm', 'lg', '2xl', '5xl']);
     const flexDirection =
         direction === 'left'
@@ -48,6 +48,14 @@ const FeaturedPost = ({
                     />
                 </Flex>
             )}
+            <Heading
+                size={headingSize}
+                textAlign={['center', null, direction]}
+                fontWeight="bold"
+                pt={type === 'project' ? '0.5rem' : 'initial'}
+            >
+                {title}
+            </Heading>
             <Flex py="0.5rem">
                 {tags.map(({ tag, colorScheme }) => (
                     <Badge
@@ -62,16 +70,7 @@ const FeaturedPost = ({
                     </Badge>
                 ))}
             </Flex>
-            <Heading
-                size={headingSize}
-                textAlign={['center', null, direction]}
-                fontWeight="bold"
-                pt={type === 'project' ? '0.5rem' : 'initial'}
-            >
-                {title}
-            </Heading>
             <Text
-                pt="2rem"
                 pb="1rem"
                 textAlign={['center', null, direction]}
                 maxW={['container.md', null, null, 'container.lg']}

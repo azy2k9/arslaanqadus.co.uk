@@ -53,8 +53,8 @@ const BlogPostList = () => {
                 avatarImg="/me.png"
                 readTime="15 min"
                 tags={[
-                    { tag: 'React', colorScheme: 'twitter' },
-                    { tag: 'In Depth', colorScheme: 'linkedin' },
+                    { tag: 'React', colorScheme: 'cyan' },
+                    { tag: 'In Depth', colorScheme: 'yellow' },
                 ]}
             />
             <BlogPost

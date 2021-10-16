@@ -29,10 +29,7 @@ const ScrollDown = ({ onClick }: IProps) => {
             variant="ghost"
             onClick={onClick}
         >
-            <Icon
-                as={FaArrowDown}
-                fontSize={['xl', null, 'xx-large', 'xxx-large']}
-            />
+            <Icon as={FaArrowDown} fontSize={['xl', 'xx-large']} />
         </IconButton>
     );
 };

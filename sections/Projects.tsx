@@ -1,4 +1,4 @@
-import { Heading, useBreakpointValue, Box } from '@chakra-ui/react';
+import { Heading, useBreakpointValue, Box, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 import FeaturedPost from '../components/FeaturedPost';
 
@@ -7,26 +7,26 @@ const Projects = () => {
 
     return (
         <Box className="projects">
-            <FeaturedPost
-                title="What is React?"
-                type="project"
-                previewText="React does not attempt to provide a complete 'application library'. It is designed specifically for building user interfaces and therefore does not include many of the tools some developers might consider necessary to build an application. This allows the choice of whichever libraries the developer prefers to accomplish tasks such as performing network access or local data storage. Common patterns of usage have emerged as the library matures."
-                direction="center"
-                tags={[{ tag: 'React', colorScheme: 'pink' }]}
-            />
-            <FeaturedPost
-                title="JavaScript and Web Browsers"
-                type="project"
-                previewText="Web browsers are capable of running JavaScript outside the sandbox, with the privileges necessary to, for example, create or delete files. Such privileges are not intended to be granted to code from the Web. Incorrectly granting privileges to JavaScript from the Web has played a role in vulnerabilities in both Internet Explorer"
-                direction="center"
-                tags={[
-                    { tag: 'New', colorScheme: 'green' },
-                    { tag: 'Featured', colorScheme: 'cyan' },
-                ]}
-            />
-            <Heading textAlign="center" size={headingSize}>
-                Some other blog posts...
-            </Heading>
+            <SimpleGrid columns={[1, null, null, 2]} mt="5rem">
+                <FeaturedPost
+                    title="Building My Website"
+                    type="project"
+                    previewText="Building my own personal website was kind of like marmite, at times it was great fun! And at times I just couldn't be bothered to finish it, in fact i've tried to do this 3 times before."
+                    direction="center"
+                    tags={[
+                        { tag: 'React', colorScheme: 'cyan' },
+                        { tag: 'Personal', colorScheme: 'pink' },
+                        { tag: 'Project', colorScheme: 'orange' },
+                    ]}
+                />
+                <FeaturedPost
+                    title="JavaScript and Web Browsers"
+                    type="project"
+                    previewText="Web browsers are capable of running JavaScript outside the sandbox, with the privileges necessary to, for example, create or delete files. Such privileges are not intended to be granted to code from the Web. Incorrectly granting privileges to JavaScript from the Web has played a role in vulnerabilities in both Internet Explorer"
+                    direction="center"
+                    tags={[{ tag: 'New', colorScheme: 'green' }]}
+                />
+            </SimpleGrid>
         </Box>
     );
 };
