@@ -4,33 +4,51 @@ import { useBreakpointValue } from '@chakra-ui/media-query';
 import { ThemeTypings } from '@chakra-ui/styled-system';
 import { FaArrowRight } from 'react-icons/fa';
 import IconButtonLink from './IconButtonLink';
-
+import ChakraNextImage from './Image';
 interface IProps {
     title: string;
     previewText: string;
-    direction?: 'left' | 'right';
+    direction?: 'left' | 'right' | 'center';
+    type?: 'blog' | 'project';
     tags?: Array<{
         tag: string;
         colorScheme: ThemeTypings['colorSchemes'];
     }>;
 }
-const FeaturedBlog = ({
+const FeaturedPost = ({
     title,
     previewText,
     direction = 'left',
+    type = 'blog',
     tags = [],
 }: IProps) => {
     const headingSize = useBreakpointValue({ base: 'xl', lg: '2xl' });
-    const flexDirection = direction === 'left' ? 'flex-start' : 'flex-end';
+    const imageSize = useBreakpointValue(['sm', 'lg', '2xl', '5xl']);
+    const flexDirection =
+        direction === 'left'
+            ? 'flex-start'
+            : direction === 'center'
+            ? 'center'
+            : 'flex-end';
 
     return (
         <Flex
-            px="3rem"
-            py="1rem"
             flexDir="column"
+            m="1rem"
+            px={type === 'blog' ? '1rem' : 'initial'}
+            borderRadius="md"
             alignItems={['center', null, flexDirection]}
         >
-            <Flex>
+            {type === 'project' && (
+                <Flex w="full" justify="center">
+                    <ChakraNextImage
+                        src="https://picsum.photos/801/1200"
+                        h={['250px', '300px', 'sm', 'lg']}
+                        width={imageSize}
+                    />
+                </Flex>
+            )}
+            <Flex py="0.5rem">
                 {tags.map(({ tag, colorScheme }) => (
                     <Badge
                         key={tag}
@@ -40,7 +58,7 @@ const FeaturedBlog = ({
                         borderRadius="lg"
                         mr="0.25rem"
                     >
-                        {tag}
+                        <Text>{tag}</Text>
                     </Badge>
                 ))}
             </Flex>
@@ -48,7 +66,7 @@ const FeaturedBlog = ({
                 size={headingSize}
                 textAlign={['center', null, direction]}
                 fontWeight="bold"
-                pt="4"
+                pt={type === 'project' ? '0.5rem' : 'initial'}
             >
                 {title}
             </Heading>
@@ -77,4 +95,4 @@ const FeaturedBlog = ({
     );
 };
 
-export default FeaturedBlog;
+export default FeaturedPost;
