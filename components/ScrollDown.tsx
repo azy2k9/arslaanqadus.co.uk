@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box } from '@chakra-ui/react';
+import React, { MouseEventHandler } from 'react';
+import { IconButton } from '@chakra-ui/react';
 import Icon from '@chakra-ui/icon';
 import { FaArrowDown } from 'react-icons/fa';
 import { keyframes } from '@emotion/react';
@@ -16,15 +16,24 @@ const bounce = keyframes`
     }
 `;
 
-const ScrollDown = () => {
+interface IProps {
+    onClick: MouseEventHandler<HTMLButtonElement>;
+}
+
+const ScrollDown = ({ onClick }: IProps) => {
     const animation = `${bounce} infinite 2s linear`;
     return (
-        <Box animation={animation}>
+        <IconButton
+            animation={animation}
+            aria-label="scroll-down"
+            variant="ghost"
+            onClick={onClick}
+        >
             <Icon
                 as={FaArrowDown}
                 fontSize={['xl', null, 'xx-large', 'xxx-large']}
             />
-        </Box>
+        </IconButton>
     );
 };
 

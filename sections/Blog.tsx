@@ -1,4 +1,4 @@
-import { Heading, useBreakpointValue } from '@chakra-ui/react';
+import { Heading, useBreakpointValue, Box } from '@chakra-ui/react';
 import React from 'react';
 import BlogPostList from '../components/BlogPostList';
 import FeaturedBlog from '../components/FeaturedBlog';
@@ -7,7 +7,7 @@ const Blog = () => {
     const headingSize = useBreakpointValue({ base: 'md', md: 'lg' });
 
     return (
-        <>
+        <Box className="blog" mt="1rem">
             <FeaturedBlog
                 title="What is React?"
                 previewText="React does not attempt to provide a complete 'application library'. It is designed specifically for building user interfaces and therefore does not include many of the tools some developers might consider necessary to build an application. This allows the choice of whichever libraries the developer prefers to accomplish tasks such as performing network access or local data storage. Common patterns of usage have emerged as the library matures."
@@ -26,7 +26,7 @@ const Blog = () => {
                 Some other blog posts...
             </Heading>
             <BlogPostList />
-        </>
+        </Box>
     );
 };
 
