@@ -42,7 +42,7 @@ const Header = () => {
     });
 
     return (
-        <Flex justify="space-between" alignItems="center" pt="8">
+        <Flex justify="space-between" alignItems="center" h="10vh">
             <Flex w="xs">
                 <Link target="_blank" href="https://twitter.com/reactdevjnr">
                     <IconButton
