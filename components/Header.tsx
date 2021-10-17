@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import { Flex, Heading, Link } from '@chakra-ui/layout';
 import {
