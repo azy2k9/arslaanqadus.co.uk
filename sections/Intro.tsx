@@ -40,7 +40,7 @@ const Intro = () => {
                         // @ts-ignore
                         // TODO: SPECIFY THE CORRECT SCROLL SECTION HERE.
                         document
-                            .querySelector('.projects')
+                            .querySelector('.about')
                             .scrollIntoView({ behavior: 'smooth' })
                     }
                 />

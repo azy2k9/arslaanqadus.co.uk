@@ -6,8 +6,8 @@ const Projects = () => {
     const headingSize = useBreakpointValue({ base: 'md', md: 'lg' });
 
     return (
-        <Box className="projects">
-            <SimpleGrid columns={[1, null, null, 2]} mt="5rem">
+        <Box>
+            <SimpleGrid columns={[1, null, null, 2]}>
                 <FeaturedPost
                     title="Building My Website"
                     type="project"

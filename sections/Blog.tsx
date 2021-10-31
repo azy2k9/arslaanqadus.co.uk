@@ -7,7 +7,7 @@ const Blog = () => {
     const headingSize = useBreakpointValue({ base: 'md', md: 'lg' });
 
     return (
-        <Box className="blog">
+        <Box>
             <FeaturedPost
                 title="What is React?"
                 type="blog"
