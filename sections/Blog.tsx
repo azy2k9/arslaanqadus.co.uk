@@ -1,34 +1,31 @@
-import { Heading, useBreakpointValue, Box } from '@chakra-ui/react';
+import { Heading, Center, Box } from '@chakra-ui/react';
 import React from 'react';
-import BlogPostList from '../components/BlogPostList';
 import FeaturedPost from '../components/FeaturedPost';
+import { IBlog } from '../pages';
 
-const Blog = () => {
-    const headingSize = useBreakpointValue({ base: 'md', md: 'lg' });
+interface Props {
+    blogs: IBlog[]
+}
 
+const Blog = ({ blogs }: Props) => {
     return (
-        <Box>
-            <FeaturedPost
-                title="What is React?"
-                type="blog"
-                previewText="React does not attempt to provide a complete 'application library'. It is designed specifically for building user interfaces and therefore does not include many of the tools some developers might consider necessary to build an application. This allows the choice of whichever libraries the developer prefers to accomplish tasks such as performing network access or local data storage. Common patterns of usage have emerged as the library matures."
-                direction="right"
-                tags={[{ tag: 'React', colorScheme: 'cyan' }]}
-            />
-            <FeaturedPost
-                title="JavaScript and Web Browsers"
-                type="blog"
-                previewText="Web browsers are capable of running JavaScript outside the sandbox, with the privileges necessary to, for example, create or delete files. Such privileges are not intended to be granted to code from the Web. Incorrectly granting privileges to JavaScript from the Web has played a role in vulnerabilities in both Internet Explorer"
-                tags={[
-                    { tag: 'New', colorScheme: 'green' },
-                    { tag: 'Featured', colorScheme: 'pink' },
-                ]}
-            />
-            <Heading textAlign="center" size={headingSize}>
-                Some other blog posts...
-            </Heading>
-            <BlogPostList />
-        </Box>
+        <>
+            <Center>
+                <Heading py="16">Recent Blog Posts</Heading>
+            </Center>
+            <Box>
+                {blogs.map((blog, index) => (
+                    <FeaturedPost
+                        key={blog.id}
+                        title={blog.title}
+                        type={blog.variant}
+                        previewText={blog.introduction}
+                        direction={index % 2 === 0 ? "right" : "left"}
+                        tags={blog.tags}
+                    />
+                ))}
+            </Box>
+        </>
     );
 };
 
