@@ -5,10 +5,10 @@ import SkillCard from '../components/SkillCard';
 const Skills = () => {
     return (
         <>
-            <Flex justifyContent="center" pt="2rem">
+            <Flex justifyContent="center" p="16">
                 <Heading>My Skills</Heading>
             </Flex>
-            <SimpleGrid columns={[1, 2, 3]} gap="4">
+            <SimpleGrid columns={[1, 2, 3]}>
                 <SkillCard
                     title="Front End"
                     skills={[

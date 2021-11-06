@@ -1,7 +1,6 @@
 import { useDisclosure } from '@chakra-ui/hooks';
-import { Box, Flex, Heading, Text } from '@chakra-ui/layout';
+import { Flex, Heading, Text } from '@chakra-ui/layout';
 import { ThemeTypings } from '@chakra-ui/styled-system';
-import { ScaleFade } from '@chakra-ui/transition';
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -25,7 +24,8 @@ const SkillCard = ({ title, skills, color }: IProps) => {
             bgColor={color}
             borderRadius="xl"
             py="2rem"
-            m={isHovering ? '1.5rem' : '2rem'}
+            my="1rem"
+            mx={isHovering ? "0.5rem" : "1rem"}
             transition="0.2s linear"
             onMouseEnter={onHover}
             onMouseLeave={offHover}

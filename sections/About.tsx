@@ -10,8 +10,8 @@ const About = () => {
                 mt={['2rem', '3rem']}
                 maxW={['container.lg']}
             >
-                <Heading textAlign="center">About</Heading>
-                <Text textAlign="center" pt="1rem">
+                <Heading textAlign="center" py="8">About</Heading>
+                <Text textAlign="center">
                     I'm a Full Stack JavaScript Developer, living and working in
                     Manchester. I've been working commercially since June 2019
                     where I started my journey as a Front End React Developer.
