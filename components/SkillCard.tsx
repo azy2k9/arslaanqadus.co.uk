@@ -22,6 +22,7 @@ const SkillCard = ({ title, skills, color }: IProps) => {
             flexDir="column"
             alignItems="center"
             bgColor={color}
+            color="white"
             borderRadius="xl"
             py="2rem"
             my="1rem"

@@ -1,6 +1,7 @@
 import Icon from '@chakra-ui/icon';
 import { Badge, Flex, Heading, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
+import { ThemeTypings } from '@chakra-ui/styled-system';
 import { FaArrowRight } from 'react-icons/fa';
 import IconButtonLink from './IconButtonLink';
 import ChakraNextImage from './Image';
@@ -13,6 +14,7 @@ interface IProps {
         id?: string;
         value: string;
         color: string;
+        colorScheme: ThemeTypings['colorSchemes'];
     }>;
 }
 const FeaturedPost = ({
@@ -57,10 +59,10 @@ const FeaturedPost = ({
                 {title}
             </Heading>
             <Flex py="0.5rem">
-                {tags.map(({ value, color }) => (
+                {tags.map(({ value, colorScheme }) => (
                     <Badge
                         key={value}
-                        color={color}
+                        colorScheme={colorScheme}
                         py="0.3rem"
                         px="1rem"
                         borderRadius="lg"

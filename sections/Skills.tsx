@@ -1,8 +1,10 @@
 import React from 'react';
-import { Center, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
+import { Flex, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
 import SkillCard from '../components/SkillCard';
+import { useColorMode } from '@chakra-ui/color-mode';
 
 const Skills = () => {
+    const { colorMode } = useColorMode();
     return (
         <>
             <Flex justifyContent="center" p="16">
@@ -19,7 +21,7 @@ const Skills = () => {
                         'Material UI',
                         'Chakra UI',
                     ]}
-                    color="blue.300"
+                    color={colorMode ==="dark" ? "blue.300": "blue.600"}
                 />
                 <SkillCard
                     title="Back End"
@@ -31,7 +33,7 @@ const Skills = () => {
                         'MongoDB',
                         'MySQL',
                     ]}
-                    color="purple.400"
+                    color={colorMode ==="dark" ? "purple.400": "purple.600"}
                 />
                 <SkillCard
                     title="Other"
@@ -41,7 +43,7 @@ const Skills = () => {
                         'Cordova (Mobile Apps)',
                         'VS Code',
                     ]}
-                    color="green.400"
+                    color={colorMode ==="dark" ? "green.400": "green.600"}
                 />
             </SimpleGrid>
         </>

@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import Head from 'next/head';
 import Header from '../components/Header';
 import Intro from '../sections/Intro';
@@ -10,6 +9,7 @@ import { Container } from '@chakra-ui/react';
 import Skills from '../sections/Skills';
 import client from '../apolloClient';
 import { gql } from '@apollo/client';
+import { ThemeTypings } from '@chakra-ui/styled-system';
 
 export interface IBlog {
     __typename: string,
@@ -40,12 +40,11 @@ export interface IProject {
     tags: [{
         value: string,
         color: string
+        colorScheme: ThemeTypings['colorSchemes']
     }]
 }
 
 const Home = ({ blogs, projects }: { blogs: IBlog[], projects: IProject[] }) => {
-    console.log(projects);
-
     return (
         <>
             <Head>
@@ -77,7 +76,8 @@ export const getStaticProps = async () => {
                     variant,
                     tags {
                         value,
-                        color
+                        color,
+                        colorScheme
                     }
                 }
             }
@@ -99,7 +99,8 @@ export const getStaticProps = async () => {
                     variant,
                     tags {
                         color,
-                        value
+                        value,
+                        colorScheme
                     }
                 }
             }
