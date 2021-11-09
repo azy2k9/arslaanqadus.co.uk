@@ -1,10 +1,9 @@
 import { Heading, Box, SimpleGrid, Center } from '@chakra-ui/react';
 import React from 'react';
 import FeaturedPost from '../components/FeaturedPost';
-import { IProject } from '../pages';
 
 interface Props {
-    projects: IProject[];
+    projects: PartialProjectPost[];
 }
 
 const Projects = ({ projects }: Props) => {
@@ -23,6 +22,8 @@ const Projects = ({ projects }: Props) => {
                             previewText={project.introduction}
                             direction="center"
                             tags={project.tags}
+                            img={project.thumbnail.url}
+                            slug={project.slug}
                         />
                     ))}
                 </SimpleGrid>

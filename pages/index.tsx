@@ -1,66 +1,21 @@
-import Head from 'next/head';
-import Header from '../components/Header';
 import Intro from '../sections/Intro';
 import Blog from '../sections/Blog';
 import Projects from '../sections/Projects';
 import About from '../sections/About';
-import Footer from '../components/Footer';
-import { Container } from '@chakra-ui/react';
 import Skills from '../sections/Skills';
 import client from '../apolloClient';
 import { gql } from '@apollo/client';
-import { ThemeTypings } from '@chakra-ui/styled-system';
+import Layout from '../components/Layout';
 
-export interface IBlog {
-    __typename: string,
-    id: string,
-    title: string,
-    slug: string,
-    introduction: string,
-    featured: boolean,
-    variant: "blog" | "project",
-    tags: [{
-        value: string,
-        color: string
-    }]
-}
-
-export interface IProject {
-    __typename: string,
-    id: string,
-    title: string,
-    slug: string,
-    introduction: string,
-    featured: boolean,
-    thumbnail: {
-        id: string,
-        url: string
-    }
-    variant: "blog" | "project",
-    tags: [{
-        value: string,
-        color: string
-        colorScheme: ThemeTypings['colorSchemes']
-    }]
-}
-
-const Home = ({ blogs, projects }: { blogs: IBlog[], projects: IProject[] }) => {
+const Home = ({ blogs, projects }: { blogs: PartialBlogPost[], projects: PartialProjectPost[] }) => {
     return (
-        <>
-            <Head>
-                <title>Home</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Header />
+        <Layout title="Homepage" enableHeading={false}>
             <Intro />
-            <Container maxW={['3xl', '4xl', null, '4xl', '8xl']}>
-                <About />
-                <Skills />
-                <Projects projects={projects} />
-                <Blog blogs={blogs} />
-            </Container>
-            <Footer />
-        </>
+            <About />
+            <Skills />
+            <Projects projects={projects} />
+            <Blog blogs={blogs} />
+        </Layout>
     );
 };
 
@@ -68,17 +23,21 @@ export const getStaticProps = async () => {
     const blogsData = await client.query({
         query: gql`
             query featuredBlogs{
-                blogs(where: { variant: blog, featured: true }) {
+                blogs(where: { variant: blog, featured: true }, first: 5) {
                     id,
                     title,
                     slug,
                     introduction,
+                    featured,
                     variant,
                     tags {
                         value,
-                        color,
                         colorScheme
-                    }
+                    },
+                    thumbnail {
+                        id,
+                        url
+                    },
                 }
             }
     `
@@ -87,21 +46,21 @@ export const getStaticProps = async () => {
     const projectsData = await client.query({
         query: gql`
             query featuredProjects {
-                blogs (where: { variant: project, featured: true }) {
+                blogs (where: { variant: project, featured: true }, first: 3) {
                     id,
                     title, 
                     slug,
+                    introduction,
+                    featured,
+                    variant,
+                    tags {
+                        value,
+                        colorScheme
+                    },
                     thumbnail {
                         id,
                         url
                     },
-                    introduction,
-                    variant,
-                    tags {
-                        color,
-                        value,
-                        colorScheme
-                    }
                 }
             }
     `

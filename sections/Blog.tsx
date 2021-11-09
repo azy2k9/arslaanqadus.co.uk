@@ -1,10 +1,8 @@
 import { Heading, Center, Box } from '@chakra-ui/react';
 import React from 'react';
 import FeaturedPost from '../components/FeaturedPost';
-import { IBlog } from '../pages';
-
 interface Props {
-    blogs: IBlog[]
+    blogs: PartialBlogPost[]
 }
 
 const Blog = ({ blogs }: Props) => {
@@ -22,6 +20,7 @@ const Blog = ({ blogs }: Props) => {
                         previewText={blog.introduction}
                         direction={index % 2 === 0 ? "right" : "left"}
                         tags={blog.tags}
+                        slug={"/blog/" + blog.slug}
                     />
                 ))}
             </Box>
