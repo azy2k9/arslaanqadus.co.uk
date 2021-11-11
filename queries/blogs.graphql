@@ -1,0 +1,48 @@
+query allBlogs{
+    blogs(where: { variant: blog }) {
+        id,
+        title,
+        slug,
+        featured,    
+        variant,
+        author,
+        readTime,
+        introduction,
+        content {
+            markdown
+        },
+        thumbnail {
+            id,
+            url
+        },
+        tags {
+            id,
+            value,
+            colorScheme
+        },
+        createdAt
+    }
+}
+
+query featuredBlogs{
+    blogs(where: { variant: blog, featured: true }, first: 5) {
+        ...BlogSummary
+    }
+}
+
+fragment BlogSummary on Blog {
+    id,
+    title,
+    slug,
+    introduction,
+    featured,
+    variant,
+    tags {
+        value,
+        colorScheme
+    },
+    thumbnail {
+        id,
+        url
+    },
+}
