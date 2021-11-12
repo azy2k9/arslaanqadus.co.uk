@@ -4,17 +4,17 @@ import ChakraNextImage from './Image';
 import Link from 'next/link';
 import { Avatar } from '@chakra-ui/avatar';
 import { dateFormatter } from '../helpers';
+import { Blog } from '../generated/types';
 
 const BlogPost = ({
     thumbnail,
     tags,
     title,
     introduction,
-    author,
     readTime,
     slug,
-    createdAt
-}: BlogPost) => {
+    createdAt,
+}: Blog) => {
     return (
         <Link href={slug} passHref>
             <Flex
@@ -53,9 +53,9 @@ const BlogPost = ({
                     {introduction}
                 </Text>
                 <Stack direction={'row'} align={'center'} p="1rem">
-                    <Avatar src="/me.png" alt='Author' />
+                    <Avatar src="/me.png" alt="Author" />
                     <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-                        <Text fontWeight={600}>{author}</Text>
+                        <Text fontWeight={600}>Arslaan Qadus</Text>
                         <Text color={'gray.500'}>
                             {dateFormatter(createdAt)} · {readTime} read
                         </Text>

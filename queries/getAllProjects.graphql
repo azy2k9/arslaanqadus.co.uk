@@ -1,0 +1,23 @@
+query getAllProjects {
+    projects {
+        id,
+        title,
+        slug,
+        featured,
+        readTime,
+        introduction,
+        content {
+            markdown
+        },
+        thumbnail {
+            id,
+            url
+        },
+        tags {
+            id,
+            value
+            colorScheme
+        },
+        createdAt,
+    }
+}

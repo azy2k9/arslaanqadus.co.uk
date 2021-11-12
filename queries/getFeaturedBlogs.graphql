@@ -1,0 +1,19 @@
+query getFeaturedBlogs{
+    blogs(where: { featured: true }) {
+        id,
+        title,
+        slug,
+        featured,
+        thumbnail {
+            id,
+            url
+        },
+        introduction,
+        createdAt,
+        readTime,
+        tags {
+            value,
+            color
+        }
+    }
+}

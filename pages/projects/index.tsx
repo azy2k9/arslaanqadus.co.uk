@@ -1,71 +1,50 @@
-import React from 'react'
-import client from '../../apolloClient'
+import React from 'react';
+import client from '../../apolloClient';
 import { gql } from '@apollo/client';
 import { SimpleGrid } from '@chakra-ui/layout';
 import FeaturedPost from '../../components/FeaturedPost';
 import Layout from '../../components/Layout';
+import {
+    GetAllProjectsDocument,
+    GetAllProjectsQuery,
+    Project,
+} from '../../generated/types';
 
 interface Props {
-    projects: ProjectPost[]
+    projects: Project[];
 }
 
 const Projects = ({ projects }: Props) => {
     return (
         <Layout title="Projects">
-            <SimpleGrid columns={[1,2,3]}>
-                {projects.map(project => (
+            <SimpleGrid columns={[1, null, null, 2]}>
+                {projects.map((project) => (
                     <FeaturedPost
                         key={project.id}
                         title={project.title}
-                        type={project.variant}
+                        type={'project'}
                         previewText={project.introduction}
                         direction="center"
                         tags={project.tags}
                         img={project.thumbnail.url}
-                        slug={"/projects/" + project.slug}
+                        slug={'/projects/' + project.slug}
                     />
                 ))}
             </SimpleGrid>
         </Layout>
-    )
-}
+    );
+};
 
 export const getStaticProps = async () => {
-    const projects = await client.query({
-        query: gql`
-            query allProjects{
-                blogs(where: { variant: project }) {
-                    id,
-                    title,
-                    slug,
-                    featured,    
-                    variant,
-                    author,
-                    readTime,
-                    introduction,
-                    content {
-                        markdown
-                    },
-                    thumbnail {
-                        id,
-                        url
-                    },
-                    tags {
-                        id,
-                        value
-                        colorScheme
-                    },
-                    createdAt
-                }
-            }
-        `
+    const projectsData = await client.query<GetAllProjectsQuery>({
+        query: GetAllProjectsDocument,
     });
 
     return {
         props: {
-            projects: projects.data.blogs
-        }
-    }
-}
+            projects: projectsData.data.projects,
+        },
+    };
+};
 
-export default Projects
+export default Projects;

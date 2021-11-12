@@ -1,9 +1,10 @@
 import { Heading, Box, SimpleGrid, Center } from '@chakra-ui/react';
 import React from 'react';
 import FeaturedPost from '../components/FeaturedPost';
+import { Project } from '../generated/types';
 
 interface Props {
-    projects: PartialProjectPost[];
+    projects: Project[];
 }
 
 const Projects = ({ projects }: Props) => {
@@ -14,16 +15,16 @@ const Projects = ({ projects }: Props) => {
             </Center>
             <Box>
                 <SimpleGrid columns={[1, null, null, 2]}>
-                    {projects.map(project => (
+                    {projects.map((project) => (
                         <FeaturedPost
                             key={project.id}
                             title={project.title}
-                            type={project.variant}
+                            type={'project'}
                             previewText={project.introduction}
                             direction="center"
                             tags={project.tags}
                             img={project.thumbnail.url}
-                            slug={project.slug}
+                            slug={'/project/' + project.slug}
                         />
                     ))}
                 </SimpleGrid>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, Heading, Link } from '@chakra-ui/layout';
+import { Flex, Heading } from '@chakra-ui/layout';
 import {
     IconButton,
     useColorMode,
@@ -24,6 +24,7 @@ import {
 import { HiMenu } from 'react-icons/hi';
 import { CgClose } from 'react-icons/cg';
 import ButtonLink from './ButtonLink';
+import IconButtonLink from './IconButtonLink';
 
 const Header = () => {
     const { colorMode, toggleColorMode } = useColorMode();
@@ -44,42 +45,49 @@ const Header = () => {
     return (
         <Flex justify="space-between" alignItems="center" h="10vh">
             <Flex w="xs">
-                <Link target="_blank" href="https://twitter.com/reactdevjnr">
-                    <IconButton
-                        aria-label="Twitter"
-                        variant="ghost"
-                        ml={['2', '4']}
-                        size={buttonSize}
-                    >
-                        <BsTwitter />
-                    </IconButton>
-                </Link>
-                <Link
+                <IconButtonLink
+                    aria-label="Twitter"
+                    target="_blank"
+                    href="https://twitter.com/reactdevjnr"
+                    variant="ghost"
+                    ml={['2', '4']}
+                    size={buttonSize}
+                >
+                    <BsTwitter />
+                </IconButtonLink>
+                <IconButtonLink
+                    aria-label="Linkedin"
                     target="_blank"
                     href="https://www.linkedin.com/in/arslaan-qadus/"
+                    variant="ghost"
+                    mx="1"
+                    size={buttonSize}
                 >
-                    <IconButton
-                        aria-label="Linkedin"
-                        variant="ghost"
-                        mx="1"
-                        size={buttonSize}
-                    >
-                        <BsLinkedin />
-                    </IconButton>
-                </Link>
-                <Link target="_blank" href="https://github.com/azy2k9">
-                    <IconButton
-                        aria-label="Github"
-                        variant="ghost"
-                        mx="1"
-                        size={buttonSize}
-                    >
-                        <BsGithub />
-                    </IconButton>
-                </Link>
+                    <BsLinkedin />
+                </IconButtonLink>
+                <IconButtonLink
+                    aria-label="Github"
+                    target="_blank"
+                    href="https://github.com/azy2k9"
+                    variant="ghost"
+                    mx="1"
+                    size={buttonSize}
+                >
+                    <BsGithub />
+                </IconButtonLink>
             </Flex>
             <Flex w="md" justify="center">
-                <Heading size={headingSize}>Arslaan Qadus</Heading>
+                <IconButtonLink
+                    aria-label="Home"
+                    href="/"
+                    variant="ghost"
+                    ml={['2', '4']}
+                    p="8"
+                >
+                    <Heading size={headingSize} _hover={{ cursor: 'pointer' }}>
+                        Arslaan Qadus
+                    </Heading>
+                </IconButtonLink>
             </Flex>
             <Flex w="xs" justify="flex-end" mr="4" alignItems="center">
                 <IconButton
