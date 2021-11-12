@@ -1,12 +1,50 @@
+# overwrite: true
+# schema: "https://api-eu-central-1.graphcms.com/v2/ckvhttc1i441s01y02w5i3ctz/master"
+# documents: "queries/*.graphql"
+# generates:
+#   generated/graphql.tsx:
+#     plugins:
+#       - "typescript"
+#       - "typescript-operations"
+#       - "typescript-react-apollo"
+#   ./graphql.schema.json:
+#     plugins:
+#       - "introspection"
+
+
 overwrite: true
-schema: "https://api-eu-central-1.graphcms.com/v2/ckvhttc1i441s01y02w5i3ctz/master"
-documents: "queries/*.graphql"
+documents:
+  - 'queries/*.graphql'
+schema:
+  - "https://api-eu-central-1.graphcms.com/v2/ckvhttc1i441s01y02w5i3ctz/master":
+      headers:
+        Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImdjbXMtbWFpbi1wcm9kdWN0aW9uIn0.eyJ2ZXJzaW9uIjozLCJpYXQiOjE2MzY2Njk2ODQsImF1ZCI6WyJodHRwczovL2FwaS1ldS1jZW50cmFsLTEuZ3JhcGhjbXMuY29tL3YyL2Nrdmh0dGMxaTQ0MXMwMXkwMnc1aTNjdHovbWFzdGVyIiwiaHR0cHM6Ly9tYW5hZ2VtZW50LW5leHQuZ3JhcGhjbXMuY29tIl0sImlzcyI6Imh0dHBzOi8vbWFuYWdlbWVudC5ncmFwaGNtcy5jb20vIiwic3ViIjoiZjkzNTg1NGQtYzRlNC00ZDgzLTg2N2EtZWUyYjc0OWIxMmMyIiwianRpIjoiY2t2dml2ZXJ6MnR0YzAxemExY3lrYmJibyJ9.LLdk8HOP9MckZNQ9JI8GIz-onGL_2J2Ij_uandkwQnalWvVo-rdBtIqRwUyVm_Bjr5ZrlMlUn4l79PXPhLhRcxpO8m2UPspHQNyuHTDM09g138jvX-l6aWysk7_gEotnlB8W9QwEr71nGcbkG_TkwcLTZMSDCeovl3akoG6inWgXS8ZO5N6bNdCxxZ5U7jcDzB2pSAk5D7lQczsSBcml88R_pXcpNca5_D82di4phcN73LZxlpJu537WjlRw5d23LnepBOYLhKcOlLH4cPoCSW17P2bD1YHaxoUwzS_kdK6EJhW76UL5H52k09vJUu4T2sabXtRq1Cd8TGf8U3hQ9clE4aK4hf584DXvp5YYdT9Z2BrDV-SokNC79UKk0tT8LfVd1NcNJ1UzXpzXotTEe3Wwy5hrONEL3eU1l55-mAHjN-oemP0vrl7K7_rl6ASFJWoEqMZ37d9GQGrrEnmnPMO3cChAxs_r74bCR6DehPqJHv_k-49F7QvlkGaN98-u_L38g4u1lP7MORHXhu9Jcfqvauuc7JAn6N4l1kZ-1IxzKWuDMKPMBGNceGsCh-2e30lNS9M2oaRyPU7F2mwEHD2Pj3xOWPQwZl4XTBg9R9Malx3_wIrvnciLK30_V590vrIqHk7k0fNmF3tR3bVmYjNx5MGkdSgLXI-UMxieNgk
 generates:
-  generated/graphql.tsx:
+  ./src/shared/generated/graphcms.ts:
     plugins:
-      - "typescript"
-      - "typescript-operations"
-      - "typescript-react-apollo"
-  ./graphql.schema.json:
-    plugins:
-      - "introspection"
+      # - add:
+      #     content: "import { coreEndpointUrl } from '@/lib/utils';"
+      - typescript
+      - typescript-operations
+      - typescript-react-query
+      # - add:
+      #     content: '/* eslint-disable */'
+      # - add:
+      #     content: '/* THIS IS A GENERATED FILE, DO NOT EDIT */'
+      # - add:
+      #     content: "// @ts-ignore"
+    config:
+      dedupeFragments: true
+      typesPrefix: I
+      typeNames: change-case-all#pascalCase
+      namingConvention: change-case-all#pascalCase
+      transformUnderscore: true
+      avoidOptionals: true
+      exposeQueryKeys: true
+      exposeFetcher: true
+      fetcher:
+        # func: '@/lib/utils#customFetcher'
+        isReactHook: false
+hooks:
+  afterOneFileWrite:
+    - prettier --write

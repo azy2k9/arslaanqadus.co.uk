@@ -1,11 +1,9 @@
-query allBlogs{
-    blogs(where: { variant: blog }) {
+query getAllBlogs {
+blogs {
         id,
         title,
         slug,
-        featured,    
-        variant,
-        author,
+        featured,
         readTime,
         introduction,
         content {
@@ -17,18 +15,13 @@ query allBlogs{
         },
         tags {
             id,
-            value,
+            value
             colorScheme
         },
-        createdAt
+        createdAt,
     }
 }
 
-query featuredBlogs{
-    blogs(where: { variant: blog, featured: true }, first: 5) {
-        ...BlogSummary
-    }
-}
 
 fragment BlogSummary on Blog {
     id,
@@ -36,7 +29,6 @@ fragment BlogSummary on Blog {
     slug,
     introduction,
     featured,
-    variant,
     tags {
         value,
         colorScheme
