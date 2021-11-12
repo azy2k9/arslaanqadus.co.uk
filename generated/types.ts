@@ -3983,7 +3983,7 @@ export enum SystemDateTimeFieldVariation {
 /** A way of categorizing blog posts, projects and bytes learning series.  */
 export type Tag = Node & {
     __typename?: 'Tag';
-    blog?: Maybe<Blog>;
+    blog: Array<Blog>;
     color: Scalars['String'];
     colorScheme: ColorScheme;
     /** The time the document was created */
@@ -3996,7 +3996,7 @@ export type Tag = Node & {
     history: Array<Version>;
     /** The unique identifier */
     id: Scalars['ID'];
-    project?: Maybe<Project>;
+    project: Array<Project>;
     /** The time the document was published. Null on documents in draft stage. */
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** User that last published this document */
@@ -4013,7 +4013,14 @@ export type Tag = Node & {
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
 export type TagBlogArgs = {
+    after?: Maybe<Scalars['String']>;
+    before?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+    last?: Maybe<Scalars['Int']>;
     locales?: Maybe<Array<Locale>>;
+    orderBy?: Maybe<BlogOrderByInput>;
+    skip?: Maybe<Scalars['Int']>;
+    where?: Maybe<BlogWhereInput>;
 };
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
@@ -4037,7 +4044,14 @@ export type TagHistoryArgs = {
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
 export type TagProjectArgs = {
+    after?: Maybe<Scalars['String']>;
+    before?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+    last?: Maybe<Scalars['Int']>;
     locales?: Maybe<Array<Locale>>;
+    orderBy?: Maybe<ProjectOrderByInput>;
+    skip?: Maybe<Scalars['Int']>;
+    where?: Maybe<ProjectWhereInput>;
 };
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
@@ -4079,11 +4093,11 @@ export type TagConnection = {
 };
 
 export type TagCreateInput = {
-    blog?: Maybe<BlogCreateOneInlineInput>;
+    blog?: Maybe<BlogCreateManyInlineInput>;
     color: Scalars['String'];
     colorScheme: ColorScheme;
     createdAt?: Maybe<Scalars['DateTime']>;
-    project?: Maybe<ProjectCreateOneInlineInput>;
+    project?: Maybe<ProjectCreateManyInlineInput>;
     updatedAt?: Maybe<Scalars['DateTime']>;
     value: Scalars['String'];
 };
@@ -4121,7 +4135,9 @@ export type TagManyWhereInput = {
     OR?: Maybe<Array<TagWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
-    blog?: Maybe<BlogWhereInput>;
+    blog_every?: Maybe<BlogWhereInput>;
+    blog_none?: Maybe<BlogWhereInput>;
+    blog_some?: Maybe<BlogWhereInput>;
     color?: Maybe<Scalars['String']>;
     colorScheme: ColorScheme;
     /** All values that are contained in given list. */
@@ -4183,7 +4199,9 @@ export type TagManyWhereInput = {
     id_not_starts_with?: Maybe<Scalars['ID']>;
     /** All values starting with the given string. */
     id_starts_with?: Maybe<Scalars['ID']>;
-    project?: Maybe<ProjectWhereInput>;
+    project_every?: Maybe<ProjectWhereInput>;
+    project_none?: Maybe<ProjectWhereInput>;
+    project_some?: Maybe<ProjectWhereInput>;
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     publishedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -4258,10 +4276,10 @@ export enum TagOrderByInput {
 }
 
 export type TagUpdateInput = {
-    blog?: Maybe<BlogUpdateOneInlineInput>;
+    blog?: Maybe<BlogUpdateManyInlineInput>;
     color?: Maybe<Scalars['String']>;
     colorScheme: ColorScheme;
-    project?: Maybe<ProjectUpdateOneInlineInput>;
+    project?: Maybe<ProjectUpdateManyInlineInput>;
     value?: Maybe<Scalars['String']>;
 };
 
@@ -4341,7 +4359,9 @@ export type TagWhereInput = {
     OR?: Maybe<Array<TagWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
-    blog?: Maybe<BlogWhereInput>;
+    blog_every?: Maybe<BlogWhereInput>;
+    blog_none?: Maybe<BlogWhereInput>;
+    blog_some?: Maybe<BlogWhereInput>;
     color?: Maybe<Scalars['String']>;
     colorScheme: ColorScheme;
     /** All values that are contained in given list. */
@@ -4403,7 +4423,9 @@ export type TagWhereInput = {
     id_not_starts_with?: Maybe<Scalars['ID']>;
     /** All values starting with the given string. */
     id_starts_with?: Maybe<Scalars['ID']>;
-    project?: Maybe<ProjectWhereInput>;
+    project_every?: Maybe<ProjectWhereInput>;
+    project_none?: Maybe<ProjectWhereInput>;
+    project_some?: Maybe<ProjectWhereInput>;
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     publishedAt_gt?: Maybe<Scalars['DateTime']>;
