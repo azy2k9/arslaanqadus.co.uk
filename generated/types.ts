@@ -4949,6 +4949,13 @@ export enum _SystemDateTimeFieldVariation {
     Localization = 'localization',
 }
 
+export type GetAllBlogSlugsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetAllBlogSlugsQuery = {
+    __typename?: 'Query';
+    blogs: Array<{ __typename?: 'Blog'; slug: string }>;
+};
+
 export type GetAllBlogsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetAllBlogsQuery = {
@@ -4973,11 +4980,11 @@ export type GetAllBlogsQuery = {
     }>;
 };
 
-export type GetAllBlogSlugsQueryVariables = Exact<{ [key: string]: never }>;
+export type GetAllProjectSlugsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetAllBlogSlugsQuery = {
+export type GetAllProjectSlugsQuery = {
     __typename?: 'Query';
-    blogs: Array<{ __typename?: 'Blog'; slug: string }>;
+    projects: Array<{ __typename?: 'Project'; slug: string }>;
 };
 
 export type GetAllProjectsQueryVariables = Exact<{ [key: string]: never }>;
@@ -5002,13 +5009,6 @@ export type GetAllProjectsQuery = {
             colorScheme: ColorScheme;
         }>;
     }>;
-};
-
-export type GetAllProjectSlugsQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetAllProjectSlugsQuery = {
-    __typename?: 'Query';
-    projects: Array<{ __typename?: 'Project'; slug: string }>;
 };
 
 export type GetFeaturedBlogsQueryVariables = Exact<{ [key: string]: never }>;
@@ -5115,6 +5115,63 @@ export type GetSingleProjectQuery = {
         | undefined;
 };
 
+export const GetAllBlogSlugsDocument = gql`
+    query getAllBlogSlugs {
+        blogs {
+            slug
+        }
+    }
+`;
+
+/**
+ * __useGetAllBlogSlugsQuery__
+ *
+ * To run a query within a React component, call `useGetAllBlogSlugsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllBlogSlugsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllBlogSlugsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllBlogSlugsQuery(
+    baseOptions?: Apollo.QueryHookOptions<
+        GetAllBlogSlugsQuery,
+        GetAllBlogSlugsQueryVariables
+    >
+) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery<GetAllBlogSlugsQuery, GetAllBlogSlugsQueryVariables>(
+        GetAllBlogSlugsDocument,
+        options
+    );
+}
+export function useGetAllBlogSlugsLazyQuery(
+    baseOptions?: Apollo.LazyQueryHookOptions<
+        GetAllBlogSlugsQuery,
+        GetAllBlogSlugsQueryVariables
+    >
+) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery<
+        GetAllBlogSlugsQuery,
+        GetAllBlogSlugsQueryVariables
+    >(GetAllBlogSlugsDocument, options);
+}
+export type GetAllBlogSlugsQueryHookResult = ReturnType<
+    typeof useGetAllBlogSlugsQuery
+>;
+export type GetAllBlogSlugsLazyQueryHookResult = ReturnType<
+    typeof useGetAllBlogSlugsLazyQuery
+>;
+export type GetAllBlogSlugsQueryResult = Apollo.QueryResult<
+    GetAllBlogSlugsQuery,
+    GetAllBlogSlugsQueryVariables
+>;
 export const GetAllBlogsDocument = gql`
     query getAllBlogs {
         blogs {
@@ -5188,62 +5245,62 @@ export type GetAllBlogsQueryResult = Apollo.QueryResult<
     GetAllBlogsQuery,
     GetAllBlogsQueryVariables
 >;
-export const GetAllBlogSlugsDocument = gql`
-    query getAllBlogSlugs {
-        blogs {
+export const GetAllProjectSlugsDocument = gql`
+    query getAllProjectSlugs {
+        projects {
             slug
         }
     }
 `;
 
 /**
- * __useGetAllBlogSlugsQuery__
+ * __useGetAllProjectSlugsQuery__
  *
- * To run a query within a React component, call `useGetAllBlogSlugsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAllBlogSlugsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetAllProjectSlugsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllProjectSlugsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetAllBlogSlugsQuery({
+ * const { data, loading, error } = useGetAllProjectSlugsQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetAllBlogSlugsQuery(
+export function useGetAllProjectSlugsQuery(
     baseOptions?: Apollo.QueryHookOptions<
-        GetAllBlogSlugsQuery,
-        GetAllBlogSlugsQueryVariables
+        GetAllProjectSlugsQuery,
+        GetAllProjectSlugsQueryVariables
     >
 ) {
     const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<GetAllBlogSlugsQuery, GetAllBlogSlugsQueryVariables>(
-        GetAllBlogSlugsDocument,
-        options
-    );
+    return Apollo.useQuery<
+        GetAllProjectSlugsQuery,
+        GetAllProjectSlugsQueryVariables
+    >(GetAllProjectSlugsDocument, options);
 }
-export function useGetAllBlogSlugsLazyQuery(
+export function useGetAllProjectSlugsLazyQuery(
     baseOptions?: Apollo.LazyQueryHookOptions<
-        GetAllBlogSlugsQuery,
-        GetAllBlogSlugsQueryVariables
+        GetAllProjectSlugsQuery,
+        GetAllProjectSlugsQueryVariables
     >
 ) {
     const options = { ...defaultOptions, ...baseOptions };
     return Apollo.useLazyQuery<
-        GetAllBlogSlugsQuery,
-        GetAllBlogSlugsQueryVariables
-    >(GetAllBlogSlugsDocument, options);
+        GetAllProjectSlugsQuery,
+        GetAllProjectSlugsQueryVariables
+    >(GetAllProjectSlugsDocument, options);
 }
-export type GetAllBlogSlugsQueryHookResult = ReturnType<
-    typeof useGetAllBlogSlugsQuery
+export type GetAllProjectSlugsQueryHookResult = ReturnType<
+    typeof useGetAllProjectSlugsQuery
 >;
-export type GetAllBlogSlugsLazyQueryHookResult = ReturnType<
-    typeof useGetAllBlogSlugsLazyQuery
+export type GetAllProjectSlugsLazyQueryHookResult = ReturnType<
+    typeof useGetAllProjectSlugsLazyQuery
 >;
-export type GetAllBlogSlugsQueryResult = Apollo.QueryResult<
-    GetAllBlogSlugsQuery,
-    GetAllBlogSlugsQueryVariables
+export type GetAllProjectSlugsQueryResult = Apollo.QueryResult<
+    GetAllProjectSlugsQuery,
+    GetAllProjectSlugsQueryVariables
 >;
 export const GetAllProjectsDocument = gql`
     query getAllProjects {
@@ -5319,63 +5376,6 @@ export type GetAllProjectsLazyQueryHookResult = ReturnType<
 export type GetAllProjectsQueryResult = Apollo.QueryResult<
     GetAllProjectsQuery,
     GetAllProjectsQueryVariables
->;
-export const GetAllProjectSlugsDocument = gql`
-    query getAllProjectSlugs {
-        projects {
-            slug
-        }
-    }
-`;
-
-/**
- * __useGetAllProjectSlugsQuery__
- *
- * To run a query within a React component, call `useGetAllProjectSlugsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAllProjectSlugsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetAllProjectSlugsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetAllProjectSlugsQuery(
-    baseOptions?: Apollo.QueryHookOptions<
-        GetAllProjectSlugsQuery,
-        GetAllProjectSlugsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<
-        GetAllProjectSlugsQuery,
-        GetAllProjectSlugsQueryVariables
-    >(GetAllProjectSlugsDocument, options);
-}
-export function useGetAllProjectSlugsLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<
-        GetAllProjectSlugsQuery,
-        GetAllProjectSlugsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery<
-        GetAllProjectSlugsQuery,
-        GetAllProjectSlugsQueryVariables
-    >(GetAllProjectSlugsDocument, options);
-}
-export type GetAllProjectSlugsQueryHookResult = ReturnType<
-    typeof useGetAllProjectSlugsQuery
->;
-export type GetAllProjectSlugsLazyQueryHookResult = ReturnType<
-    typeof useGetAllProjectSlugsLazyQuery
->;
-export type GetAllProjectSlugsQueryResult = Apollo.QueryResult<
-    GetAllProjectSlugsQuery,
-    GetAllProjectSlugsQueryVariables
 >;
 export const GetFeaturedBlogsDocument = gql`
     query getFeaturedBlogs {
