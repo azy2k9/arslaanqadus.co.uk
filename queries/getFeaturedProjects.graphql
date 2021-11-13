@@ -1,20 +1,20 @@
-query getFeaturedProjects{
+query getFeaturedProjects {
     projects(where: { featured: true }) {
-        id,
-        title,
-        slug,
-        featured,
+        id
+        title
+        slug
+        featured
         thumbnail {
-            id,
+            id
             url
-        },
-        introduction,
-        createdAt,
-        readTime,
+        }
+        introduction
+        createdAt
+        readTime
         tags {
-            value,
-            color
+            id
+            value
+            colorScheme
         }
     }
 }
-
