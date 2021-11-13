@@ -4973,6 +4973,13 @@ export type GetAllBlogsQuery = {
     }>;
 };
 
+export type GetAllBlogsIdsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetAllBlogsIdsQuery = {
+    __typename?: 'Query';
+    blogs: Array<{ __typename?: 'Blog'; id: string }>;
+};
+
 export type GetAllProjectsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetAllProjectsQuery = {
@@ -4995,6 +5002,13 @@ export type GetAllProjectsQuery = {
             colorScheme: ColorScheme;
         }>;
     }>;
+};
+
+export type GetAllProjectsIdsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetAllProjectsIdsQuery = {
+    __typename?: 'Query';
+    projects: Array<{ __typename?: 'Project'; id: string }>;
 };
 
 export type GetFeaturedBlogsQueryVariables = Exact<{ [key: string]: never }>;
@@ -5174,6 +5188,63 @@ export type GetAllBlogsQueryResult = Apollo.QueryResult<
     GetAllBlogsQuery,
     GetAllBlogsQueryVariables
 >;
+export const GetAllBlogsIdsDocument = gql`
+    query getAllBlogsIds {
+        blogs {
+            id
+        }
+    }
+`;
+
+/**
+ * __useGetAllBlogsIdsQuery__
+ *
+ * To run a query within a React component, call `useGetAllBlogsIdsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllBlogsIdsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllBlogsIdsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllBlogsIdsQuery(
+    baseOptions?: Apollo.QueryHookOptions<
+        GetAllBlogsIdsQuery,
+        GetAllBlogsIdsQueryVariables
+    >
+) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery<GetAllBlogsIdsQuery, GetAllBlogsIdsQueryVariables>(
+        GetAllBlogsIdsDocument,
+        options
+    );
+}
+export function useGetAllBlogsIdsLazyQuery(
+    baseOptions?: Apollo.LazyQueryHookOptions<
+        GetAllBlogsIdsQuery,
+        GetAllBlogsIdsQueryVariables
+    >
+) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery<
+        GetAllBlogsIdsQuery,
+        GetAllBlogsIdsQueryVariables
+    >(GetAllBlogsIdsDocument, options);
+}
+export type GetAllBlogsIdsQueryHookResult = ReturnType<
+    typeof useGetAllBlogsIdsQuery
+>;
+export type GetAllBlogsIdsLazyQueryHookResult = ReturnType<
+    typeof useGetAllBlogsIdsLazyQuery
+>;
+export type GetAllBlogsIdsQueryResult = Apollo.QueryResult<
+    GetAllBlogsIdsQuery,
+    GetAllBlogsIdsQueryVariables
+>;
 export const GetAllProjectsDocument = gql`
     query getAllProjects {
         projects {
@@ -5248,6 +5319,63 @@ export type GetAllProjectsLazyQueryHookResult = ReturnType<
 export type GetAllProjectsQueryResult = Apollo.QueryResult<
     GetAllProjectsQuery,
     GetAllProjectsQueryVariables
+>;
+export const GetAllProjectsIdsDocument = gql`
+    query getAllProjectsIds {
+        projects {
+            id
+        }
+    }
+`;
+
+/**
+ * __useGetAllProjectsIdsQuery__
+ *
+ * To run a query within a React component, call `useGetAllProjectsIdsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllProjectsIdsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllProjectsIdsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllProjectsIdsQuery(
+    baseOptions?: Apollo.QueryHookOptions<
+        GetAllProjectsIdsQuery,
+        GetAllProjectsIdsQueryVariables
+    >
+) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery<
+        GetAllProjectsIdsQuery,
+        GetAllProjectsIdsQueryVariables
+    >(GetAllProjectsIdsDocument, options);
+}
+export function useGetAllProjectsIdsLazyQuery(
+    baseOptions?: Apollo.LazyQueryHookOptions<
+        GetAllProjectsIdsQuery,
+        GetAllProjectsIdsQueryVariables
+    >
+) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery<
+        GetAllProjectsIdsQuery,
+        GetAllProjectsIdsQueryVariables
+    >(GetAllProjectsIdsDocument, options);
+}
+export type GetAllProjectsIdsQueryHookResult = ReturnType<
+    typeof useGetAllProjectsIdsQuery
+>;
+export type GetAllProjectsIdsLazyQueryHookResult = ReturnType<
+    typeof useGetAllProjectsIdsLazyQuery
+>;
+export type GetAllProjectsIdsQueryResult = Apollo.QueryResult<
+    GetAllProjectsIdsQuery,
+    GetAllProjectsIdsQueryVariables
 >;
 export const GetFeaturedBlogsDocument = gql`
     query getFeaturedBlogs {
