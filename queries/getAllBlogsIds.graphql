@@ -1,5 +1,5 @@
-query getAllBlogsIds {
+query getAllBlogSlugs {
     blogs {
-        id
+        slug
     }
 }

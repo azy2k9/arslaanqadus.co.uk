@@ -1,5 +1,5 @@
-query getAllProjectsIds {
+query getAllProjectSlugs {
     projects {
-        id
+        slug
     }
 }
