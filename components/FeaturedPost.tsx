@@ -63,9 +63,9 @@ const FeaturedPost = ({
                 {title}
             </Heading>
             <Flex py="0.5rem">
-                {tags.map(({ value, colorScheme }) => (
+                {tags.map(({ id, value, colorScheme }) => (
                     <Badge
-                        key={value}
+                        key={id}
                         colorScheme={colorScheme}
                         py="0.3rem"
                         px="1rem"

@@ -26,9 +26,9 @@ const BlogPost = ({
             >
                 <ChakraNextImage src={thumbnail.url} h="250px" />
                 <Box p="0.5rem">
-                    {tags.map(({ value, colorScheme }) => (
+                    {tags.map(({ id, value, colorScheme }) => (
                         <Badge
-                            key={value}
+                            key={id}
                             colorScheme={colorScheme}
                             py="0.25rem"
                             px="0.5rem"
