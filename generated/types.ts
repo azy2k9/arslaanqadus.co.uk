@@ -5011,7 +5011,12 @@ export type GetFeaturedBlogsQuery = {
         createdAt: any;
         readTime: string;
         thumbnail: { __typename?: 'Asset'; id: string; url: string };
-        tags: Array<{ __typename?: 'Tag'; value: string; color: string }>;
+        tags: Array<{
+            __typename?: 'Tag';
+            id: string;
+            value: string;
+            colorScheme: ColorScheme;
+        }>;
     }>;
 };
 
@@ -5029,7 +5034,12 @@ export type GetFeaturedProjectsQuery = {
         createdAt: any;
         readTime: string;
         thumbnail: { __typename?: 'Asset'; id: string; url: string };
-        tags: Array<{ __typename?: 'Tag'; value: string; color: string }>;
+        tags: Array<{
+            __typename?: 'Tag';
+            id: string;
+            value: string;
+            colorScheme: ColorScheme;
+        }>;
     }>;
 };
 
@@ -5254,8 +5264,9 @@ export const GetFeaturedBlogsDocument = gql`
             createdAt
             readTime
             tags {
+                id
                 value
-                color
+                colorScheme
             }
         }
     }
@@ -5325,8 +5336,9 @@ export const GetFeaturedProjectsDocument = gql`
             createdAt
             readTime
             tags {
+                id
                 value
-                color
+                colorScheme
             }
         }
     }
