@@ -27,7 +27,7 @@ const Projects = ({ projects }: Props) => {
                         direction="center"
                         tags={project.tags}
                         img={project.thumbnail.url}
-                        slug={'/projects/' + project.slug}
+                        slug={'/project/' + project.slug}
                     />
                 ))}
             </SimpleGrid>
