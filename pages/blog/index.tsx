@@ -8,6 +8,7 @@ import {
     GetAllBlogsDocument,
     GetAllBlogsQuery,
 } from '../../generated/types';
+import { GetStaticProps } from 'next';
 
 interface Props {
     blogs: Blog[];
@@ -29,20 +30,10 @@ const Blogs = ({ blogs }: Props) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const blogsData = await client.query<GetAllBlogsQuery>({
         query: GetAllBlogsDocument,
     });
-
-    const urls = blogsData.data.blogs.reduce(
-        (sum, current) => {
-            sum.push({ title: current.title, img: current.thumbnail });
-            return sum;
-        },
-        [{}]
-    );
-
-    console.log(urls);
 
     return {
         props: {

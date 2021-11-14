@@ -13,6 +13,7 @@ import {
     GetFeaturedBlogsDocument,
     GetFeaturedProjectsDocument,
 } from '../generated/types';
+import { GetStaticProps } from 'next';
 
 const Home = ({ blogs, projects }: { blogs: Blog[]; projects: Project[] }) => {
     return (
@@ -26,7 +27,7 @@ const Home = ({ blogs, projects }: { blogs: Blog[]; projects: Project[] }) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const blogsData = await client.query<GetFeaturedBlogsQuery>({
         query: GetFeaturedBlogsDocument,
     });

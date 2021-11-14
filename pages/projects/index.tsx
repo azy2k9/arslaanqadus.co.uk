@@ -1,6 +1,5 @@
 import React from 'react';
 import client from '../../apolloClient';
-import { gql } from '@apollo/client';
 import { SimpleGrid } from '@chakra-ui/layout';
 import FeaturedPost from '../../components/FeaturedPost';
 import Layout from '../../components/Layout';
@@ -9,6 +8,7 @@ import {
     GetAllProjectsQuery,
     Project,
 } from '../../generated/types';
+import { GetStaticProps } from 'next';
 
 interface Props {
     projects: Project[];
@@ -35,7 +35,7 @@ const Projects = ({ projects }: Props) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const projectsData = await client.query<GetAllProjectsQuery>({
         query: GetAllProjectsDocument,
     });
