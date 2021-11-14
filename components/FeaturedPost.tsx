@@ -10,17 +10,23 @@ interface IProps {
     previewText: string;
     direction?: 'left' | 'right' | 'center';
     type?: 'blog' | 'project';
-    tags?: Array<{
-        tag: string;
+    img?: string;
+    slug: string;
+    tags: Array<{
+        id: string;
+        value: string;
         colorScheme: ThemeTypings['colorSchemes'];
     }>;
 }
+
 const FeaturedPost = ({
     title,
     previewText,
     direction = 'left',
     type = 'blog',
     tags = [],
+    img,
+    slug,
 }: IProps) => {
     const headingSize = useBreakpointValue(['xl']);
     const imageSize = useBreakpointValue(['sm', 'lg', '2xl', '5xl']);
@@ -39,10 +45,10 @@ const FeaturedPost = ({
             borderRadius="md"
             alignItems={['center', null, flexDirection]}
         >
-            {type === 'project' && (
+            {type === 'project' && typeof img === 'string' && (
                 <Flex w="full" justify="center">
                     <ChakraNextImage
-                        src="https://picsum.photos/801/1200"
+                        src={img}
                         h={['250px', '300px', 'sm', 'lg']}
                         width={imageSize}
                     />
@@ -57,16 +63,16 @@ const FeaturedPost = ({
                 {title}
             </Heading>
             <Flex py="0.5rem">
-                {tags.map(({ tag, colorScheme }) => (
+                {tags.map(({ id, value, colorScheme }) => (
                     <Badge
-                        key={tag}
+                        key={id}
                         colorScheme={colorScheme}
                         py="0.3rem"
                         px="1rem"
                         borderRadius="lg"
                         mr="0.25rem"
                     >
-                        <Text>{tag}</Text>
+                        <Text>{value}</Text>
                     </Badge>
                 ))}
             </Flex>
@@ -79,7 +85,7 @@ const FeaturedPost = ({
             </Text>
             <Flex justify="center">
                 <IconButtonLink
-                    href="#"
+                    href={slug}
                     aria-label="article"
                     borderRadius="full"
                     pt="2rem"

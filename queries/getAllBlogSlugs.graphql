@@ -1,0 +1,5 @@
+query getAllBlogSlugs {
+    blogs {
+        slug
+    }
+}

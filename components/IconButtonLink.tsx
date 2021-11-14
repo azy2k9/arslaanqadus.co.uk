@@ -13,7 +13,17 @@ interface IIconButtonLink {
 const IconButtonLink = (
     props: IIconButtonLink & ChakraIconButtonProps & ChakraLinkProps
 ) => {
-    const { children, href, ...rest } = props;
+    const { children, href, target, ...rest } = props;
+
+    if (target) {
+        return (
+            <NextLink href={href} passHref>
+                <a target={target}>
+                    <ChakraIconButton {...rest}>{children}</ChakraIconButton>
+                </a>
+            </NextLink>
+        );
+    }
 
     return (
         <NextLink href={href} passHref>

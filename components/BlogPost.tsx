@@ -2,35 +2,21 @@ import { Badge, Box, Flex, Heading, Stack, Text } from '@chakra-ui/layout';
 import React from 'react';
 import ChakraNextImage from './Image';
 import Link from 'next/link';
-import { ThemeTypings } from '@chakra-ui/styled-system';
 import { Avatar } from '@chakra-ui/avatar';
-
-interface IProps {
-    img: string;
-    tags?: Array<{
-        tag: string;
-        colorScheme: ThemeTypings['colorSchemes'];
-    }>;
-    title: string;
-    previewText: string;
-    avatarImg: string;
-    date: string;
-    readTime: string;
-    author: string;
-}
+import { dateFormatter } from '../helpers';
+import { Blog } from '../generated/types';
 
 const BlogPost = ({
-    img,
-    tags = [],
+    thumbnail,
+    tags,
     title,
-    previewText,
-    avatarImg,
-    author,
-    date,
+    introduction,
     readTime,
-}: IProps) => {
+    slug,
+    createdAt,
+}: Blog) => {
     return (
-        <Link href="#" passHref>
+        <Link href={slug} passHref>
             <Flex
                 flexDir="column"
                 m={['1rem', '0.5rem']}
@@ -38,11 +24,11 @@ const BlogPost = ({
                 boxShadow={'2xl'}
                 borderRadius="md"
             >
-                <ChakraNextImage src={img} h="250px" />
+                <ChakraNextImage src={thumbnail.url} h="250px" />
                 <Box p="0.5rem">
-                    {tags.map(({ tag, colorScheme }) => (
+                    {tags.map(({ id, value, colorScheme }) => (
                         <Badge
-                            key={tag}
+                            key={id}
                             colorScheme={colorScheme}
                             py="0.25rem"
                             px="0.5rem"
@@ -50,7 +36,7 @@ const BlogPost = ({
                             borderRadius="lg"
                             size="sm"
                         >
-                            <Text fontSize="xs">{tag}</Text>
+                            <Text fontSize="xs">{value}</Text>
                         </Badge>
                     ))}
                 </Box>
@@ -64,14 +50,14 @@ const BlogPost = ({
                     {title}
                 </Heading>
                 <Text flex="2" m="1rem" noOfLines={3}>
-                    {previewText}
+                    {introduction}
                 </Text>
                 <Stack direction={'row'} align={'center'} p="1rem">
-                    <Avatar src={avatarImg} alt={'Author'} />
+                    <Avatar src="/me.png" alt="Author" />
                     <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-                        <Text fontWeight={600}>{author}</Text>
+                        <Text fontWeight={600}>Arslaan Qadus</Text>
                         <Text color={'gray.500'}>
-                            {date} · {readTime} read
+                            {dateFormatter(createdAt)} · {readTime} read
                         </Text>
                     </Stack>
                 </Stack>
