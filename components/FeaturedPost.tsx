@@ -26,7 +26,7 @@ const FeaturedPost = ({
     type = 'blog',
     tags = [],
     img,
-    slug
+    slug,
 }: IProps) => {
     const headingSize = useBreakpointValue(['xl']);
     const imageSize = useBreakpointValue(['sm', 'lg', '2xl', '5xl']);
@@ -45,7 +45,7 @@ const FeaturedPost = ({
             borderRadius="md"
             alignItems={['center', null, flexDirection]}
         >
-            {type === 'project' && typeof img === "string" && (
+            {type === 'project' && typeof img === 'string' && (
                 <Flex w="full" justify="center">
                     <ChakraNextImage
                         src={img}
@@ -63,9 +63,9 @@ const FeaturedPost = ({
                 {title}
             </Heading>
             <Flex py="0.5rem">
-                {tags.map(({ value, colorScheme }) => (
+                {tags.map(({ id, value, colorScheme }) => (
                     <Badge
-                        key={value}
+                        key={id}
                         colorScheme={colorScheme}
                         py="0.3rem"
                         px="1rem"

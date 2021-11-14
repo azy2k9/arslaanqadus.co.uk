@@ -1,11 +1,12 @@
 import { Heading, Center, Box } from '@chakra-ui/react';
 import React from 'react';
 import FeaturedPost from '../components/FeaturedPost';
+import { Blog } from '../generated/types';
 interface Props {
-    blogs: PartialBlogPost[]
+    blogs: Blog[];
 }
 
-const Blog = ({ blogs }: Props) => {
+const Blogs = ({ blogs }: Props) => {
     return (
         <>
             <Center>
@@ -16,11 +17,11 @@ const Blog = ({ blogs }: Props) => {
                     <FeaturedPost
                         key={blog.id}
                         title={blog.title}
-                        type={blog.variant}
+                        type={'blog'}
                         previewText={blog.introduction}
-                        direction={index % 2 === 0 ? "right" : "left"}
+                        direction={index % 2 === 0 ? 'right' : 'left'}
                         tags={blog.tags}
-                        slug={"/blog/" + blog.slug}
+                        slug={'/blog/' + blog.slug}
                     />
                 ))}
             </Box>
@@ -28,4 +29,4 @@ const Blog = ({ blogs }: Props) => {
     );
 };
 
-export default Blog;
+export default Blogs;
