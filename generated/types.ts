@@ -5057,11 +5057,11 @@ export type GetFeaturedProjectsQuery = {
     }>;
 };
 
-export type GetSingleBlogQueryVariables = Exact<{
-    id?: Maybe<Scalars['ID']>;
+export type GetSingleBlogBySlugQueryVariables = Exact<{
+    slug: Scalars['String'];
 }>;
 
-export type GetSingleBlogQuery = {
+export type GetSingleBlogBySlugQuery = {
     __typename?: 'Query';
     blog?:
         | {
@@ -5073,7 +5073,12 @@ export type GetSingleBlogQuery = {
               readTime: string;
               introduction: string;
               createdAt: any;
-              content: { __typename?: 'RichText'; markdown: string };
+              content: {
+                  __typename?: 'RichText';
+                  markdown: string;
+                  html: string;
+                  raw: any;
+              };
               thumbnail: { __typename?: 'Asset'; id: string; url: string };
               tags: Array<{
                   __typename?: 'Tag';
@@ -5086,11 +5091,11 @@ export type GetSingleBlogQuery = {
         | undefined;
 };
 
-export type GetSingleProjectQueryVariables = Exact<{
-    id?: Maybe<Scalars['ID']>;
+export type GetSingleProjectBySlugQueryVariables = Exact<{
+    slug: Scalars['String'];
 }>;
 
-export type GetSingleProjectQuery = {
+export type GetSingleProjectBySlugQuery = {
     __typename?: 'Query';
     project?:
         | {
@@ -5102,7 +5107,12 @@ export type GetSingleProjectQuery = {
               readTime: string;
               introduction: string;
               createdAt: any;
-              content: { __typename?: 'RichText'; markdown: string };
+              content: {
+                  __typename?: 'RichText';
+                  markdown: string;
+                  html: string;
+                  raw: any;
+              };
               thumbnail: { __typename?: 'Asset'; id: string; url: string };
               tags: Array<{
                   __typename?: 'Tag';
@@ -5521,9 +5531,9 @@ export type GetFeaturedProjectsQueryResult = Apollo.QueryResult<
     GetFeaturedProjectsQuery,
     GetFeaturedProjectsQueryVariables
 >;
-export const GetSingleBlogDocument = gql`
-    query getSingleBlog($id: ID) {
-        blog(where: { id: $id }) {
+export const GetSingleBlogBySlugDocument = gql`
+    query getSingleBlogBySlug($slug: String!) {
+        blog(where: { slug: $slug }) {
             id
             title
             slug
@@ -5532,6 +5542,8 @@ export const GetSingleBlogDocument = gql`
             introduction
             content {
                 markdown
+                html
+                raw
             }
             thumbnail {
                 id
@@ -5548,128 +5560,130 @@ export const GetSingleBlogDocument = gql`
 `;
 
 /**
- * __useGetSingleBlogQuery__
+ * __useGetSingleBlogBySlugQuery__
  *
- * To run a query within a React component, call `useGetSingleBlogQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetSingleBlogQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetSingleBlogBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSingleBlogBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetSingleBlogQuery({
+ * const { data, loading, error } = useGetSingleBlogBySlugQuery({
  *   variables: {
- *      id: // value for 'id'
+ *      slug: // value for 'slug'
  *   },
  * });
  */
-export function useGetSingleBlogQuery(
-    baseOptions?: Apollo.QueryHookOptions<
-        GetSingleBlogQuery,
-        GetSingleBlogQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<GetSingleBlogQuery, GetSingleBlogQueryVariables>(
-        GetSingleBlogDocument,
-        options
-    );
-}
-export function useGetSingleBlogLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<
-        GetSingleBlogQuery,
-        GetSingleBlogQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery<GetSingleBlogQuery, GetSingleBlogQueryVariables>(
-        GetSingleBlogDocument,
-        options
-    );
-}
-export type GetSingleBlogQueryHookResult = ReturnType<
-    typeof useGetSingleBlogQuery
->;
-export type GetSingleBlogLazyQueryHookResult = ReturnType<
-    typeof useGetSingleBlogLazyQuery
->;
-export type GetSingleBlogQueryResult = Apollo.QueryResult<
-    GetSingleBlogQuery,
-    GetSingleBlogQueryVariables
->;
-export const GetSingleProjectDocument = gql`
-    query getSingleProject($id: ID) {
-        project(where: { id: $id }) {
-            id
-            title
-            slug
-            featured
-            readTime
-            introduction
-            content {
-                markdown
-            }
-            thumbnail {
-                id
-                url
-            }
-            tags {
-                id
-                value
-                colorScheme
-            }
-            createdAt
-        }
-    }
-`;
-
-/**
- * __useGetSingleProjectQuery__
- *
- * To run a query within a React component, call `useGetSingleProjectQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetSingleProjectQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetSingleProjectQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useGetSingleProjectQuery(
-    baseOptions?: Apollo.QueryHookOptions<
-        GetSingleProjectQuery,
-        GetSingleProjectQueryVariables
+export function useGetSingleBlogBySlugQuery(
+    baseOptions: Apollo.QueryHookOptions<
+        GetSingleBlogBySlugQuery,
+        GetSingleBlogBySlugQueryVariables
     >
 ) {
     const options = { ...defaultOptions, ...baseOptions };
     return Apollo.useQuery<
-        GetSingleProjectQuery,
-        GetSingleProjectQueryVariables
-    >(GetSingleProjectDocument, options);
+        GetSingleBlogBySlugQuery,
+        GetSingleBlogBySlugQueryVariables
+    >(GetSingleBlogBySlugDocument, options);
 }
-export function useGetSingleProjectLazyQuery(
+export function useGetSingleBlogBySlugLazyQuery(
     baseOptions?: Apollo.LazyQueryHookOptions<
-        GetSingleProjectQuery,
-        GetSingleProjectQueryVariables
+        GetSingleBlogBySlugQuery,
+        GetSingleBlogBySlugQueryVariables
     >
 ) {
     const options = { ...defaultOptions, ...baseOptions };
     return Apollo.useLazyQuery<
-        GetSingleProjectQuery,
-        GetSingleProjectQueryVariables
-    >(GetSingleProjectDocument, options);
+        GetSingleBlogBySlugQuery,
+        GetSingleBlogBySlugQueryVariables
+    >(GetSingleBlogBySlugDocument, options);
 }
-export type GetSingleProjectQueryHookResult = ReturnType<
-    typeof useGetSingleProjectQuery
+export type GetSingleBlogBySlugQueryHookResult = ReturnType<
+    typeof useGetSingleBlogBySlugQuery
 >;
-export type GetSingleProjectLazyQueryHookResult = ReturnType<
-    typeof useGetSingleProjectLazyQuery
+export type GetSingleBlogBySlugLazyQueryHookResult = ReturnType<
+    typeof useGetSingleBlogBySlugLazyQuery
 >;
-export type GetSingleProjectQueryResult = Apollo.QueryResult<
-    GetSingleProjectQuery,
-    GetSingleProjectQueryVariables
+export type GetSingleBlogBySlugQueryResult = Apollo.QueryResult<
+    GetSingleBlogBySlugQuery,
+    GetSingleBlogBySlugQueryVariables
+>;
+export const GetSingleProjectBySlugDocument = gql`
+    query getSingleProjectBySlug($slug: String!) {
+        project(where: { slug: $slug }) {
+            id
+            title
+            slug
+            featured
+            readTime
+            introduction
+            content {
+                markdown
+                html
+                raw
+            }
+            thumbnail {
+                id
+                url
+            }
+            tags {
+                id
+                value
+                colorScheme
+            }
+            createdAt
+        }
+    }
+`;
+
+/**
+ * __useGetSingleProjectBySlugQuery__
+ *
+ * To run a query within a React component, call `useGetSingleProjectBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSingleProjectBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSingleProjectBySlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetSingleProjectBySlugQuery(
+    baseOptions: Apollo.QueryHookOptions<
+        GetSingleProjectBySlugQuery,
+        GetSingleProjectBySlugQueryVariables
+    >
+) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery<
+        GetSingleProjectBySlugQuery,
+        GetSingleProjectBySlugQueryVariables
+    >(GetSingleProjectBySlugDocument, options);
+}
+export function useGetSingleProjectBySlugLazyQuery(
+    baseOptions?: Apollo.LazyQueryHookOptions<
+        GetSingleProjectBySlugQuery,
+        GetSingleProjectBySlugQueryVariables
+    >
+) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery<
+        GetSingleProjectBySlugQuery,
+        GetSingleProjectBySlugQueryVariables
+    >(GetSingleProjectBySlugDocument, options);
+}
+export type GetSingleProjectBySlugQueryHookResult = ReturnType<
+    typeof useGetSingleProjectBySlugQuery
+>;
+export type GetSingleProjectBySlugLazyQueryHookResult = ReturnType<
+    typeof useGetSingleProjectBySlugLazyQuery
+>;
+export type GetSingleProjectBySlugQueryResult = Apollo.QueryResult<
+    GetSingleProjectBySlugQuery,
+    GetSingleProjectBySlugQueryVariables
 >;

@@ -1,5 +1,5 @@
-query getSingleProject($id: ID) {
-    project(where: { id: $id }) {
+query getSingleBlogBySlug($slug: String!) {
+    blog(where: { slug: $slug }) {
         id,
         title,
         slug,
@@ -8,6 +8,8 @@ query getSingleProject($id: ID) {
         introduction,
         content {
             markdown
+            html
+            raw
         },
         thumbnail {
             id,
