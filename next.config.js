@@ -12,6 +12,9 @@ module.exports = {
     return config;
   },
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true
+  },
   images: {
     domains: ['picsum.photos', 'media.graphcms.com'],
   },
