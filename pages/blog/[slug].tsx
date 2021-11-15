@@ -1,7 +1,7 @@
 import { Center, Container, Text } from '@chakra-ui/layout';
 import { Tag } from '@chakra-ui/tag';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import { GetStaticProps, NextPageContext } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import React from 'react';
@@ -18,21 +18,28 @@ import {
 } from '../../generated/types';
 
 const Blog = ({ blog }: { blog: IBlog }) => {
+    const { isFallback } = useRouter();
     return (
-        <Layout title={blog.title}>
-            <ChakraNextImage src={blog.thumbnail.url} alt={blog.title + " - Image"} h={['250px', '300px', 'sm', 'lg']} />
-            <Center py={"4"}>
-                {blog.tags.map(tag => (
-                    <Tag key={tag.id} colorScheme={tag.colorScheme} mx={"1"}>{tag.value}</Tag>
+        <Layout title={blog.title} isFallback={isFallback}>
+            <ChakraNextImage
+                src={blog.thumbnail.url}
+                alt={blog.title + ' - Image'}
+                h={['250px', '300px', 'sm', 'lg']}
+            />
+            <Center py={'4'}>
+                {blog.tags.map((tag) => (
+                    <Tag key={tag.id} colorScheme={tag.colorScheme} mx={'1'}>
+                        {tag.value}
+                    </Tag>
                 ))}
             </Center>
-            <Text py={"8"}>{blog.introduction}</Text>
+            <Text py={'8'}>{blog.introduction}</Text>
             <RichText content={blog.content.raw} />
         </Layout>
-    )
+    );
 };
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
     const blogs = await client.query<GetAllBlogSlugsQuery>({
         query: GetAllBlogSlugsDocument,
     });
@@ -48,12 +55,24 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
     const { slug } = context.params as IParams;
 
-    const blog = await client.query<GetSingleBlogBySlugQuery, GetSingleBlogBySlugQueryVariables>({
+    const blog = await client.query<
+        GetSingleBlogBySlugQuery,
+        GetSingleBlogBySlugQueryVariables
+    >({
         query: GetSingleBlogBySlugDocument,
         variables: {
-            slug
-        }
+            slug,
+        },
     });
+
+    if (!blog.data.blog) {
+        return {
+            redirect: {
+                destination: '/blog',
+                permanent: false,
+            },
+        };
+    }
 
     return {
         props: {
@@ -63,7 +82,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 interface IParams extends ParsedUrlQuery {
-    slug: string
+    slug: string;
 }
 
 export default Blog;

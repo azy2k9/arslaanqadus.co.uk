@@ -1,7 +1,8 @@
 import { Center, Text } from '@chakra-ui/layout';
 import { Tag } from '@chakra-ui/tag';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import { GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import React from 'react';
 import client from '../../apolloClient';
@@ -17,26 +18,36 @@ import {
 } from '../../generated/types';
 
 const Project = ({ project }: { project: IProject }) => {
+    const { isFallback } = useRouter();
+
     return (
-        <Layout title={project.title}>
-            <ChakraNextImage src={project.thumbnail.url} alt={project.title + " - Image"} h={['250px', '300px', 'sm', 'lg']} />
-            <Center py={"4"}>
-                {project.tags.map(tag => (
-                    <Tag key={tag.id} colorScheme={tag.colorScheme} mx={"1"}>{tag.value}</Tag>
+        <Layout title={project.title} isFallback={isFallback}>
+            <ChakraNextImage
+                src={project.thumbnail.url}
+                alt={project.title + ' - Image'}
+                h={['250px', '300px', 'sm', 'lg']}
+            />
+            <Center py={'4'}>
+                {project.tags.map((tag) => (
+                    <Tag key={tag.id} colorScheme={tag.colorScheme} mx={'1'}>
+                        {tag.value}
+                    </Tag>
                 ))}
             </Center>
-            <Text py={"8"}>{project.introduction}</Text>
+            <Text py={'8'}>{project.introduction}</Text>
             <RichText content={project.content.raw} />
         </Layout>
-    )
+    );
 };
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
     const projects = await client.query<GetAllProjectSlugsQuery>({
         query: GetAllProjectSlugsDocument,
     });
 
-    const paths = projects.data.projects.map((b) => ({ params: { slug: b.slug } }));
+    const paths = projects.data.projects.map((b) => ({
+        params: { slug: b.slug },
+    }));
 
     return {
         paths,
@@ -47,12 +58,24 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
     const { slug } = context.params as IParams;
 
-    const project = await client.query<GetSingleProjectBySlugQuery, GetSingleProjectBySlugQueryVariables>({
+    const project = await client.query<
+        GetSingleProjectBySlugQuery,
+        GetSingleProjectBySlugQueryVariables
+    >({
         query: GetSingleProjectBySlugDocument,
         variables: {
-            slug
-        }
+            slug,
+        },
     });
+
+    if (!project.data.project) {
+        return {
+            redirect: {
+                destination: '/project',
+                permanent: false,
+            },
+        };
+    }
 
     return {
         props: {
@@ -62,7 +85,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 interface IParams extends ParsedUrlQuery {
-    slug: string
+    slug: string;
 }
 
 export default Project;
