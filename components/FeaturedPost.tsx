@@ -29,7 +29,7 @@ const FeaturedPost = ({
     slug,
 }: IProps) => {
     const headingSize = useBreakpointValue(['xl']);
-    const imageSize = useBreakpointValue(['sm', 'lg', '2xl', '5xl']);
+    const imageSize = useBreakpointValue(['sm', 'md', 'md', 'md', 'lg']);
     const flexDirection =
         direction === 'left'
             ? 'flex-start'
