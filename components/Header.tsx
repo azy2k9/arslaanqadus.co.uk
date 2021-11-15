@@ -137,7 +137,7 @@ const Header = () => {
                                 </ButtonLink>
                                 <ButtonLink
                                     variant="ghost"
-                                    href="/projects"
+                                    href="/project"
                                     py="20"
                                 >
                                     Projects
