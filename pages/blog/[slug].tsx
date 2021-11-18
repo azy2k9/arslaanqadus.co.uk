@@ -19,6 +19,16 @@ import {
 
 const Blog = ({ blog }: { blog: IBlog }) => {
     const { isFallback } = useRouter();
+
+    if (isFallback) {
+        return (
+            <Layout 
+                title={"Loading"} 
+                isFallback={isFallback}
+            />
+        ) 
+    }
+
     return (
         <Layout title={blog.title} isFallback={isFallback}>
             <ChakraNextImage
@@ -48,7 +58,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     return {
         paths,
-        fallback: false,
+        fallback: true,
     };
 };
 
@@ -65,10 +75,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
         },
     });
 
-    if (!blog.data.blog) {
+    if (!blog.data.blog?.id) {
         return {
             redirect: {
-                destination: '/blog',
+                destination: '/blog?errorMessage=BLOG_NOT_FOUND',
                 permanent: false,
             },
         };

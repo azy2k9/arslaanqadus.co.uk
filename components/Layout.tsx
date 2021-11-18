@@ -7,7 +7,7 @@ import { Container, Center, Heading, Spinner, Slide } from '@chakra-ui/react';
 interface ILayout {
     title: string;
     enableHeading?: boolean;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     isFallback?: boolean;
 }
 

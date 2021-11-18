@@ -20,6 +20,15 @@ import {
 const Project = ({ project }: { project: IProject }) => {
     const { isFallback } = useRouter();
 
+    if (isFallback) {
+        return (
+            <Layout 
+                title={"Loading"} 
+                isFallback={isFallback}
+            />
+        ) 
+    }
+
     return (
         <Layout title={project.title} isFallback={isFallback}>
             <ChakraNextImage
@@ -68,11 +77,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
         },
     });
 
-    if (!project.data.project) {
+    if (!project.data.project?.id) {
         return {
             redirect: {
-                destination: '/project',
-                permanent: false,
+                destination: '/project?errorMessage=PROJECT_NOT_FOUND',
+                permanent: true,
             },
         };
     }
