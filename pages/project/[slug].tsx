@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import React from 'react';
 import client from '../../apolloClient';
+import ChakraRichTextRenderer from '../../components/ChakraRichTextRenderer';
 import ChakraNextImage from '../../components/Image';
 import Layout from '../../components/Layout';
 import {
@@ -21,12 +22,7 @@ const Project = ({ project }: { project: IProject }) => {
     const { isFallback } = useRouter();
 
     if (isFallback) {
-        return (
-            <Layout 
-                title={"Loading"} 
-                isFallback={isFallback}
-            />
-        ) 
+        return <Layout title={'Loading'} isFallback={isFallback} />;
     }
 
     return (
@@ -44,7 +40,7 @@ const Project = ({ project }: { project: IProject }) => {
                 ))}
             </Center>
             <Text py={'8'}>{project.introduction}</Text>
-            <RichText content={project.content.raw} />
+            <ChakraRichTextRenderer content={project.content.raw} />
         </Layout>
     );
 };
@@ -80,7 +76,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     if (!project.data.project?.id) {
         return {
             redirect: {
-                destination: '/project?errorMessage=PROJECT_NOT_FOUND',
+                destination: '/project?errorMessage=Project was not found',
                 permanent: true,
             },
         };

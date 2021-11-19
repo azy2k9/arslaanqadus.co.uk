@@ -1,11 +1,11 @@
-import { Center, Container, Text } from '@chakra-ui/layout';
+import { Center, Text } from '@chakra-ui/layout';
 import { Tag } from '@chakra-ui/tag';
-import { RichText } from '@graphcms/rich-text-react-renderer';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 import React from 'react';
 import client from '../../apolloClient';
+import ChakraRichTextRenderer from '../../components/ChakraRichTextRenderer';
 import ChakraNextImage from '../../components/Image';
 import Layout from '../../components/Layout';
 import {
@@ -21,12 +21,7 @@ const Blog = ({ blog }: { blog: IBlog }) => {
     const { isFallback } = useRouter();
 
     if (isFallback) {
-        return (
-            <Layout 
-                title={"Loading"} 
-                isFallback={isFallback}
-            />
-        ) 
+        return <Layout title={'Loading'} isFallback={isFallback} />;
     }
 
     return (
@@ -44,7 +39,7 @@ const Blog = ({ blog }: { blog: IBlog }) => {
                 ))}
             </Center>
             <Text py={'8'}>{blog.introduction}</Text>
-            <RichText content={blog.content.raw} />
+            <ChakraRichTextRenderer content={blog.content.raw} />
         </Layout>
     );
 };
@@ -78,7 +73,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     if (!blog.data.blog?.id) {
         return {
             redirect: {
-                destination: '/blog?errorMessage=BLOG_NOT_FOUND',
+                destination: '/blog?errorMessage=Blog was not found',
                 permanent: false,
             },
         };
