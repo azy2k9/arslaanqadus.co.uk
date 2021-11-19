@@ -41,6 +41,7 @@ export const getStaticProps: GetStaticProps = async () => {
             blogs: blogsData.data.blogs,
             projects: projectsData.data.projects,
         },
+        revalidate: 60,
     };
 };
 
