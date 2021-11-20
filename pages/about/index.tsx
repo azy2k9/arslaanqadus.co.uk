@@ -28,35 +28,6 @@ const About = () => {
                     I currently work at Evergreen Life, a health and wellbeing
                     app that also offers GP services.
                 </Text>
-                {/* <Container>
-                    <Flex flexDir="column" alignItems="center" py="4">
-                        <Text>My work tech stack comprises of:</Text>
-                        <UnorderedList>
-                            <ListItem>React</ListItem>
-                            <ListItem>Node</ListItem>
-                            <ListItem>TypeScript</ListItem>
-                            <ListItem>Electron</ListItem>
-                            <ListItem>Cordova</ListItem>
-                            <ListItem>MongoDB</ListItem>
-                            <ListItem>React Query</ListItem>
-                            <ListItem>Material UI </ListItem>
-                        </UnorderedList>
-                    </Flex>
-                    <Flex flexDir="column" alignItems="center" py="4">
-                        <Text>My preferred personal stack comprises of:</Text>
-                        <UnorderedList>
-                            <ListItem>React</ListItem>
-                            <ListItem>Node</ListItem>
-                            <ListItem>TypeScript</ListItem>
-                            <ListItem>NextJS</ListItem>
-                            <ListItem>GraphQL</ListItem>
-                            <ListItem>MongoDB</ListItem>
-                            <ListItem>React Query</ListItem>
-                            <ListItem>Chakra UI</ListItem>
-                            <ListItem>Material UI </ListItem>
-                        </UnorderedList>
-                    </Flex>
-                </Container> */}
                 <Text py="4" textAlign="center">
                     My work tech stack comprises of React, Node, TypeScript,
                     Electron Cordova, MongoDB, React, Query, Material UI
