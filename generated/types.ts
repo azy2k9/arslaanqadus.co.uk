@@ -863,9 +863,9 @@ export type BlogManyWhereInput = {
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
     createdBy?: Maybe<UserWhereInput>;
-    featured: Scalars['Boolean'];
+    featured?: Maybe<Scalars['Boolean']>;
     /** All values that are not equal to given value. */
-    featured_not: Scalars['Boolean'];
+    featured_not?: Maybe<Scalars['Boolean']>;
     id?: Maybe<Scalars['ID']>;
     /** All values containing the given string. */
     id_contains?: Maybe<Scalars['ID']>;
@@ -1025,7 +1025,7 @@ export enum BlogOrderByInput {
 
 export type BlogUpdateInput = {
     content?: Maybe<Scalars['RichTextAST']>;
-    featured: Scalars['Boolean'];
+    featured?: Maybe<Scalars['Boolean']>;
     introduction?: Maybe<Scalars['String']>;
     readTime?: Maybe<Scalars['String']>;
     slug?: Maybe<Scalars['String']>;
@@ -1053,7 +1053,7 @@ export type BlogUpdateManyInlineInput = {
 
 export type BlogUpdateManyInput = {
     content?: Maybe<Scalars['RichTextAST']>;
-    featured: Scalars['Boolean'];
+    featured?: Maybe<Scalars['Boolean']>;
     introduction?: Maybe<Scalars['String']>;
     readTime?: Maybe<Scalars['String']>;
     title?: Maybe<Scalars['String']>;
@@ -1128,9 +1128,9 @@ export type BlogWhereInput = {
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
     createdBy?: Maybe<UserWhereInput>;
-    featured: Scalars['Boolean'];
+    featured?: Maybe<Scalars['Boolean']>;
     /** All values that are not equal to given value. */
-    featured_not: Scalars['Boolean'];
+    featured_not?: Maybe<Scalars['Boolean']>;
     id?: Maybe<Scalars['ID']>;
     /** All values containing the given string. */
     id_contains?: Maybe<Scalars['ID']>;
@@ -2254,9 +2254,9 @@ export type ProjectManyWhereInput = {
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
     createdBy?: Maybe<UserWhereInput>;
-    featured: Scalars['Boolean'];
+    featured?: Maybe<Scalars['Boolean']>;
     /** All values that are not equal to given value. */
-    featured_not: Scalars['Boolean'];
+    featured_not?: Maybe<Scalars['Boolean']>;
     id?: Maybe<Scalars['ID']>;
     /** All values containing the given string. */
     id_contains?: Maybe<Scalars['ID']>;
@@ -2416,7 +2416,7 @@ export enum ProjectOrderByInput {
 
 export type ProjectUpdateInput = {
     content?: Maybe<Scalars['RichTextAST']>;
-    featured: Scalars['Boolean'];
+    featured?: Maybe<Scalars['Boolean']>;
     introduction?: Maybe<Scalars['String']>;
     readTime?: Maybe<Scalars['String']>;
     slug?: Maybe<Scalars['String']>;
@@ -2444,7 +2444,7 @@ export type ProjectUpdateManyInlineInput = {
 
 export type ProjectUpdateManyInput = {
     content?: Maybe<Scalars['RichTextAST']>;
-    featured: Scalars['Boolean'];
+    featured?: Maybe<Scalars['Boolean']>;
     introduction?: Maybe<Scalars['String']>;
     readTime?: Maybe<Scalars['String']>;
     title?: Maybe<Scalars['String']>;
@@ -2519,9 +2519,9 @@ export type ProjectWhereInput = {
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
     createdBy?: Maybe<UserWhereInput>;
-    featured: Scalars['Boolean'];
+    featured?: Maybe<Scalars['Boolean']>;
     /** All values that are not equal to given value. */
-    featured_not: Scalars['Boolean'];
+    featured_not?: Maybe<Scalars['Boolean']>;
     id?: Maybe<Scalars['ID']>;
     /** All values containing the given string. */
     id_contains?: Maybe<Scalars['ID']>;
@@ -4139,13 +4139,13 @@ export type TagManyWhereInput = {
     blog_none?: Maybe<BlogWhereInput>;
     blog_some?: Maybe<BlogWhereInput>;
     color?: Maybe<Scalars['String']>;
-    colorScheme: ColorScheme;
+    colorScheme?: Maybe<ColorScheme>;
     /** All values that are contained in given list. */
-    colorScheme_in: Array<ColorScheme>;
+    colorScheme_in?: Maybe<Array<ColorScheme>>;
     /** All values that are not equal to given value. */
-    colorScheme_not: ColorScheme;
+    colorScheme_not?: Maybe<ColorScheme>;
     /** All values that are not contained in given list. */
-    colorScheme_not_in: Array<ColorScheme>;
+    colorScheme_not_in?: Maybe<Array<ColorScheme>>;
     /** All values containing the given string. */
     color_contains?: Maybe<Scalars['String']>;
     /** All values ending with the given string. */
@@ -4278,7 +4278,7 @@ export enum TagOrderByInput {
 export type TagUpdateInput = {
     blog?: Maybe<BlogUpdateManyInlineInput>;
     color?: Maybe<Scalars['String']>;
-    colorScheme: ColorScheme;
+    colorScheme?: Maybe<ColorScheme>;
     project?: Maybe<ProjectUpdateManyInlineInput>;
     value?: Maybe<Scalars['String']>;
 };
@@ -4302,7 +4302,7 @@ export type TagUpdateManyInlineInput = {
 
 export type TagUpdateManyInput = {
     color?: Maybe<Scalars['String']>;
-    colorScheme: ColorScheme;
+    colorScheme?: Maybe<ColorScheme>;
     value?: Maybe<Scalars['String']>;
 };
 
@@ -4363,13 +4363,13 @@ export type TagWhereInput = {
     blog_none?: Maybe<BlogWhereInput>;
     blog_some?: Maybe<BlogWhereInput>;
     color?: Maybe<Scalars['String']>;
-    colorScheme: ColorScheme;
+    colorScheme?: Maybe<ColorScheme>;
     /** All values that are contained in given list. */
-    colorScheme_in: Array<ColorScheme>;
+    colorScheme_in?: Maybe<Array<ColorScheme>>;
     /** All values that are not equal to given value. */
-    colorScheme_not: ColorScheme;
+    colorScheme_not?: Maybe<ColorScheme>;
     /** All values that are not contained in given list. */
-    colorScheme_not_in: Array<ColorScheme>;
+    colorScheme_not_in?: Maybe<Array<ColorScheme>>;
     /** All values containing the given string. */
     color_contains?: Maybe<Scalars['String']>;
     /** All values ending with the given string. */
