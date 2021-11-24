@@ -54,16 +54,16 @@ const Layout = ({
                 in={!isFallback}
                 style={{ height: '100%', overflowY: 'scroll' }}
             >
-                <Container maxW={['3xl', '4xl', null, '4xl', '8xl']}>
-                    <Header />
+                <Header />
+                <Container maxW={['2xl', '3xl', '4xl', '5xl', null, '6xl']}>
                     {enableHeading && (
                         <Heading textAlign="center" py="16">
                             {title}
                         </Heading>
                     )}
                     {children}
-                    <Footer />
                 </Container>
+                <Footer />
             </Slide>
         </>
     );
