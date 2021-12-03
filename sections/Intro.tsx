@@ -15,7 +15,7 @@ const Intro = () => {
                 <Flex maxW="fit-content" alignSelf="center">
                     <Avatar src="/me.png" size="full" />
                 </Flex>
-                <Container maxW="container.md" py="2rem">
+                <Container maxW="container.md" pt="2rem" pb="2.5rem">
                     <Heading
                         textAlign="center"
                         fontSize={['xx-large', 'xxx-large']}
@@ -33,17 +33,17 @@ const Intro = () => {
                         wellbeing apps for desktop and mobile.
                     </Heading>
                 </Container>
-            </Flex>
-            <Flex justify="center">
-                <ScrollDown
-                    onClick={() =>
-                        // @ts-ignore
-                        // TODO: SPECIFY THE CORRECT SCROLL SECTION HERE.
-                        document
-                            .querySelector('.about')
-                            .scrollIntoView({ behavior: 'smooth' })
-                    }
-                />
+                <Flex justify="center">
+                    <ScrollDown
+                        onClick={() =>
+                            // @ts-ignore
+                            // TODO: SPECIFY THE CORRECT SCROLL SECTION HERE.
+                            document
+                                .querySelector('.about')
+                                .scrollIntoView({ behavior: 'smooth' })
+                        }
+                    />
+                </Flex>
             </Flex>
         </>
     );

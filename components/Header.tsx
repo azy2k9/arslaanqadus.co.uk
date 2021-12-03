@@ -30,17 +30,8 @@ const Header = () => {
     const { colorMode, toggleColorMode } = useColorMode();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const drawerSize = useBreakpointValue({ base: 'full', md: 'sm' });
-    const headingSize = useBreakpointValue({
-        base: 'sm',
-        sm: 'md',
-        md: 'lg',
-        lg: 'xl',
-    });
-    const buttonSize = useBreakpointValue({
-        base: 'sm',
-        sm: 'md',
-        md: 'lg',
-    });
+    const headingSize = useBreakpointValue(['sm', 'md', 'lg', 'xl']);
+    const buttonSize = useBreakpointValue(['md', 'lg', 'xl']);
 
     return (
         <Flex justify="space-between" alignItems="center" h="10vh">
@@ -50,7 +41,6 @@ const Header = () => {
                     target="_blank"
                     href="https://twitter.com/reactdevjnr"
                     variant="ghost"
-                    ml={['2', '4']}
                     size={buttonSize}
                 >
                     <BsTwitter />
@@ -60,7 +50,6 @@ const Header = () => {
                     target="_blank"
                     href="https://www.linkedin.com/in/arslaan-qadus/"
                     variant="ghost"
-                    mx="1"
                     size={buttonSize}
                 >
                     <BsLinkedin />
@@ -70,7 +59,7 @@ const Header = () => {
                     target="_blank"
                     href="https://github.com/azy2k9"
                     variant="ghost"
-                    mx="1"
+                    // mx="1"
                     size={buttonSize}
                 >
                     <BsGithub />
@@ -81,15 +70,14 @@ const Header = () => {
                     aria-label="Home"
                     href="/"
                     variant="ghost"
-                    ml={['2', '4']}
-                    p="8"
+                    p={['4', '8']}
                 >
                     <Heading size={headingSize} _hover={{ cursor: 'pointer' }}>
                         Arslaan Qadus
                     </Heading>
                 </IconButtonLink>
             </Flex>
-            <Flex w="xs" justify="flex-end" mr="4" alignItems="center">
+            <Flex w="xs" justify="flex-end" alignItems="center">
                 <IconButton
                     aria-label="Github"
                     variant="ghost"
@@ -127,39 +115,38 @@ const Header = () => {
                         <DrawerBody>
                             <Flex
                                 justifyContent="center"
-                                py={{ base: 2 }}
                                 flexDir="column"
-                                height="100%"
+                                height="90vh"
                                 alignItems="normal"
                             >
-                                <ButtonLink variant="ghost" href="/" py="20">
+                                <ButtonLink variant="ghost" href="/" py="3rem">
                                     Home
                                 </ButtonLink>
                                 <ButtonLink
                                     variant="ghost"
                                     href="/project"
-                                    py="20"
+                                    py="3rem"
                                 >
                                     Projects
                                 </ButtonLink>
                                 <ButtonLink
                                     variant="ghost"
                                     href="/blog"
-                                    py="20"
+                                    py="3rem"
                                 >
                                     Blog
                                 </ButtonLink>
                                 <ButtonLink
                                     variant="ghost"
                                     href="/about"
-                                    py="20"
+                                    py="3rem"
                                 >
                                     About Me
                                 </ButtonLink>
                                 <ButtonLink
                                     variant="ghost"
                                     href="/contact"
-                                    py="20"
+                                    py="3rem"
                                 >
                                     Contact
                                 </ButtonLink>

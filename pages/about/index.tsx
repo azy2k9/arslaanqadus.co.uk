@@ -40,6 +40,15 @@ const About = () => {
                     <s>Learn GraphQL</s> ✅
                 </Text>
                 <Text textAlign="center" py="2">
+                    <s>Type @ 40 wpm</s> ✅
+                </Text>
+                <Text textAlign="center" py="2">
+                    <s>Type @ 50 wpm</s> ✅
+                </Text>
+                <Text textAlign="center" py="2">
+                    Type @ 60 wpm
+                </Text>
+                <Text textAlign="center" py="2">
                     Give 1 Tech Talk in 2021
                 </Text>
             </Container>
