@@ -1,10 +1,10 @@
 import { Heading, Box, SimpleGrid, Center } from '@chakra-ui/react';
 import React from 'react';
 import FeaturedPost from '../components/FeaturedPost';
-import { Project } from '../generated/types';
+import { IProject } from '../generated/types';
 
 interface Props {
-    projects: Project[];
+    projects: IProject[];
 }
 
 const Projects = ({ projects }: Props) => {

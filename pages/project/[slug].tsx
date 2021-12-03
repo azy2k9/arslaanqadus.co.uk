@@ -10,12 +10,12 @@ import ChakraRichTextRenderer from '../../components/ChakraRichTextRenderer';
 import ChakraNextImage from '../../components/Image';
 import Layout from '../../components/Layout';
 import {
-    Project as IProject,
+    IProject,
     GetAllProjectSlugsDocument,
-    GetAllProjectSlugsQuery,
+    IGetAllProjectSlugsQuery,
     GetSingleProjectBySlugDocument,
-    GetSingleProjectBySlugQuery,
-    GetSingleProjectBySlugQueryVariables,
+    IGetSingleProjectBySlugQuery,
+    IGetSingleProjectBySlugQueryVariables,
 } from '../../generated/types';
 
 const Project = ({ project }: { project: IProject }) => {
@@ -46,7 +46,7 @@ const Project = ({ project }: { project: IProject }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const projects = await client.query<GetAllProjectSlugsQuery>({
+    const projects = await client.query<IGetAllProjectSlugsQuery>({
         query: GetAllProjectSlugsDocument,
     });
 
@@ -64,8 +64,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const { slug } = context.params as IParams;
 
     const project = await client.query<
-        GetSingleProjectBySlugQuery,
-        GetSingleProjectBySlugQueryVariables
+        IGetSingleProjectBySlugQuery,
+        IGetSingleProjectBySlugQueryVariables
     >({
         query: GetSingleProjectBySlugDocument,
         variables: {

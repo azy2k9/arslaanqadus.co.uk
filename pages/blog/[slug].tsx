@@ -9,12 +9,12 @@ import ChakraRichTextRenderer from '../../components/ChakraRichTextRenderer';
 import ChakraNextImage from '../../components/Image';
 import Layout from '../../components/Layout';
 import {
-    Blog as IBlog,
+    IBlog,
     GetAllBlogSlugsDocument,
-    GetAllBlogSlugsQuery,
+    IGetAllBlogSlugsQuery,
     GetSingleBlogBySlugDocument,
-    GetSingleBlogBySlugQuery,
-    GetSingleBlogBySlugQueryVariables,
+    IGetSingleBlogBySlugQuery,
+    IGetSingleBlogBySlugQueryVariables,
 } from '../../generated/types';
 
 const Blog = ({ blog }: { blog: IBlog }) => {
@@ -45,7 +45,7 @@ const Blog = ({ blog }: { blog: IBlog }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const blogs = await client.query<GetAllBlogSlugsQuery>({
+    const blogs = await client.query<IGetAllBlogSlugsQuery>({
         query: GetAllBlogSlugsDocument,
     });
 
@@ -61,8 +61,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const { slug } = context.params as IParams;
 
     const blog = await client.query<
-        GetSingleBlogBySlugQuery,
-        GetSingleBlogBySlugQueryVariables
+        IGetSingleBlogBySlugQuery,
+        IGetSingleBlogBySlugQueryVariables
     >({
         query: GetSingleBlogBySlugDocument,
         variables: {

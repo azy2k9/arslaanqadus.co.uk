@@ -4,14 +4,14 @@ import { SimpleGrid } from '@chakra-ui/layout';
 import Layout from '../../components/Layout';
 import BlogPost from '../../components/BlogPost';
 import {
-    Blog,
+    IBlog,
     GetAllBlogsDocument,
-    GetAllBlogsQuery,
+    IGetAllBlogsQuery,
 } from '../../generated/types';
 import { GetStaticProps } from 'next';
 
 interface Props {
-    blogs: Blog[];
+    blogs: IBlog[];
 }
 
 const Blogs = ({ blogs }: Props) => {
@@ -31,7 +31,7 @@ const Blogs = ({ blogs }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const blogsData = await client.query<GetAllBlogsQuery>({
+    const blogsData = await client.query<IGetAllBlogsQuery>({
         query: GetAllBlogsDocument,
     });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
+import { Flex, Heading, SimpleGrid } from '@chakra-ui/layout';
 import SkillCard from '../components/SkillCard';
 import { useColorMode } from '@chakra-ui/color-mode';
 
@@ -21,7 +21,7 @@ const Skills = () => {
                         'Material UI',
                         'Chakra UI',
                     ]}
-                    color={colorMode ==="dark" ? "blue.300": "blue.600"}
+                    color={colorMode === 'dark' ? 'blue.300' : 'blue.600'}
                 />
                 <SkillCard
                     title="Back End"
@@ -33,7 +33,7 @@ const Skills = () => {
                         'MongoDB',
                         'MySQL',
                     ]}
-                    color={colorMode ==="dark" ? "purple.400": "purple.600"}
+                    color={colorMode === 'dark' ? 'purple.400' : 'purple.600'}
                 />
                 <SkillCard
                     title="Other"
@@ -43,17 +43,16 @@ const Skills = () => {
                         'Cordova (Mobile Apps)',
                         'VS Code',
                     ]}
-                    color={colorMode ==="dark" ? "green.400": "green.600"}
+                    color={colorMode === 'dark' ? 'green.400' : 'green.600'}
                 />
             </SimpleGrid>
         </>
     );
 };
 
-
-// React, Node, TypeScript, AWS Experience, Testing (Jest Testing, E2E), 
+// React, Node, TypeScript, AWS Experience, Testing (Jest Testing, E2E),
 // Pair programming, Mob programming, CI/CD (Jenkins)
-// Things we built together and things I have achieved 
+// Things we built together and things I have achieved
 // AWS Certfications
 
 export default Skills;

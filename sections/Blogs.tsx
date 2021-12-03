@@ -1,9 +1,9 @@
 import { Heading, Center, Box } from '@chakra-ui/react';
 import React from 'react';
 import FeaturedPost from '../components/FeaturedPost';
-import { Blog } from '../generated/types';
+import { IBlog } from '../generated/types';
 interface Props {
-    blogs: Blog[];
+    blogs: IBlog[];
 }
 
 const Blogs = ({ blogs }: Props) => {

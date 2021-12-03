@@ -1,5 +1,5 @@
 import { Avatar } from '@chakra-ui/avatar';
-import { Container, Flex, Heading, Text } from '@chakra-ui/layout';
+import { Container, Flex, Heading } from '@chakra-ui/layout';
 import React from 'react';
 import ScrollDown from '../components/ScrollDown';
 

@@ -1,4 +1,4 @@
-import { Center, Container, Heading, Text } from '@chakra-ui/layout';
+import { Container, Heading, Text } from '@chakra-ui/layout';
 import React from 'react';
 
 const About = () => {
@@ -10,7 +10,9 @@ const About = () => {
                 mt={['2rem', '3rem']}
                 maxW={['container.lg']}
             >
-                <Heading textAlign="center" py="8">About</Heading>
+                <Heading textAlign="center" py="8">
+                    About
+                </Heading>
                 <Text textAlign="center">
                     I'm a Full Stack JavaScript Developer, living and working in
                     Manchester. I've been working commercially since June 2019

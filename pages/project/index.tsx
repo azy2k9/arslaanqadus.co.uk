@@ -5,13 +5,13 @@ import FeaturedPost from '../../components/FeaturedPost';
 import Layout from '../../components/Layout';
 import {
     GetAllProjectsDocument,
-    GetAllProjectsQuery,
-    Project,
+    IGetAllProjectsQuery,
+    IProject,
 } from '../../generated/types';
 import { GetStaticProps } from 'next';
 
 interface Props {
-    projects: Project[];
+    projects: IProject[];
 }
 
 const Projects = ({ projects }: Props) => {
@@ -36,7 +36,7 @@ const Projects = ({ projects }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const projectsData = await client.query<GetAllProjectsQuery>({
+    const projectsData = await client.query<IGetAllProjectsQuery>({
         query: GetAllProjectsDocument,
     });
 

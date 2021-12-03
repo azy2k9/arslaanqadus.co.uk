@@ -6,16 +6,22 @@ import SkillsSection from '../sections/Skills';
 import client from '../apolloClient';
 import Layout from '../components/Layout';
 import {
-    Blog,
-    Project,
-    GetFeaturedBlogsQuery,
-    GetFeaturedProjectsQuery,
+    IBlog,
+    IProject,
+    IGetFeaturedBlogsQuery,
+    IGetFeaturedProjectsQuery,
     GetFeaturedBlogsDocument,
     GetFeaturedProjectsDocument,
 } from '../generated/types';
 import { GetStaticProps } from 'next';
 
-const Home = ({ blogs, projects }: { blogs: Blog[]; projects: Project[] }) => {
+const Home = ({
+    blogs,
+    projects,
+}: {
+    blogs: IBlog[];
+    projects: IProject[];
+}) => {
     return (
         <Layout title="Homepage" enableHeading={false}>
             <IntroSection />
@@ -28,11 +34,11 @@ const Home = ({ blogs, projects }: { blogs: Blog[]; projects: Project[] }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const blogsData = await client.query<GetFeaturedBlogsQuery>({
+    const blogsData = await client.query<IGetFeaturedBlogsQuery>({
         query: GetFeaturedBlogsDocument,
     });
 
-    const projectsData = await client.query<GetFeaturedProjectsQuery>({
+    const projectsData = await client.query<IGetFeaturedProjectsQuery>({
         query: GetFeaturedProjectsDocument,
     });
 

@@ -1,15 +1,5 @@
 import { Avatar } from '@chakra-ui/avatar';
-import {
-    Box,
-    Center,
-    Container,
-    Flex,
-    Heading,
-    ListItem,
-    SimpleGrid,
-    Text,
-    UnorderedList,
-} from '@chakra-ui/layout';
+import { Center, Container, Flex, Heading, Text } from '@chakra-ui/layout';
 import React from 'react';
 import Layout from '../../components/Layout';
 
