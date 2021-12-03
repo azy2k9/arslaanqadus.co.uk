@@ -6,7 +6,7 @@ import {
     InputRightElement,
     InputProps as ChakraInputProps,
 } from '@chakra-ui/input';
-import React, { useState } from 'react';
+import React, { FocusEventHandler, useState } from 'react';
 
 import Icon from '@chakra-ui/icon';
 import {
@@ -14,6 +14,7 @@ import {
     InputLeftAddon,
     InputRightAddon,
     Select,
+    Textarea,
 } from '@chakra-ui/react';
 
 interface FormFieldProps extends ChakraInputProps {
@@ -21,28 +22,35 @@ interface FormFieldProps extends ChakraInputProps {
     name: string;
     placeholder?: string;
     onChange: React.ChangeEventHandler;
+    // onBlur:
+    //     | React.FocusEventHandler<HTMLInputElement>
+    //     | React.FocusEventHandler<HTMLTextAreaElement>
+    //     | React.FocusEventHandler<HTMLSelectElement>;
     value: string | ReadonlyArray<string> | number;
     error?: string;
-    type?: 'text' | 'select' | 'password' | 'number' | 'date';
+    type?: 'text' | 'select' | 'password' | 'number' | 'date' | 'textarea';
     children?: React.ReactNodeArray;
     label?: string;
     leftAddon?: React.ReactNode;
     rightAddon?: React.ReactNode;
 }
 
-const FormField = ({
-    isInvalid,
-    name,
-    placeholder,
-    onChange,
-    value,
-    error,
-    type = 'text',
-    children,
-    label,
-    leftAddon,
-    rightAddon,
-}: FormFieldProps) => {
+const FormField = (props: FormFieldProps) => {
+    const {
+        isInvalid,
+        name,
+        placeholder,
+        onChange,
+        onBlur,
+        value,
+        error,
+        type = 'text',
+        children,
+        label,
+        leftAddon,
+        rightAddon,
+    } = props;
+
     const [showPassword, setShowPassword] = useState(false);
 
     if (type === 'select') {
@@ -51,14 +59,12 @@ const FormField = ({
                 <FormLabel htmlFor={name}>{label}</FormLabel>
                 <Select
                     placeholder={placeholder}
-                    onChange={onChange}
-                    value={value}
-                    name={name}
                     size={'lg'}
                     _focus={{
                         borderWidth: 2,
                         borderColor: isInvalid ? 'red' : 'green.500',
                     }}
+                    {...props}
                 >
                     {children}
                 </Select>
@@ -72,22 +78,35 @@ const FormField = ({
             <FormLabel htmlFor={name}>{label}</FormLabel>
             <InputGroup>
                 {leftAddon && <InputLeftAddon>{leftAddon}</InputLeftAddon>}
-                <Input
-                    name={name}
-                    placeholder={placeholder}
-                    onChange={onChange}
-                    value={value}
-                    type={showPassword ? 'text' : type}
-                    size={'lg'}
-                    _focus={{
-                        borderWidth: 2,
-                        borderColor: isInvalid ? 'red' : 'green.500',
-                    }}
-                    // _hover={{}}
-                    autoComplete="off"
-                >
-                    {children}
-                </Input>
+                {type === 'textarea' ? (
+                    <Textarea
+                        placeholder={placeholder}
+                        type={showPassword ? 'text' : type}
+                        size={'lg'}
+                        _focus={{
+                            borderWidth: 2,
+                            borderColor: isInvalid ? 'red' : 'green.500',
+                        }}
+                        autoComplete="off"
+                        {...props}
+                    >
+                        {children}
+                    </Textarea>
+                ) : (
+                    <Input
+                        placeholder={placeholder}
+                        type={showPassword ? 'text' : type}
+                        size={'lg'}
+                        _focus={{
+                            borderWidth: 2,
+                            borderColor: isInvalid ? 'red' : 'green.500',
+                        }}
+                        autoComplete="off"
+                        {...props}
+                    >
+                        {children}
+                    </Input>
+                )}
                 {type === 'password' && (
                     <InputRightElement
                         pointerEvents="none"

@@ -1,4 +1,4 @@
-import { Text } from '@chakra-ui/layout';
+import { Center, Text } from '@chakra-ui/layout';
 import React from 'react';
 import Layout from '../../components/Layout';
 
@@ -23,10 +23,12 @@ const Contact = () => {
             subject: '',
             message: '',
         },
+        validateOnChange: true,
+        validateOnBlur: true,
         onSubmit: async (values: IFormValues) => {
             alert(JSON.stringify(values, null, 2));
         },
-        validationSchema: Yup.object({
+        validationSchema: Yup.object().shape({
             firstName: Yup.string()
                 .min(2, 'First Name must be longer than 2 characters')
                 .max(20, 'First Name must be not be more than 20 characters')
@@ -49,11 +51,17 @@ const Contact = () => {
         }),
     });
 
+    console.log(formik.errors);
+    console.log(formik.touched);
+
     return (
         <Layout title="Contact">
-            <Text size="md">
-                If you want to reach out to me, fill in the contact form below!
-            </Text>
+            <Center>
+                <Text size="md" pb={['4']}>
+                    If you want to reach out to me, fill in the contact form
+                    below!
+                </Text>
+            </Center>
             <form onSubmit={formik.handleSubmit}>
                 <FormField
                     label="First Name"
@@ -63,6 +71,7 @@ const Contact = () => {
                     name="firstName"
                     placeholder="First Name..."
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values.firstName}
                     error={formik.errors.firstName || ''}
                 />
@@ -74,6 +83,7 @@ const Contact = () => {
                     name="secondName"
                     placeholder="Second Name..."
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values.secondName}
                     error={formik.errors.secondName}
                 />
@@ -85,6 +95,7 @@ const Contact = () => {
                     name="email"
                     placeholder="Email..."
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values.email}
                     error={formik.errors.email}
                 />
@@ -96,6 +107,7 @@ const Contact = () => {
                     name="subject"
                     placeholder="Message Subject..."
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values.subject}
                     error={formik.errors.subject}
                 />
@@ -104,9 +116,11 @@ const Contact = () => {
                     isInvalid={Boolean(
                         formik.errors.message && formik.touched.message
                     )}
+                    type="textarea"
                     name="message"
                     placeholder="Message..."
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values.message}
                     error={formik.errors.message}
                 />
