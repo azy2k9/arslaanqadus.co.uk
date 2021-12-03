@@ -10,7 +10,6 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
     [SubKey in K]: Maybe<T[SubKey]>;
 };
-const defaultOptions = {};
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
     ID: string;
@@ -33,20 +32,20 @@ export type Scalars = {
     RichTextAST: any;
 };
 
-export type Aggregate = {
+export type IAggregate = {
     __typename?: 'Aggregate';
     count: Scalars['Int'];
 };
 
 /** Asset system model */
-export type Asset = Node & {
+export type IAsset = INode & {
     __typename?: 'Asset';
     /** The time the document was created */
     createdAt: Scalars['DateTime'];
     /** User that created this document */
-    createdBy?: Maybe<User>;
+    createdBy?: Maybe<IUser>;
     /** Get the document in other stages */
-    documentInStages: Array<Asset>;
+    documentInStages: Array<IAsset>;
     /** The file name */
     fileName: Scalars['String'];
     /** The file handle */
@@ -54,30 +53,30 @@ export type Asset = Node & {
     /** The height of the file */
     height?: Maybe<Scalars['Float']>;
     /** List of Asset versions */
-    history: Array<Version>;
+    history: Array<IVersion>;
     /** The unique identifier */
     id: Scalars['ID'];
     /** System Locale field */
-    locale: Locale;
+    locale: ILocale;
     /** Get the other localizations for this document */
-    localizations: Array<Asset>;
+    localizations: Array<IAsset>;
     /** The mime type of the file */
     mimeType?: Maybe<Scalars['String']>;
     /** The time the document was published. Null on documents in draft stage. */
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** User that last published this document */
-    publishedBy?: Maybe<User>;
-    scheduledIn: Array<ScheduledOperation>;
+    publishedBy?: Maybe<IUser>;
+    scheduledIn: Array<IScheduledOperation>;
     /** The file size */
     size?: Maybe<Scalars['Float']>;
     /** System stage field */
-    stage: Stage;
-    thumbnailBlog: Array<Blog>;
-    thumbnailProject: Array<Project>;
+    stage: IStage;
+    thumbnailBlog: Array<IBlog>;
+    thumbnailProject: Array<IProject>;
     /** The time the document was updated */
     updatedAt: Scalars['DateTime'];
     /** User that last updated this document */
-    updatedBy?: Maybe<User>;
+    updatedBy?: Maybe<IUser>;
     /** Get the url for the asset with provided transformations applied. */
     url: Scalars['String'];
     /** The file width */
@@ -85,128 +84,128 @@ export type Asset = Node & {
 };
 
 /** Asset system model */
-export type AssetCreatedAtArgs = {
-    variation?: SystemDateTimeFieldVariation;
+export type IAssetCreatedAtArgs = {
+    variation?: ISystemDateTimeFieldVariation;
 };
 
 /** Asset system model */
-export type AssetCreatedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IAssetCreatedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
 /** Asset system model */
-export type AssetDocumentInStagesArgs = {
+export type IAssetDocumentInStagesArgs = {
     includeCurrent?: Scalars['Boolean'];
     inheritLocale?: Scalars['Boolean'];
-    stages?: Array<Stage>;
+    stages?: Array<IStage>;
 };
 
 /** Asset system model */
-export type AssetHistoryArgs = {
+export type IAssetHistoryArgs = {
     limit?: Scalars['Int'];
     skip?: Scalars['Int'];
-    stageOverride?: Maybe<Stage>;
+    stageOverride?: Maybe<IStage>;
 };
 
 /** Asset system model */
-export type AssetLocalizationsArgs = {
+export type IAssetLocalizationsArgs = {
     includeCurrent?: Scalars['Boolean'];
-    locales?: Array<Locale>;
+    locales?: Array<ILocale>;
 };
 
 /** Asset system model */
-export type AssetPublishedAtArgs = {
-    variation?: SystemDateTimeFieldVariation;
+export type IAssetPublishedAtArgs = {
+    variation?: ISystemDateTimeFieldVariation;
 };
 
 /** Asset system model */
-export type AssetPublishedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IAssetPublishedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
 /** Asset system model */
-export type AssetScheduledInArgs = {
+export type IAssetScheduledInArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
+    locales?: Maybe<Array<ILocale>>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<ScheduledOperationWhereInput>;
+    where?: Maybe<IScheduledOperationWhereInput>;
 };
 
 /** Asset system model */
-export type AssetThumbnailBlogArgs = {
+export type IAssetThumbnailBlogArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
-    orderBy?: Maybe<BlogOrderByInput>;
+    locales?: Maybe<Array<ILocale>>;
+    orderBy?: Maybe<IBlogOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<BlogWhereInput>;
+    where?: Maybe<IBlogWhereInput>;
 };
 
 /** Asset system model */
-export type AssetThumbnailProjectArgs = {
+export type IAssetThumbnailProjectArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
-    orderBy?: Maybe<ProjectOrderByInput>;
+    locales?: Maybe<Array<ILocale>>;
+    orderBy?: Maybe<IProjectOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<ProjectWhereInput>;
+    where?: Maybe<IProjectWhereInput>;
 };
 
 /** Asset system model */
-export type AssetUpdatedAtArgs = {
-    variation?: SystemDateTimeFieldVariation;
+export type IAssetUpdatedAtArgs = {
+    variation?: ISystemDateTimeFieldVariation;
 };
 
 /** Asset system model */
-export type AssetUpdatedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IAssetUpdatedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
 /** Asset system model */
-export type AssetUrlArgs = {
-    transformation?: Maybe<AssetTransformationInput>;
+export type IAssetUrlArgs = {
+    transformation?: Maybe<IAssetTransformationInput>;
 };
 
-export type AssetConnectInput = {
+export type IAssetConnectInput = {
     /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-    position?: Maybe<ConnectPositionInput>;
+    position?: Maybe<IConnectPositionInput>;
     /** Document to connect */
-    where: AssetWhereUniqueInput;
+    where: IAssetWhereUniqueInput;
 };
 
 /** A connection to a list of items. */
-export type AssetConnection = {
+export type IAssetConnection = {
     __typename?: 'AssetConnection';
-    aggregate: Aggregate;
+    aggregate: IAggregate;
     /** A list of edges. */
-    edges: Array<AssetEdge>;
+    edges: Array<IAssetEdge>;
     /** Information to aid in pagination. */
-    pageInfo: PageInfo;
+    pageInfo: IPageInfo;
 };
 
-export type AssetCreateInput = {
+export type IAssetCreateInput = {
     createdAt?: Maybe<Scalars['DateTime']>;
     fileName: Scalars['String'];
     handle: Scalars['String'];
     height?: Maybe<Scalars['Float']>;
     /** Inline mutations for managing document localizations excluding the default locale */
-    localizations?: Maybe<AssetCreateLocalizationsInput>;
+    localizations?: Maybe<IAssetCreateLocalizationsInput>;
     mimeType?: Maybe<Scalars['String']>;
     size?: Maybe<Scalars['Float']>;
-    thumbnailBlog?: Maybe<BlogCreateManyInlineInput>;
-    thumbnailProject?: Maybe<ProjectCreateManyInlineInput>;
+    thumbnailBlog?: Maybe<IBlogCreateManyInlineInput>;
+    thumbnailProject?: Maybe<IProjectCreateManyInlineInput>;
     updatedAt?: Maybe<Scalars['DateTime']>;
     width?: Maybe<Scalars['Float']>;
 };
 
-export type AssetCreateLocalizationDataInput = {
+export type IAssetCreateLocalizationDataInput = {
     createdAt?: Maybe<Scalars['DateTime']>;
     fileName: Scalars['String'];
     handle: Scalars['String'];
@@ -217,48 +216,48 @@ export type AssetCreateLocalizationDataInput = {
     width?: Maybe<Scalars['Float']>;
 };
 
-export type AssetCreateLocalizationInput = {
+export type IAssetCreateLocalizationInput = {
     /** Localization input */
-    data: AssetCreateLocalizationDataInput;
-    locale: Locale;
+    data: IAssetCreateLocalizationDataInput;
+    locale: ILocale;
 };
 
-export type AssetCreateLocalizationsInput = {
+export type IAssetCreateLocalizationsInput = {
     /** Create localizations for the newly-created document */
-    create?: Maybe<Array<AssetCreateLocalizationInput>>;
+    create?: Maybe<Array<IAssetCreateLocalizationInput>>;
 };
 
-export type AssetCreateManyInlineInput = {
+export type IAssetCreateManyInlineInput = {
     /** Connect multiple existing Asset documents */
-    connect?: Maybe<Array<AssetWhereUniqueInput>>;
+    connect?: Maybe<Array<IAssetWhereUniqueInput>>;
     /** Create and connect multiple existing Asset documents */
-    create?: Maybe<Array<AssetCreateInput>>;
+    create?: Maybe<Array<IAssetCreateInput>>;
 };
 
-export type AssetCreateOneInlineInput = {
+export type IAssetCreateOneInlineInput = {
     /** Connect one existing Asset document */
-    connect?: Maybe<AssetWhereUniqueInput>;
+    connect?: Maybe<IAssetWhereUniqueInput>;
     /** Create and connect one Asset document */
-    create?: Maybe<AssetCreateInput>;
+    create?: Maybe<IAssetCreateInput>;
 };
 
 /** An edge in a connection. */
-export type AssetEdge = {
+export type IAssetEdge = {
     __typename?: 'AssetEdge';
     /** A cursor for use in pagination. */
     cursor: Scalars['String'];
     /** The item at the end of the edge. */
-    node: Asset;
+    node: IAsset;
 };
 
 /** Identifies documents */
-export type AssetManyWhereInput = {
+export type IAssetManyWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<AssetWhereInput>>;
+    AND?: Maybe<Array<IAssetWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<AssetWhereInput>>;
+    NOT?: Maybe<Array<IAssetWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<AssetWhereInput>>;
+    OR?: Maybe<Array<IAssetWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
     createdAt?: Maybe<Scalars['DateTime']>;
@@ -276,7 +275,7 @@ export type AssetManyWhereInput = {
     createdAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    createdBy?: Maybe<UserWhereInput>;
+    createdBy?: Maybe<IUserWhereInput>;
     id?: Maybe<Scalars['ID']>;
     /** All values containing the given string. */
     id_contains?: Maybe<Scalars['ID']>;
@@ -311,16 +310,16 @@ export type AssetManyWhereInput = {
     publishedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    publishedBy?: Maybe<UserWhereInput>;
-    scheduledIn_every?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_none?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_some?: Maybe<ScheduledOperationWhereInput>;
-    thumbnailBlog_every?: Maybe<BlogWhereInput>;
-    thumbnailBlog_none?: Maybe<BlogWhereInput>;
-    thumbnailBlog_some?: Maybe<BlogWhereInput>;
-    thumbnailProject_every?: Maybe<ProjectWhereInput>;
-    thumbnailProject_none?: Maybe<ProjectWhereInput>;
-    thumbnailProject_some?: Maybe<ProjectWhereInput>;
+    publishedBy?: Maybe<IUserWhereInput>;
+    scheduledIn_every?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_none?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_some?: Maybe<IScheduledOperationWhereInput>;
+    thumbnailBlog_every?: Maybe<IBlogWhereInput>;
+    thumbnailBlog_none?: Maybe<IBlogWhereInput>;
+    thumbnailBlog_some?: Maybe<IBlogWhereInput>;
+    thumbnailProject_every?: Maybe<IProjectWhereInput>;
+    thumbnailProject_none?: Maybe<IProjectWhereInput>;
+    thumbnailProject_some?: Maybe<IProjectWhereInput>;
     updatedAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     updatedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -336,10 +335,10 @@ export type AssetManyWhereInput = {
     updatedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    updatedBy?: Maybe<UserWhereInput>;
+    updatedBy?: Maybe<IUserWhereInput>;
 };
 
-export enum AssetOrderByInput {
+export enum IAssetOrderByInput {
     CreatedAtAsc = 'createdAt_ASC',
     CreatedAtDesc = 'createdAt_DESC',
     FileNameAsc = 'fileName_ASC',
@@ -363,27 +362,27 @@ export enum AssetOrderByInput {
 }
 
 /** Transformations for Assets */
-export type AssetTransformationInput = {
-    document?: Maybe<DocumentTransformationInput>;
-    image?: Maybe<ImageTransformationInput>;
+export type IAssetTransformationInput = {
+    document?: Maybe<IDocumentTransformationInput>;
+    image?: Maybe<IImageTransformationInput>;
     /** Pass true if you want to validate the passed transformation parameters */
     validateOptions?: Maybe<Scalars['Boolean']>;
 };
 
-export type AssetUpdateInput = {
+export type IAssetUpdateInput = {
     fileName?: Maybe<Scalars['String']>;
     handle?: Maybe<Scalars['String']>;
     height?: Maybe<Scalars['Float']>;
     /** Manage document localizations */
-    localizations?: Maybe<AssetUpdateLocalizationsInput>;
+    localizations?: Maybe<IAssetUpdateLocalizationsInput>;
     mimeType?: Maybe<Scalars['String']>;
     size?: Maybe<Scalars['Float']>;
-    thumbnailBlog?: Maybe<BlogUpdateManyInlineInput>;
-    thumbnailProject?: Maybe<ProjectUpdateManyInlineInput>;
+    thumbnailBlog?: Maybe<IBlogUpdateManyInlineInput>;
+    thumbnailProject?: Maybe<IProjectUpdateManyInlineInput>;
     width?: Maybe<Scalars['Float']>;
 };
 
-export type AssetUpdateLocalizationDataInput = {
+export type IAssetUpdateLocalizationDataInput = {
     fileName?: Maybe<Scalars['String']>;
     handle?: Maybe<Scalars['String']>;
     height?: Maybe<Scalars['Float']>;
@@ -392,49 +391,49 @@ export type AssetUpdateLocalizationDataInput = {
     width?: Maybe<Scalars['Float']>;
 };
 
-export type AssetUpdateLocalizationInput = {
-    data: AssetUpdateLocalizationDataInput;
-    locale: Locale;
+export type IAssetUpdateLocalizationInput = {
+    data: IAssetUpdateLocalizationDataInput;
+    locale: ILocale;
 };
 
-export type AssetUpdateLocalizationsInput = {
+export type IAssetUpdateLocalizationsInput = {
     /** Localizations to create */
-    create?: Maybe<Array<AssetCreateLocalizationInput>>;
+    create?: Maybe<Array<IAssetCreateLocalizationInput>>;
     /** Localizations to delete */
-    delete?: Maybe<Array<Locale>>;
+    delete?: Maybe<Array<ILocale>>;
     /** Localizations to update */
-    update?: Maybe<Array<AssetUpdateLocalizationInput>>;
-    upsert?: Maybe<Array<AssetUpsertLocalizationInput>>;
+    update?: Maybe<Array<IAssetUpdateLocalizationInput>>;
+    upsert?: Maybe<Array<IAssetUpsertLocalizationInput>>;
 };
 
-export type AssetUpdateManyInlineInput = {
+export type IAssetUpdateManyInlineInput = {
     /** Connect multiple existing Asset documents */
-    connect?: Maybe<Array<AssetConnectInput>>;
+    connect?: Maybe<Array<IAssetConnectInput>>;
     /** Create and connect multiple Asset documents */
-    create?: Maybe<Array<AssetCreateInput>>;
+    create?: Maybe<Array<IAssetCreateInput>>;
     /** Delete multiple Asset documents */
-    delete?: Maybe<Array<AssetWhereUniqueInput>>;
+    delete?: Maybe<Array<IAssetWhereUniqueInput>>;
     /** Disconnect multiple Asset documents */
-    disconnect?: Maybe<Array<AssetWhereUniqueInput>>;
+    disconnect?: Maybe<Array<IAssetWhereUniqueInput>>;
     /** Override currently-connected documents with multiple existing Asset documents */
-    set?: Maybe<Array<AssetWhereUniqueInput>>;
+    set?: Maybe<Array<IAssetWhereUniqueInput>>;
     /** Update multiple Asset documents */
-    update?: Maybe<Array<AssetUpdateWithNestedWhereUniqueInput>>;
+    update?: Maybe<Array<IAssetUpdateWithNestedWhereUniqueInput>>;
     /** Upsert multiple Asset documents */
-    upsert?: Maybe<Array<AssetUpsertWithNestedWhereUniqueInput>>;
+    upsert?: Maybe<Array<IAssetUpsertWithNestedWhereUniqueInput>>;
 };
 
-export type AssetUpdateManyInput = {
+export type IAssetUpdateManyInput = {
     fileName?: Maybe<Scalars['String']>;
     height?: Maybe<Scalars['Float']>;
     /** Optional updates to localizations */
-    localizations?: Maybe<AssetUpdateManyLocalizationsInput>;
+    localizations?: Maybe<IAssetUpdateManyLocalizationsInput>;
     mimeType?: Maybe<Scalars['String']>;
     size?: Maybe<Scalars['Float']>;
     width?: Maybe<Scalars['Float']>;
 };
 
-export type AssetUpdateManyLocalizationDataInput = {
+export type IAssetUpdateManyLocalizationDataInput = {
     fileName?: Maybe<Scalars['String']>;
     height?: Maybe<Scalars['Float']>;
     mimeType?: Maybe<Scalars['String']>;
@@ -442,73 +441,73 @@ export type AssetUpdateManyLocalizationDataInput = {
     width?: Maybe<Scalars['Float']>;
 };
 
-export type AssetUpdateManyLocalizationInput = {
-    data: AssetUpdateManyLocalizationDataInput;
-    locale: Locale;
+export type IAssetUpdateManyLocalizationInput = {
+    data: IAssetUpdateManyLocalizationDataInput;
+    locale: ILocale;
 };
 
-export type AssetUpdateManyLocalizationsInput = {
+export type IAssetUpdateManyLocalizationsInput = {
     /** Localizations to update */
-    update?: Maybe<Array<AssetUpdateManyLocalizationInput>>;
+    update?: Maybe<Array<IAssetUpdateManyLocalizationInput>>;
 };
 
-export type AssetUpdateManyWithNestedWhereInput = {
+export type IAssetUpdateManyWithNestedWhereInput = {
     /** Update many input */
-    data: AssetUpdateManyInput;
+    data: IAssetUpdateManyInput;
     /** Document search */
-    where: AssetWhereInput;
+    where: IAssetWhereInput;
 };
 
-export type AssetUpdateOneInlineInput = {
+export type IAssetUpdateOneInlineInput = {
     /** Connect existing Asset document */
-    connect?: Maybe<AssetWhereUniqueInput>;
+    connect?: Maybe<IAssetWhereUniqueInput>;
     /** Create and connect one Asset document */
-    create?: Maybe<AssetCreateInput>;
+    create?: Maybe<IAssetCreateInput>;
     /** Delete currently connected Asset document */
     delete?: Maybe<Scalars['Boolean']>;
     /** Disconnect currently connected Asset document */
     disconnect?: Maybe<Scalars['Boolean']>;
     /** Update single Asset document */
-    update?: Maybe<AssetUpdateWithNestedWhereUniqueInput>;
+    update?: Maybe<IAssetUpdateWithNestedWhereUniqueInput>;
     /** Upsert single Asset document */
-    upsert?: Maybe<AssetUpsertWithNestedWhereUniqueInput>;
+    upsert?: Maybe<IAssetUpsertWithNestedWhereUniqueInput>;
 };
 
-export type AssetUpdateWithNestedWhereUniqueInput = {
+export type IAssetUpdateWithNestedWhereUniqueInput = {
     /** Document to update */
-    data: AssetUpdateInput;
+    data: IAssetUpdateInput;
     /** Unique document search */
-    where: AssetWhereUniqueInput;
+    where: IAssetWhereUniqueInput;
 };
 
-export type AssetUpsertInput = {
+export type IAssetUpsertInput = {
     /** Create document if it didn't exist */
-    create: AssetCreateInput;
+    create: IAssetCreateInput;
     /** Update document if it exists */
-    update: AssetUpdateInput;
+    update: IAssetUpdateInput;
 };
 
-export type AssetUpsertLocalizationInput = {
-    create: AssetCreateLocalizationDataInput;
-    locale: Locale;
-    update: AssetUpdateLocalizationDataInput;
+export type IAssetUpsertLocalizationInput = {
+    create: IAssetCreateLocalizationDataInput;
+    locale: ILocale;
+    update: IAssetUpdateLocalizationDataInput;
 };
 
-export type AssetUpsertWithNestedWhereUniqueInput = {
+export type IAssetUpsertWithNestedWhereUniqueInput = {
     /** Upsert data */
-    data: AssetUpsertInput;
+    data: IAssetUpsertInput;
     /** Unique document search */
-    where: AssetWhereUniqueInput;
+    where: IAssetWhereUniqueInput;
 };
 
 /** Identifies documents */
-export type AssetWhereInput = {
+export type IAssetWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<AssetWhereInput>>;
+    AND?: Maybe<Array<IAssetWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<AssetWhereInput>>;
+    NOT?: Maybe<Array<IAssetWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<AssetWhereInput>>;
+    OR?: Maybe<Array<IAssetWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
     createdAt?: Maybe<Scalars['DateTime']>;
@@ -526,7 +525,7 @@ export type AssetWhereInput = {
     createdAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    createdBy?: Maybe<UserWhereInput>;
+    createdBy?: Maybe<IUserWhereInput>;
     fileName?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     fileName_contains?: Maybe<Scalars['String']>;
@@ -633,10 +632,10 @@ export type AssetWhereInput = {
     publishedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    publishedBy?: Maybe<UserWhereInput>;
-    scheduledIn_every?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_none?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_some?: Maybe<ScheduledOperationWhereInput>;
+    publishedBy?: Maybe<IUserWhereInput>;
+    scheduledIn_every?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_none?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_some?: Maybe<IScheduledOperationWhereInput>;
     size?: Maybe<Scalars['Float']>;
     /** All values greater than the given value. */
     size_gt?: Maybe<Scalars['Float']>;
@@ -652,12 +651,12 @@ export type AssetWhereInput = {
     size_not?: Maybe<Scalars['Float']>;
     /** All values that are not contained in given list. */
     size_not_in?: Maybe<Array<Scalars['Float']>>;
-    thumbnailBlog_every?: Maybe<BlogWhereInput>;
-    thumbnailBlog_none?: Maybe<BlogWhereInput>;
-    thumbnailBlog_some?: Maybe<BlogWhereInput>;
-    thumbnailProject_every?: Maybe<ProjectWhereInput>;
-    thumbnailProject_none?: Maybe<ProjectWhereInput>;
-    thumbnailProject_some?: Maybe<ProjectWhereInput>;
+    thumbnailBlog_every?: Maybe<IBlogWhereInput>;
+    thumbnailBlog_none?: Maybe<IBlogWhereInput>;
+    thumbnailBlog_some?: Maybe<IBlogWhereInput>;
+    thumbnailProject_every?: Maybe<IProjectWhereInput>;
+    thumbnailProject_none?: Maybe<IProjectWhereInput>;
+    thumbnailProject_some?: Maybe<IProjectWhereInput>;
     updatedAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     updatedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -673,7 +672,7 @@ export type AssetWhereInput = {
     updatedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    updatedBy?: Maybe<UserWhereInput>;
+    updatedBy?: Maybe<IUserWhereInput>;
     width?: Maybe<Scalars['Float']>;
     /** All values greater than the given value. */
     width_gt?: Maybe<Scalars['Float']>;
@@ -692,159 +691,159 @@ export type AssetWhereInput = {
 };
 
 /** References Asset record uniquely */
-export type AssetWhereUniqueInput = {
+export type IAssetWhereUniqueInput = {
     id?: Maybe<Scalars['ID']>;
 };
 
-export type BatchPayload = {
+export type IBatchPayload = {
     __typename?: 'BatchPayload';
     /** The number of nodes that have been affected by the Batch operation. */
     count: Scalars['Long'];
 };
 
-export type Blog = Node & {
+export type IBlog = INode & {
     __typename?: 'Blog';
-    content: RichText;
+    content: IRichText;
     /** The time the document was created */
     createdAt: Scalars['DateTime'];
     /** User that created this document */
-    createdBy?: Maybe<User>;
+    createdBy?: Maybe<IUser>;
     /** Get the document in other stages */
-    documentInStages: Array<Blog>;
+    documentInStages: Array<IBlog>;
     featured: Scalars['Boolean'];
     /** List of Blog versions */
-    history: Array<Version>;
+    history: Array<IVersion>;
     /** The unique identifier */
     id: Scalars['ID'];
     introduction: Scalars['String'];
     /** The time the document was published. Null on documents in draft stage. */
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** User that last published this document */
-    publishedBy?: Maybe<User>;
+    publishedBy?: Maybe<IUser>;
     readTime: Scalars['String'];
-    scheduledIn: Array<ScheduledOperation>;
+    scheduledIn: Array<IScheduledOperation>;
     slug: Scalars['String'];
     /** System stage field */
-    stage: Stage;
-    tags: Array<Tag>;
-    thumbnail: Asset;
+    stage: IStage;
+    tags: Array<ITag>;
+    thumbnail: IAsset;
     title: Scalars['String'];
     /** The time the document was updated */
     updatedAt: Scalars['DateTime'];
     /** User that last updated this document */
-    updatedBy?: Maybe<User>;
+    updatedBy?: Maybe<IUser>;
 };
 
-export type BlogCreatedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IBlogCreatedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
-export type BlogDocumentInStagesArgs = {
+export type IBlogDocumentInStagesArgs = {
     includeCurrent?: Scalars['Boolean'];
     inheritLocale?: Scalars['Boolean'];
-    stages?: Array<Stage>;
+    stages?: Array<IStage>;
 };
 
-export type BlogHistoryArgs = {
+export type IBlogHistoryArgs = {
     limit?: Scalars['Int'];
     skip?: Scalars['Int'];
-    stageOverride?: Maybe<Stage>;
+    stageOverride?: Maybe<IStage>;
 };
 
-export type BlogPublishedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IBlogPublishedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
-export type BlogScheduledInArgs = {
+export type IBlogScheduledInArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
+    locales?: Maybe<Array<ILocale>>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<ScheduledOperationWhereInput>;
+    where?: Maybe<IScheduledOperationWhereInput>;
 };
 
-export type BlogTagsArgs = {
+export type IBlogTagsArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
-    orderBy?: Maybe<TagOrderByInput>;
+    locales?: Maybe<Array<ILocale>>;
+    orderBy?: Maybe<ITagOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<TagWhereInput>;
+    where?: Maybe<ITagWhereInput>;
 };
 
-export type BlogThumbnailArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IBlogThumbnailArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
-export type BlogUpdatedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IBlogUpdatedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
-export type BlogConnectInput = {
+export type IBlogConnectInput = {
     /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-    position?: Maybe<ConnectPositionInput>;
+    position?: Maybe<IConnectPositionInput>;
     /** Document to connect */
-    where: BlogWhereUniqueInput;
+    where: IBlogWhereUniqueInput;
 };
 
 /** A connection to a list of items. */
-export type BlogConnection = {
+export type IBlogConnection = {
     __typename?: 'BlogConnection';
-    aggregate: Aggregate;
+    aggregate: IAggregate;
     /** A list of edges. */
-    edges: Array<BlogEdge>;
+    edges: Array<IBlogEdge>;
     /** Information to aid in pagination. */
-    pageInfo: PageInfo;
+    pageInfo: IPageInfo;
 };
 
-export type BlogCreateInput = {
+export type IBlogCreateInput = {
     content: Scalars['RichTextAST'];
     createdAt?: Maybe<Scalars['DateTime']>;
     featured: Scalars['Boolean'];
     introduction: Scalars['String'];
     readTime: Scalars['String'];
     slug: Scalars['String'];
-    tags?: Maybe<TagCreateManyInlineInput>;
-    thumbnail: AssetCreateOneInlineInput;
+    tags?: Maybe<ITagCreateManyInlineInput>;
+    thumbnail: IAssetCreateOneInlineInput;
     title: Scalars['String'];
     updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type BlogCreateManyInlineInput = {
+export type IBlogCreateManyInlineInput = {
     /** Connect multiple existing Blog documents */
-    connect?: Maybe<Array<BlogWhereUniqueInput>>;
+    connect?: Maybe<Array<IBlogWhereUniqueInput>>;
     /** Create and connect multiple existing Blog documents */
-    create?: Maybe<Array<BlogCreateInput>>;
+    create?: Maybe<Array<IBlogCreateInput>>;
 };
 
-export type BlogCreateOneInlineInput = {
+export type IBlogCreateOneInlineInput = {
     /** Connect one existing Blog document */
-    connect?: Maybe<BlogWhereUniqueInput>;
+    connect?: Maybe<IBlogWhereUniqueInput>;
     /** Create and connect one Blog document */
-    create?: Maybe<BlogCreateInput>;
+    create?: Maybe<IBlogCreateInput>;
 };
 
 /** An edge in a connection. */
-export type BlogEdge = {
+export type IBlogEdge = {
     __typename?: 'BlogEdge';
     /** A cursor for use in pagination. */
     cursor: Scalars['String'];
     /** The item at the end of the edge. */
-    node: Blog;
+    node: IBlog;
 };
 
 /** Identifies documents */
-export type BlogManyWhereInput = {
+export type IBlogManyWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<BlogWhereInput>>;
+    AND?: Maybe<Array<IBlogWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<BlogWhereInput>>;
+    NOT?: Maybe<Array<IBlogWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<BlogWhereInput>>;
+    OR?: Maybe<Array<IBlogWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
     createdAt?: Maybe<Scalars['DateTime']>;
@@ -862,7 +861,7 @@ export type BlogManyWhereInput = {
     createdAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    createdBy?: Maybe<UserWhereInput>;
+    createdBy?: Maybe<IUserWhereInput>;
     featured?: Maybe<Scalars['Boolean']>;
     /** All values that are not equal to given value. */
     featured_not?: Maybe<Scalars['Boolean']>;
@@ -919,7 +918,7 @@ export type BlogManyWhereInput = {
     publishedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    publishedBy?: Maybe<UserWhereInput>;
+    publishedBy?: Maybe<IUserWhereInput>;
     readTime?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     readTime_contains?: Maybe<Scalars['String']>;
@@ -939,9 +938,9 @@ export type BlogManyWhereInput = {
     readTime_not_starts_with?: Maybe<Scalars['String']>;
     /** All values starting with the given string. */
     readTime_starts_with?: Maybe<Scalars['String']>;
-    scheduledIn_every?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_none?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_some?: Maybe<ScheduledOperationWhereInput>;
+    scheduledIn_every?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_none?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_some?: Maybe<IScheduledOperationWhereInput>;
     slug?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     slug_contains?: Maybe<Scalars['String']>;
@@ -961,10 +960,10 @@ export type BlogManyWhereInput = {
     slug_not_starts_with?: Maybe<Scalars['String']>;
     /** All values starting with the given string. */
     slug_starts_with?: Maybe<Scalars['String']>;
-    tags_every?: Maybe<TagWhereInput>;
-    tags_none?: Maybe<TagWhereInput>;
-    tags_some?: Maybe<TagWhereInput>;
-    thumbnail?: Maybe<AssetWhereInput>;
+    tags_every?: Maybe<ITagWhereInput>;
+    tags_none?: Maybe<ITagWhereInput>;
+    tags_some?: Maybe<ITagWhereInput>;
+    thumbnail?: Maybe<IAssetWhereInput>;
     title?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     title_contains?: Maybe<Scalars['String']>;
@@ -999,10 +998,10 @@ export type BlogManyWhereInput = {
     updatedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    updatedBy?: Maybe<UserWhereInput>;
+    updatedBy?: Maybe<IUserWhereInput>;
 };
 
-export enum BlogOrderByInput {
+export enum IBlogOrderByInput {
     CreatedAtAsc = 'createdAt_ASC',
     CreatedAtDesc = 'createdAt_DESC',
     FeaturedAsc = 'featured_ASC',
@@ -1023,35 +1022,35 @@ export enum BlogOrderByInput {
     UpdatedAtDesc = 'updatedAt_DESC',
 }
 
-export type BlogUpdateInput = {
+export type IBlogUpdateInput = {
     content?: Maybe<Scalars['RichTextAST']>;
     featured?: Maybe<Scalars['Boolean']>;
     introduction?: Maybe<Scalars['String']>;
     readTime?: Maybe<Scalars['String']>;
     slug?: Maybe<Scalars['String']>;
-    tags?: Maybe<TagUpdateManyInlineInput>;
-    thumbnail?: Maybe<AssetUpdateOneInlineInput>;
+    tags?: Maybe<ITagUpdateManyInlineInput>;
+    thumbnail?: Maybe<IAssetUpdateOneInlineInput>;
     title?: Maybe<Scalars['String']>;
 };
 
-export type BlogUpdateManyInlineInput = {
+export type IBlogUpdateManyInlineInput = {
     /** Connect multiple existing Blog documents */
-    connect?: Maybe<Array<BlogConnectInput>>;
+    connect?: Maybe<Array<IBlogConnectInput>>;
     /** Create and connect multiple Blog documents */
-    create?: Maybe<Array<BlogCreateInput>>;
+    create?: Maybe<Array<IBlogCreateInput>>;
     /** Delete multiple Blog documents */
-    delete?: Maybe<Array<BlogWhereUniqueInput>>;
+    delete?: Maybe<Array<IBlogWhereUniqueInput>>;
     /** Disconnect multiple Blog documents */
-    disconnect?: Maybe<Array<BlogWhereUniqueInput>>;
+    disconnect?: Maybe<Array<IBlogWhereUniqueInput>>;
     /** Override currently-connected documents with multiple existing Blog documents */
-    set?: Maybe<Array<BlogWhereUniqueInput>>;
+    set?: Maybe<Array<IBlogWhereUniqueInput>>;
     /** Update multiple Blog documents */
-    update?: Maybe<Array<BlogUpdateWithNestedWhereUniqueInput>>;
+    update?: Maybe<Array<IBlogUpdateWithNestedWhereUniqueInput>>;
     /** Upsert multiple Blog documents */
-    upsert?: Maybe<Array<BlogUpsertWithNestedWhereUniqueInput>>;
+    upsert?: Maybe<Array<IBlogUpsertWithNestedWhereUniqueInput>>;
 };
 
-export type BlogUpdateManyInput = {
+export type IBlogUpdateManyInput = {
     content?: Maybe<Scalars['RichTextAST']>;
     featured?: Maybe<Scalars['Boolean']>;
     introduction?: Maybe<Scalars['String']>;
@@ -1059,57 +1058,57 @@ export type BlogUpdateManyInput = {
     title?: Maybe<Scalars['String']>;
 };
 
-export type BlogUpdateManyWithNestedWhereInput = {
+export type IBlogUpdateManyWithNestedWhereInput = {
     /** Update many input */
-    data: BlogUpdateManyInput;
+    data: IBlogUpdateManyInput;
     /** Document search */
-    where: BlogWhereInput;
+    where: IBlogWhereInput;
 };
 
-export type BlogUpdateOneInlineInput = {
+export type IBlogUpdateOneInlineInput = {
     /** Connect existing Blog document */
-    connect?: Maybe<BlogWhereUniqueInput>;
+    connect?: Maybe<IBlogWhereUniqueInput>;
     /** Create and connect one Blog document */
-    create?: Maybe<BlogCreateInput>;
+    create?: Maybe<IBlogCreateInput>;
     /** Delete currently connected Blog document */
     delete?: Maybe<Scalars['Boolean']>;
     /** Disconnect currently connected Blog document */
     disconnect?: Maybe<Scalars['Boolean']>;
     /** Update single Blog document */
-    update?: Maybe<BlogUpdateWithNestedWhereUniqueInput>;
+    update?: Maybe<IBlogUpdateWithNestedWhereUniqueInput>;
     /** Upsert single Blog document */
-    upsert?: Maybe<BlogUpsertWithNestedWhereUniqueInput>;
+    upsert?: Maybe<IBlogUpsertWithNestedWhereUniqueInput>;
 };
 
-export type BlogUpdateWithNestedWhereUniqueInput = {
+export type IBlogUpdateWithNestedWhereUniqueInput = {
     /** Document to update */
-    data: BlogUpdateInput;
+    data: IBlogUpdateInput;
     /** Unique document search */
-    where: BlogWhereUniqueInput;
+    where: IBlogWhereUniqueInput;
 };
 
-export type BlogUpsertInput = {
+export type IBlogUpsertInput = {
     /** Create document if it didn't exist */
-    create: BlogCreateInput;
+    create: IBlogCreateInput;
     /** Update document if it exists */
-    update: BlogUpdateInput;
+    update: IBlogUpdateInput;
 };
 
-export type BlogUpsertWithNestedWhereUniqueInput = {
+export type IBlogUpsertWithNestedWhereUniqueInput = {
     /** Upsert data */
-    data: BlogUpsertInput;
+    data: IBlogUpsertInput;
     /** Unique document search */
-    where: BlogWhereUniqueInput;
+    where: IBlogWhereUniqueInput;
 };
 
 /** Identifies documents */
-export type BlogWhereInput = {
+export type IBlogWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<BlogWhereInput>>;
+    AND?: Maybe<Array<IBlogWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<BlogWhereInput>>;
+    NOT?: Maybe<Array<IBlogWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<BlogWhereInput>>;
+    OR?: Maybe<Array<IBlogWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
     createdAt?: Maybe<Scalars['DateTime']>;
@@ -1127,7 +1126,7 @@ export type BlogWhereInput = {
     createdAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    createdBy?: Maybe<UserWhereInput>;
+    createdBy?: Maybe<IUserWhereInput>;
     featured?: Maybe<Scalars['Boolean']>;
     /** All values that are not equal to given value. */
     featured_not?: Maybe<Scalars['Boolean']>;
@@ -1184,7 +1183,7 @@ export type BlogWhereInput = {
     publishedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    publishedBy?: Maybe<UserWhereInput>;
+    publishedBy?: Maybe<IUserWhereInput>;
     readTime?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     readTime_contains?: Maybe<Scalars['String']>;
@@ -1204,9 +1203,9 @@ export type BlogWhereInput = {
     readTime_not_starts_with?: Maybe<Scalars['String']>;
     /** All values starting with the given string. */
     readTime_starts_with?: Maybe<Scalars['String']>;
-    scheduledIn_every?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_none?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_some?: Maybe<ScheduledOperationWhereInput>;
+    scheduledIn_every?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_none?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_some?: Maybe<IScheduledOperationWhereInput>;
     slug?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     slug_contains?: Maybe<Scalars['String']>;
@@ -1226,10 +1225,10 @@ export type BlogWhereInput = {
     slug_not_starts_with?: Maybe<Scalars['String']>;
     /** All values starting with the given string. */
     slug_starts_with?: Maybe<Scalars['String']>;
-    tags_every?: Maybe<TagWhereInput>;
-    tags_none?: Maybe<TagWhereInput>;
-    tags_some?: Maybe<TagWhereInput>;
-    thumbnail?: Maybe<AssetWhereInput>;
+    tags_every?: Maybe<ITagWhereInput>;
+    tags_none?: Maybe<ITagWhereInput>;
+    tags_some?: Maybe<ITagWhereInput>;
+    thumbnail?: Maybe<IAssetWhereInput>;
     title?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     title_contains?: Maybe<Scalars['String']>;
@@ -1264,30 +1263,30 @@ export type BlogWhereInput = {
     updatedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    updatedBy?: Maybe<UserWhereInput>;
+    updatedBy?: Maybe<IUserWhereInput>;
 };
 
 /** References Blog record uniquely */
-export type BlogWhereUniqueInput = {
+export type IBlogWhereUniqueInput = {
     id?: Maybe<Scalars['ID']>;
     slug?: Maybe<Scalars['String']>;
 };
 
 /** Representing a color value comprising of HEX, RGBA and css color values */
-export type Color = {
+export type IColor = {
     __typename?: 'Color';
     css: Scalars['String'];
     hex: Scalars['Hex'];
-    rgba: Rgba;
+    rgba: IRgba;
 };
 
 /** Accepts either HEX or RGBA color value. At least one of hex or rgba value should be passed. If both are passed RGBA is used. */
-export type ColorInput = {
+export type IColorInput = {
     hex?: Maybe<Scalars['Hex']>;
-    rgba?: Maybe<RgbaInput>;
+    rgba?: Maybe<IRgbaInput>;
 };
 
-export enum ColorScheme {
+export enum IColorScheme {
     BlackAlpha = 'blackAlpha',
     Blue = 'blue',
     Cyan = 'cyan',
@@ -1308,7 +1307,7 @@ export enum ColorScheme {
     Yellow = 'yellow',
 }
 
-export type ConnectPositionInput = {
+export type IConnectPositionInput = {
     /** Connect document after specified document */
     after?: Maybe<Scalars['ID']>;
     /** Connect document before specified document */
@@ -1319,7 +1318,7 @@ export type ConnectPositionInput = {
     start?: Maybe<Scalars['Boolean']>;
 };
 
-export enum DocumentFileTypes {
+export enum IDocumentFileTypes {
     Doc = 'doc',
     Docx = 'docx',
     Html = 'html',
@@ -1338,7 +1337,7 @@ export enum DocumentFileTypes {
     Xlsx = 'xlsx',
 }
 
-export type DocumentOutputInput = {
+export type IDocumentOutputInput = {
     /**
      * Transforms a document into a desired file type.
      * See this matrix for format support:
@@ -1365,25 +1364,25 @@ export type DocumentOutputInput = {
      * HTML:	jpg, odt, pdf, svg, txt, and webp
      * TXT:	jpg, html, odt, pdf, svg, and webp
      */
-    format?: Maybe<DocumentFileTypes>;
+    format?: Maybe<IDocumentFileTypes>;
 };
 
 /** Transformations for Documents */
-export type DocumentTransformationInput = {
+export type IDocumentTransformationInput = {
     /** Changes the output for the file. */
-    output?: Maybe<DocumentOutputInput>;
+    output?: Maybe<IDocumentOutputInput>;
 };
 
-export type DocumentVersion = {
+export type IDocumentVersion = {
     __typename?: 'DocumentVersion';
     createdAt: Scalars['DateTime'];
     data?: Maybe<Scalars['Json']>;
     id: Scalars['ID'];
     revision: Scalars['Int'];
-    stage: Stage;
+    stage: IStage;
 };
 
-export enum ImageFit {
+export enum IImageFit {
     /** Resizes the image to fit within the specified parameters without distorting, cropping, or changing the aspect ratio. */
     Clip = 'clip',
     /** Resizes the image to fit the specified parameters exactly by removing any parts of the image that don't fit within the boundaries. */
@@ -1394,9 +1393,9 @@ export enum ImageFit {
     Scale = 'scale',
 }
 
-export type ImageResizeInput = {
+export type IImageResizeInput = {
     /** The default value for the fit parameter is fit:clip. */
-    fit?: Maybe<ImageFit>;
+    fit?: Maybe<IImageFit>;
     /** The height in pixels to resize the image to. The value must be an integer from 1 to 10000. */
     height?: Maybe<Scalars['Int']>;
     /** The width in pixels to resize the image to. The value must be an integer from 1 to 10000. */
@@ -1404,19 +1403,19 @@ export type ImageResizeInput = {
 };
 
 /** Transformations for Images */
-export type ImageTransformationInput = {
+export type IImageTransformationInput = {
     /** Resizes the image */
-    resize?: Maybe<ImageResizeInput>;
+    resize?: Maybe<IImageResizeInput>;
 };
 
 /** Locale system enumeration */
-export enum Locale {
+export enum ILocale {
     /** System locale */
     En = 'en',
 }
 
 /** Representing a geolocation point with latitude and longitude */
-export type Location = {
+export type ILocation = {
     __typename?: 'Location';
     distance: Scalars['Float'];
     latitude: Scalars['Float'];
@@ -1424,662 +1423,662 @@ export type Location = {
 };
 
 /** Representing a geolocation point with latitude and longitude */
-export type LocationDistanceArgs = {
-    from: LocationInput;
+export type ILocationDistanceArgs = {
+    from: ILocationInput;
 };
 
 /** Input for a geolocation point with latitude and longitude */
-export type LocationInput = {
+export type ILocationInput = {
     latitude: Scalars['Float'];
     longitude: Scalars['Float'];
 };
 
-export type Mutation = {
+export type IMutation = {
     __typename?: 'Mutation';
     /**
      * Create one asset
      * @deprecated Asset mutations will be overhauled soon
      */
-    createAsset?: Maybe<Asset>;
+    createAsset?: Maybe<IAsset>;
     /** Create one blog */
-    createBlog?: Maybe<Blog>;
+    createBlog?: Maybe<IBlog>;
     /** Create one project */
-    createProject?: Maybe<Project>;
+    createProject?: Maybe<IProject>;
     /** Create one scheduledRelease */
-    createScheduledRelease?: Maybe<ScheduledRelease>;
+    createScheduledRelease?: Maybe<IScheduledRelease>;
     /** Create one tag */
-    createTag?: Maybe<Tag>;
+    createTag?: Maybe<ITag>;
     /** Delete one asset from _all_ existing stages. Returns deleted document. */
-    deleteAsset?: Maybe<Asset>;
+    deleteAsset?: Maybe<IAsset>;
     /** Delete one blog from _all_ existing stages. Returns deleted document. */
-    deleteBlog?: Maybe<Blog>;
+    deleteBlog?: Maybe<IBlog>;
     /**
      * Delete many Asset documents
      * @deprecated Please use the new paginated many mutation (deleteManyAssetsConnection)
      */
-    deleteManyAssets: BatchPayload;
+    deleteManyAssets: IBatchPayload;
     /** Delete many Asset documents, return deleted documents */
-    deleteManyAssetsConnection: AssetConnection;
+    deleteManyAssetsConnection: IAssetConnection;
     /**
      * Delete many Blog documents
      * @deprecated Please use the new paginated many mutation (deleteManyBlogsConnection)
      */
-    deleteManyBlogs: BatchPayload;
+    deleteManyBlogs: IBatchPayload;
     /** Delete many Blog documents, return deleted documents */
-    deleteManyBlogsConnection: BlogConnection;
+    deleteManyBlogsConnection: IBlogConnection;
     /**
      * Delete many Project documents
      * @deprecated Please use the new paginated many mutation (deleteManyProjectsConnection)
      */
-    deleteManyProjects: BatchPayload;
+    deleteManyProjects: IBatchPayload;
     /** Delete many Project documents, return deleted documents */
-    deleteManyProjectsConnection: ProjectConnection;
+    deleteManyProjectsConnection: IProjectConnection;
     /**
      * Delete many Tag documents
      * @deprecated Please use the new paginated many mutation (deleteManyTagsConnection)
      */
-    deleteManyTags: BatchPayload;
+    deleteManyTags: IBatchPayload;
     /** Delete many Tag documents, return deleted documents */
-    deleteManyTagsConnection: TagConnection;
+    deleteManyTagsConnection: ITagConnection;
     /** Delete one project from _all_ existing stages. Returns deleted document. */
-    deleteProject?: Maybe<Project>;
+    deleteProject?: Maybe<IProject>;
     /** Delete and return scheduled operation */
-    deleteScheduledOperation?: Maybe<ScheduledOperation>;
+    deleteScheduledOperation?: Maybe<IScheduledOperation>;
     /** Delete one scheduledRelease from _all_ existing stages. Returns deleted document. */
-    deleteScheduledRelease?: Maybe<ScheduledRelease>;
+    deleteScheduledRelease?: Maybe<IScheduledRelease>;
     /** Delete one tag from _all_ existing stages. Returns deleted document. */
-    deleteTag?: Maybe<Tag>;
+    deleteTag?: Maybe<ITag>;
     /** Publish one asset */
-    publishAsset?: Maybe<Asset>;
+    publishAsset?: Maybe<IAsset>;
     /** Publish one blog */
-    publishBlog?: Maybe<Blog>;
+    publishBlog?: Maybe<IBlog>;
     /**
      * Publish many Asset documents
      * @deprecated Please use the new paginated many mutation (publishManyAssetsConnection)
      */
-    publishManyAssets: BatchPayload;
+    publishManyAssets: IBatchPayload;
     /** Publish many Asset documents */
-    publishManyAssetsConnection: AssetConnection;
+    publishManyAssetsConnection: IAssetConnection;
     /**
      * Publish many Blog documents
      * @deprecated Please use the new paginated many mutation (publishManyBlogsConnection)
      */
-    publishManyBlogs: BatchPayload;
+    publishManyBlogs: IBatchPayload;
     /** Publish many Blog documents */
-    publishManyBlogsConnection: BlogConnection;
+    publishManyBlogsConnection: IBlogConnection;
     /**
      * Publish many Project documents
      * @deprecated Please use the new paginated many mutation (publishManyProjectsConnection)
      */
-    publishManyProjects: BatchPayload;
+    publishManyProjects: IBatchPayload;
     /** Publish many Project documents */
-    publishManyProjectsConnection: ProjectConnection;
+    publishManyProjectsConnection: IProjectConnection;
     /**
      * Publish many Tag documents
      * @deprecated Please use the new paginated many mutation (publishManyTagsConnection)
      */
-    publishManyTags: BatchPayload;
+    publishManyTags: IBatchPayload;
     /** Publish many Tag documents */
-    publishManyTagsConnection: TagConnection;
+    publishManyTagsConnection: ITagConnection;
     /** Publish one project */
-    publishProject?: Maybe<Project>;
+    publishProject?: Maybe<IProject>;
     /** Publish one tag */
-    publishTag?: Maybe<Tag>;
+    publishTag?: Maybe<ITag>;
     /** Schedule to publish one asset */
-    schedulePublishAsset?: Maybe<Asset>;
+    schedulePublishAsset?: Maybe<IAsset>;
     /** Schedule to publish one blog */
-    schedulePublishBlog?: Maybe<Blog>;
+    schedulePublishBlog?: Maybe<IBlog>;
     /** Schedule to publish one project */
-    schedulePublishProject?: Maybe<Project>;
+    schedulePublishProject?: Maybe<IProject>;
     /** Schedule to publish one tag */
-    schedulePublishTag?: Maybe<Tag>;
+    schedulePublishTag?: Maybe<ITag>;
     /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-    scheduleUnpublishAsset?: Maybe<Asset>;
+    scheduleUnpublishAsset?: Maybe<IAsset>;
     /** Unpublish one blog from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-    scheduleUnpublishBlog?: Maybe<Blog>;
+    scheduleUnpublishBlog?: Maybe<IBlog>;
     /** Unpublish one project from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-    scheduleUnpublishProject?: Maybe<Project>;
+    scheduleUnpublishProject?: Maybe<IProject>;
     /** Unpublish one tag from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-    scheduleUnpublishTag?: Maybe<Tag>;
+    scheduleUnpublishTag?: Maybe<ITag>;
     /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-    unpublishAsset?: Maybe<Asset>;
+    unpublishAsset?: Maybe<IAsset>;
     /** Unpublish one blog from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-    unpublishBlog?: Maybe<Blog>;
+    unpublishBlog?: Maybe<IBlog>;
     /**
      * Unpublish many Asset documents
      * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
      */
-    unpublishManyAssets: BatchPayload;
+    unpublishManyAssets: IBatchPayload;
     /** Find many Asset documents that match criteria in specified stage and unpublish from target stages */
-    unpublishManyAssetsConnection: AssetConnection;
+    unpublishManyAssetsConnection: IAssetConnection;
     /**
      * Unpublish many Blog documents
      * @deprecated Please use the new paginated many mutation (unpublishManyBlogsConnection)
      */
-    unpublishManyBlogs: BatchPayload;
+    unpublishManyBlogs: IBatchPayload;
     /** Find many Blog documents that match criteria in specified stage and unpublish from target stages */
-    unpublishManyBlogsConnection: BlogConnection;
+    unpublishManyBlogsConnection: IBlogConnection;
     /**
      * Unpublish many Project documents
      * @deprecated Please use the new paginated many mutation (unpublishManyProjectsConnection)
      */
-    unpublishManyProjects: BatchPayload;
+    unpublishManyProjects: IBatchPayload;
     /** Find many Project documents that match criteria in specified stage and unpublish from target stages */
-    unpublishManyProjectsConnection: ProjectConnection;
+    unpublishManyProjectsConnection: IProjectConnection;
     /**
      * Unpublish many Tag documents
      * @deprecated Please use the new paginated many mutation (unpublishManyTagsConnection)
      */
-    unpublishManyTags: BatchPayload;
+    unpublishManyTags: IBatchPayload;
     /** Find many Tag documents that match criteria in specified stage and unpublish from target stages */
-    unpublishManyTagsConnection: TagConnection;
+    unpublishManyTagsConnection: ITagConnection;
     /** Unpublish one project from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-    unpublishProject?: Maybe<Project>;
+    unpublishProject?: Maybe<IProject>;
     /** Unpublish one tag from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-    unpublishTag?: Maybe<Tag>;
+    unpublishTag?: Maybe<ITag>;
     /** Update one asset */
-    updateAsset?: Maybe<Asset>;
+    updateAsset?: Maybe<IAsset>;
     /** Update one blog */
-    updateBlog?: Maybe<Blog>;
+    updateBlog?: Maybe<IBlog>;
     /**
      * Update many assets
      * @deprecated Please use the new paginated many mutation (updateManyAssetsConnection)
      */
-    updateManyAssets: BatchPayload;
+    updateManyAssets: IBatchPayload;
     /** Update many Asset documents */
-    updateManyAssetsConnection: AssetConnection;
+    updateManyAssetsConnection: IAssetConnection;
     /**
      * Update many blogs
      * @deprecated Please use the new paginated many mutation (updateManyBlogsConnection)
      */
-    updateManyBlogs: BatchPayload;
+    updateManyBlogs: IBatchPayload;
     /** Update many Blog documents */
-    updateManyBlogsConnection: BlogConnection;
+    updateManyBlogsConnection: IBlogConnection;
     /**
      * Update many projects
      * @deprecated Please use the new paginated many mutation (updateManyProjectsConnection)
      */
-    updateManyProjects: BatchPayload;
+    updateManyProjects: IBatchPayload;
     /** Update many Project documents */
-    updateManyProjectsConnection: ProjectConnection;
+    updateManyProjectsConnection: IProjectConnection;
     /**
      * Update many tags
      * @deprecated Please use the new paginated many mutation (updateManyTagsConnection)
      */
-    updateManyTags: BatchPayload;
+    updateManyTags: IBatchPayload;
     /** Update many Tag documents */
-    updateManyTagsConnection: TagConnection;
+    updateManyTagsConnection: ITagConnection;
     /** Update one project */
-    updateProject?: Maybe<Project>;
+    updateProject?: Maybe<IProject>;
     /** Update one scheduledRelease */
-    updateScheduledRelease?: Maybe<ScheduledRelease>;
+    updateScheduledRelease?: Maybe<IScheduledRelease>;
     /** Update one tag */
-    updateTag?: Maybe<Tag>;
+    updateTag?: Maybe<ITag>;
     /** Upsert one asset */
-    upsertAsset?: Maybe<Asset>;
+    upsertAsset?: Maybe<IAsset>;
     /** Upsert one blog */
-    upsertBlog?: Maybe<Blog>;
+    upsertBlog?: Maybe<IBlog>;
     /** Upsert one project */
-    upsertProject?: Maybe<Project>;
+    upsertProject?: Maybe<IProject>;
     /** Upsert one tag */
-    upsertTag?: Maybe<Tag>;
+    upsertTag?: Maybe<ITag>;
 };
 
-export type MutationCreateAssetArgs = {
-    data: AssetCreateInput;
+export type IMutationCreateAssetArgs = {
+    data: IAssetCreateInput;
 };
 
-export type MutationCreateBlogArgs = {
-    data: BlogCreateInput;
+export type IMutationCreateBlogArgs = {
+    data: IBlogCreateInput;
 };
 
-export type MutationCreateProjectArgs = {
-    data: ProjectCreateInput;
+export type IMutationCreateProjectArgs = {
+    data: IProjectCreateInput;
 };
 
-export type MutationCreateScheduledReleaseArgs = {
-    data: ScheduledReleaseCreateInput;
+export type IMutationCreateScheduledReleaseArgs = {
+    data: IScheduledReleaseCreateInput;
 };
 
-export type MutationCreateTagArgs = {
-    data: TagCreateInput;
+export type IMutationCreateTagArgs = {
+    data: ITagCreateInput;
 };
 
-export type MutationDeleteAssetArgs = {
-    where: AssetWhereUniqueInput;
+export type IMutationDeleteAssetArgs = {
+    where: IAssetWhereUniqueInput;
 };
 
-export type MutationDeleteBlogArgs = {
-    where: BlogWhereUniqueInput;
+export type IMutationDeleteBlogArgs = {
+    where: IBlogWhereUniqueInput;
 };
 
-export type MutationDeleteManyAssetsArgs = {
-    where?: Maybe<AssetManyWhereInput>;
+export type IMutationDeleteManyAssetsArgs = {
+    where?: Maybe<IAssetManyWhereInput>;
 };
 
-export type MutationDeleteManyAssetsConnectionArgs = {
+export type IMutationDeleteManyAssetsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<AssetManyWhereInput>;
+    where?: Maybe<IAssetManyWhereInput>;
 };
 
-export type MutationDeleteManyBlogsArgs = {
-    where?: Maybe<BlogManyWhereInput>;
+export type IMutationDeleteManyBlogsArgs = {
+    where?: Maybe<IBlogManyWhereInput>;
 };
 
-export type MutationDeleteManyBlogsConnectionArgs = {
+export type IMutationDeleteManyBlogsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<BlogManyWhereInput>;
+    where?: Maybe<IBlogManyWhereInput>;
 };
 
-export type MutationDeleteManyProjectsArgs = {
-    where?: Maybe<ProjectManyWhereInput>;
+export type IMutationDeleteManyProjectsArgs = {
+    where?: Maybe<IProjectManyWhereInput>;
 };
 
-export type MutationDeleteManyProjectsConnectionArgs = {
+export type IMutationDeleteManyProjectsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<ProjectManyWhereInput>;
+    where?: Maybe<IProjectManyWhereInput>;
 };
 
-export type MutationDeleteManyTagsArgs = {
-    where?: Maybe<TagManyWhereInput>;
+export type IMutationDeleteManyTagsArgs = {
+    where?: Maybe<ITagManyWhereInput>;
 };
 
-export type MutationDeleteManyTagsConnectionArgs = {
+export type IMutationDeleteManyTagsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<TagManyWhereInput>;
+    where?: Maybe<ITagManyWhereInput>;
 };
 
-export type MutationDeleteProjectArgs = {
-    where: ProjectWhereUniqueInput;
+export type IMutationDeleteProjectArgs = {
+    where: IProjectWhereUniqueInput;
 };
 
-export type MutationDeleteScheduledOperationArgs = {
-    where: ScheduledOperationWhereUniqueInput;
+export type IMutationDeleteScheduledOperationArgs = {
+    where: IScheduledOperationWhereUniqueInput;
 };
 
-export type MutationDeleteScheduledReleaseArgs = {
-    where: ScheduledReleaseWhereUniqueInput;
+export type IMutationDeleteScheduledReleaseArgs = {
+    where: IScheduledReleaseWhereUniqueInput;
 };
 
-export type MutationDeleteTagArgs = {
-    where: TagWhereUniqueInput;
+export type IMutationDeleteTagArgs = {
+    where: ITagWhereUniqueInput;
 };
 
-export type MutationPublishAssetArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IMutationPublishAssetArgs = {
+    locales?: Maybe<Array<ILocale>>;
     publishBase?: Maybe<Scalars['Boolean']>;
-    to?: Array<Stage>;
-    where: AssetWhereUniqueInput;
+    to?: Array<IStage>;
+    where: IAssetWhereUniqueInput;
     withDefaultLocale?: Maybe<Scalars['Boolean']>;
 };
 
-export type MutationPublishBlogArgs = {
-    to?: Array<Stage>;
-    where: BlogWhereUniqueInput;
+export type IMutationPublishBlogArgs = {
+    to?: Array<IStage>;
+    where: IBlogWhereUniqueInput;
 };
 
-export type MutationPublishManyAssetsArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IMutationPublishManyAssetsArgs = {
+    locales?: Maybe<Array<ILocale>>;
     publishBase?: Maybe<Scalars['Boolean']>;
-    to?: Array<Stage>;
-    where?: Maybe<AssetManyWhereInput>;
+    to?: Array<IStage>;
+    where?: Maybe<IAssetManyWhereInput>;
     withDefaultLocale?: Maybe<Scalars['Boolean']>;
 };
 
-export type MutationPublishManyAssetsConnectionArgs = {
+export type IMutationPublishManyAssetsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
-    from?: Maybe<Stage>;
+    from?: Maybe<IStage>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
+    locales?: Maybe<Array<ILocale>>;
     publishBase?: Maybe<Scalars['Boolean']>;
     skip?: Maybe<Scalars['Int']>;
-    to?: Array<Stage>;
-    where?: Maybe<AssetManyWhereInput>;
+    to?: Array<IStage>;
+    where?: Maybe<IAssetManyWhereInput>;
     withDefaultLocale?: Maybe<Scalars['Boolean']>;
 };
 
-export type MutationPublishManyBlogsArgs = {
-    to?: Array<Stage>;
-    where?: Maybe<BlogManyWhereInput>;
+export type IMutationPublishManyBlogsArgs = {
+    to?: Array<IStage>;
+    where?: Maybe<IBlogManyWhereInput>;
 };
 
-export type MutationPublishManyBlogsConnectionArgs = {
+export type IMutationPublishManyBlogsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
-    from?: Maybe<Stage>;
+    from?: Maybe<IStage>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    to?: Array<Stage>;
-    where?: Maybe<BlogManyWhereInput>;
+    to?: Array<IStage>;
+    where?: Maybe<IBlogManyWhereInput>;
 };
 
-export type MutationPublishManyProjectsArgs = {
-    to?: Array<Stage>;
-    where?: Maybe<ProjectManyWhereInput>;
+export type IMutationPublishManyProjectsArgs = {
+    to?: Array<IStage>;
+    where?: Maybe<IProjectManyWhereInput>;
 };
 
-export type MutationPublishManyProjectsConnectionArgs = {
+export type IMutationPublishManyProjectsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
-    from?: Maybe<Stage>;
+    from?: Maybe<IStage>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    to?: Array<Stage>;
-    where?: Maybe<ProjectManyWhereInput>;
+    to?: Array<IStage>;
+    where?: Maybe<IProjectManyWhereInput>;
 };
 
-export type MutationPublishManyTagsArgs = {
-    to?: Array<Stage>;
-    where?: Maybe<TagManyWhereInput>;
+export type IMutationPublishManyTagsArgs = {
+    to?: Array<IStage>;
+    where?: Maybe<ITagManyWhereInput>;
 };
 
-export type MutationPublishManyTagsConnectionArgs = {
+export type IMutationPublishManyTagsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
-    from?: Maybe<Stage>;
+    from?: Maybe<IStage>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    to?: Array<Stage>;
-    where?: Maybe<TagManyWhereInput>;
+    to?: Array<IStage>;
+    where?: Maybe<ITagManyWhereInput>;
 };
 
-export type MutationPublishProjectArgs = {
-    to?: Array<Stage>;
-    where: ProjectWhereUniqueInput;
+export type IMutationPublishProjectArgs = {
+    to?: Array<IStage>;
+    where: IProjectWhereUniqueInput;
 };
 
-export type MutationPublishTagArgs = {
-    to?: Array<Stage>;
-    where: TagWhereUniqueInput;
+export type IMutationPublishTagArgs = {
+    to?: Array<IStage>;
+    where: ITagWhereUniqueInput;
 };
 
-export type MutationSchedulePublishAssetArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IMutationSchedulePublishAssetArgs = {
+    locales?: Maybe<Array<ILocale>>;
     publishBase?: Maybe<Scalars['Boolean']>;
     releaseAt?: Maybe<Scalars['DateTime']>;
     releaseId?: Maybe<Scalars['String']>;
-    to?: Array<Stage>;
-    where: AssetWhereUniqueInput;
+    to?: Array<IStage>;
+    where: IAssetWhereUniqueInput;
     withDefaultLocale?: Maybe<Scalars['Boolean']>;
 };
 
-export type MutationSchedulePublishBlogArgs = {
+export type IMutationSchedulePublishBlogArgs = {
     releaseAt?: Maybe<Scalars['DateTime']>;
     releaseId?: Maybe<Scalars['String']>;
-    to?: Array<Stage>;
-    where: BlogWhereUniqueInput;
+    to?: Array<IStage>;
+    where: IBlogWhereUniqueInput;
 };
 
-export type MutationSchedulePublishProjectArgs = {
+export type IMutationSchedulePublishProjectArgs = {
     releaseAt?: Maybe<Scalars['DateTime']>;
     releaseId?: Maybe<Scalars['String']>;
-    to?: Array<Stage>;
-    where: ProjectWhereUniqueInput;
+    to?: Array<IStage>;
+    where: IProjectWhereUniqueInput;
 };
 
-export type MutationSchedulePublishTagArgs = {
+export type IMutationSchedulePublishTagArgs = {
     releaseAt?: Maybe<Scalars['DateTime']>;
     releaseId?: Maybe<Scalars['String']>;
-    to?: Array<Stage>;
-    where: TagWhereUniqueInput;
+    to?: Array<IStage>;
+    where: ITagWhereUniqueInput;
 };
 
-export type MutationScheduleUnpublishAssetArgs = {
-    from?: Array<Stage>;
-    locales?: Maybe<Array<Locale>>;
+export type IMutationScheduleUnpublishAssetArgs = {
+    from?: Array<IStage>;
+    locales?: Maybe<Array<ILocale>>;
     releaseAt?: Maybe<Scalars['DateTime']>;
     releaseId?: Maybe<Scalars['String']>;
     unpublishBase?: Maybe<Scalars['Boolean']>;
-    where: AssetWhereUniqueInput;
+    where: IAssetWhereUniqueInput;
 };
 
-export type MutationScheduleUnpublishBlogArgs = {
-    from?: Array<Stage>;
+export type IMutationScheduleUnpublishBlogArgs = {
+    from?: Array<IStage>;
     releaseAt?: Maybe<Scalars['DateTime']>;
     releaseId?: Maybe<Scalars['String']>;
-    where: BlogWhereUniqueInput;
+    where: IBlogWhereUniqueInput;
 };
 
-export type MutationScheduleUnpublishProjectArgs = {
-    from?: Array<Stage>;
+export type IMutationScheduleUnpublishProjectArgs = {
+    from?: Array<IStage>;
     releaseAt?: Maybe<Scalars['DateTime']>;
     releaseId?: Maybe<Scalars['String']>;
-    where: ProjectWhereUniqueInput;
+    where: IProjectWhereUniqueInput;
 };
 
-export type MutationScheduleUnpublishTagArgs = {
-    from?: Array<Stage>;
+export type IMutationScheduleUnpublishTagArgs = {
+    from?: Array<IStage>;
     releaseAt?: Maybe<Scalars['DateTime']>;
     releaseId?: Maybe<Scalars['String']>;
-    where: TagWhereUniqueInput;
+    where: ITagWhereUniqueInput;
 };
 
-export type MutationUnpublishAssetArgs = {
-    from?: Array<Stage>;
-    locales?: Maybe<Array<Locale>>;
+export type IMutationUnpublishAssetArgs = {
+    from?: Array<IStage>;
+    locales?: Maybe<Array<ILocale>>;
     unpublishBase?: Maybe<Scalars['Boolean']>;
-    where: AssetWhereUniqueInput;
+    where: IAssetWhereUniqueInput;
 };
 
-export type MutationUnpublishBlogArgs = {
-    from?: Array<Stage>;
-    where: BlogWhereUniqueInput;
+export type IMutationUnpublishBlogArgs = {
+    from?: Array<IStage>;
+    where: IBlogWhereUniqueInput;
 };
 
-export type MutationUnpublishManyAssetsArgs = {
-    from?: Array<Stage>;
-    locales?: Maybe<Array<Locale>>;
+export type IMutationUnpublishManyAssetsArgs = {
+    from?: Array<IStage>;
+    locales?: Maybe<Array<ILocale>>;
     unpublishBase?: Maybe<Scalars['Boolean']>;
-    where?: Maybe<AssetManyWhereInput>;
+    where?: Maybe<IAssetManyWhereInput>;
 };
 
-export type MutationUnpublishManyAssetsConnectionArgs = {
+export type IMutationUnpublishManyAssetsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
-    from?: Array<Stage>;
+    from?: Array<IStage>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
+    locales?: Maybe<Array<ILocale>>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Maybe<Stage>;
+    stage?: Maybe<IStage>;
     unpublishBase?: Maybe<Scalars['Boolean']>;
-    where?: Maybe<AssetManyWhereInput>;
+    where?: Maybe<IAssetManyWhereInput>;
 };
 
-export type MutationUnpublishManyBlogsArgs = {
-    from?: Array<Stage>;
-    where?: Maybe<BlogManyWhereInput>;
+export type IMutationUnpublishManyBlogsArgs = {
+    from?: Array<IStage>;
+    where?: Maybe<IBlogManyWhereInput>;
 };
 
-export type MutationUnpublishManyBlogsConnectionArgs = {
+export type IMutationUnpublishManyBlogsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
-    from?: Array<Stage>;
+    from?: Array<IStage>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Maybe<Stage>;
-    where?: Maybe<BlogManyWhereInput>;
+    stage?: Maybe<IStage>;
+    where?: Maybe<IBlogManyWhereInput>;
 };
 
-export type MutationUnpublishManyProjectsArgs = {
-    from?: Array<Stage>;
-    where?: Maybe<ProjectManyWhereInput>;
+export type IMutationUnpublishManyProjectsArgs = {
+    from?: Array<IStage>;
+    where?: Maybe<IProjectManyWhereInput>;
 };
 
-export type MutationUnpublishManyProjectsConnectionArgs = {
+export type IMutationUnpublishManyProjectsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
-    from?: Array<Stage>;
+    from?: Array<IStage>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Maybe<Stage>;
-    where?: Maybe<ProjectManyWhereInput>;
+    stage?: Maybe<IStage>;
+    where?: Maybe<IProjectManyWhereInput>;
 };
 
-export type MutationUnpublishManyTagsArgs = {
-    from?: Array<Stage>;
-    where?: Maybe<TagManyWhereInput>;
+export type IMutationUnpublishManyTagsArgs = {
+    from?: Array<IStage>;
+    where?: Maybe<ITagManyWhereInput>;
 };
 
-export type MutationUnpublishManyTagsConnectionArgs = {
+export type IMutationUnpublishManyTagsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
     first?: Maybe<Scalars['Int']>;
-    from?: Array<Stage>;
+    from?: Array<IStage>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Maybe<Stage>;
-    where?: Maybe<TagManyWhereInput>;
+    stage?: Maybe<IStage>;
+    where?: Maybe<ITagManyWhereInput>;
 };
 
-export type MutationUnpublishProjectArgs = {
-    from?: Array<Stage>;
-    where: ProjectWhereUniqueInput;
+export type IMutationUnpublishProjectArgs = {
+    from?: Array<IStage>;
+    where: IProjectWhereUniqueInput;
 };
 
-export type MutationUnpublishTagArgs = {
-    from?: Array<Stage>;
-    where: TagWhereUniqueInput;
+export type IMutationUnpublishTagArgs = {
+    from?: Array<IStage>;
+    where: ITagWhereUniqueInput;
 };
 
-export type MutationUpdateAssetArgs = {
-    data: AssetUpdateInput;
-    where: AssetWhereUniqueInput;
+export type IMutationUpdateAssetArgs = {
+    data: IAssetUpdateInput;
+    where: IAssetWhereUniqueInput;
 };
 
-export type MutationUpdateBlogArgs = {
-    data: BlogUpdateInput;
-    where: BlogWhereUniqueInput;
+export type IMutationUpdateBlogArgs = {
+    data: IBlogUpdateInput;
+    where: IBlogWhereUniqueInput;
 };
 
-export type MutationUpdateManyAssetsArgs = {
-    data: AssetUpdateManyInput;
-    where?: Maybe<AssetManyWhereInput>;
+export type IMutationUpdateManyAssetsArgs = {
+    data: IAssetUpdateManyInput;
+    where?: Maybe<IAssetManyWhereInput>;
 };
 
-export type MutationUpdateManyAssetsConnectionArgs = {
+export type IMutationUpdateManyAssetsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
-    data: AssetUpdateManyInput;
+    data: IAssetUpdateManyInput;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<AssetManyWhereInput>;
+    where?: Maybe<IAssetManyWhereInput>;
 };
 
-export type MutationUpdateManyBlogsArgs = {
-    data: BlogUpdateManyInput;
-    where?: Maybe<BlogManyWhereInput>;
+export type IMutationUpdateManyBlogsArgs = {
+    data: IBlogUpdateManyInput;
+    where?: Maybe<IBlogManyWhereInput>;
 };
 
-export type MutationUpdateManyBlogsConnectionArgs = {
+export type IMutationUpdateManyBlogsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
-    data: BlogUpdateManyInput;
+    data: IBlogUpdateManyInput;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<BlogManyWhereInput>;
+    where?: Maybe<IBlogManyWhereInput>;
 };
 
-export type MutationUpdateManyProjectsArgs = {
-    data: ProjectUpdateManyInput;
-    where?: Maybe<ProjectManyWhereInput>;
+export type IMutationUpdateManyProjectsArgs = {
+    data: IProjectUpdateManyInput;
+    where?: Maybe<IProjectManyWhereInput>;
 };
 
-export type MutationUpdateManyProjectsConnectionArgs = {
+export type IMutationUpdateManyProjectsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
-    data: ProjectUpdateManyInput;
+    data: IProjectUpdateManyInput;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<ProjectManyWhereInput>;
+    where?: Maybe<IProjectManyWhereInput>;
 };
 
-export type MutationUpdateManyTagsArgs = {
-    data: TagUpdateManyInput;
-    where?: Maybe<TagManyWhereInput>;
+export type IMutationUpdateManyTagsArgs = {
+    data: ITagUpdateManyInput;
+    where?: Maybe<ITagManyWhereInput>;
 };
 
-export type MutationUpdateManyTagsConnectionArgs = {
+export type IMutationUpdateManyTagsConnectionArgs = {
     after?: Maybe<Scalars['ID']>;
     before?: Maybe<Scalars['ID']>;
-    data: TagUpdateManyInput;
+    data: ITagUpdateManyInput;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<TagManyWhereInput>;
+    where?: Maybe<ITagManyWhereInput>;
 };
 
-export type MutationUpdateProjectArgs = {
-    data: ProjectUpdateInput;
-    where: ProjectWhereUniqueInput;
+export type IMutationUpdateProjectArgs = {
+    data: IProjectUpdateInput;
+    where: IProjectWhereUniqueInput;
 };
 
-export type MutationUpdateScheduledReleaseArgs = {
-    data: ScheduledReleaseUpdateInput;
-    where: ScheduledReleaseWhereUniqueInput;
+export type IMutationUpdateScheduledReleaseArgs = {
+    data: IScheduledReleaseUpdateInput;
+    where: IScheduledReleaseWhereUniqueInput;
 };
 
-export type MutationUpdateTagArgs = {
-    data: TagUpdateInput;
-    where: TagWhereUniqueInput;
+export type IMutationUpdateTagArgs = {
+    data: ITagUpdateInput;
+    where: ITagWhereUniqueInput;
 };
 
-export type MutationUpsertAssetArgs = {
-    upsert: AssetUpsertInput;
-    where: AssetWhereUniqueInput;
+export type IMutationUpsertAssetArgs = {
+    upsert: IAssetUpsertInput;
+    where: IAssetWhereUniqueInput;
 };
 
-export type MutationUpsertBlogArgs = {
-    upsert: BlogUpsertInput;
-    where: BlogWhereUniqueInput;
+export type IMutationUpsertBlogArgs = {
+    upsert: IBlogUpsertInput;
+    where: IBlogWhereUniqueInput;
 };
 
-export type MutationUpsertProjectArgs = {
-    upsert: ProjectUpsertInput;
-    where: ProjectWhereUniqueInput;
+export type IMutationUpsertProjectArgs = {
+    upsert: IProjectUpsertInput;
+    where: IProjectWhereUniqueInput;
 };
 
-export type MutationUpsertTagArgs = {
-    upsert: TagUpsertInput;
-    where: TagWhereUniqueInput;
+export type IMutationUpsertTagArgs = {
+    upsert: ITagUpsertInput;
+    where: ITagWhereUniqueInput;
 };
 
 /** An object with an ID */
-export type Node = {
+export type INode = {
     /** The id of the object. */
     id: Scalars['ID'];
     /** The Stage of an object */
-    stage: Stage;
+    stage: IStage;
 };
 
 /** Information about pagination in a connection. */
-export type PageInfo = {
+export type IPageInfo = {
     __typename?: 'PageInfo';
     /** When paginating forwards, the cursor to continue. */
     endCursor?: Maybe<Scalars['String']>;
@@ -2093,149 +2092,149 @@ export type PageInfo = {
     startCursor?: Maybe<Scalars['String']>;
 };
 
-export type Project = Node & {
+export type IProject = INode & {
     __typename?: 'Project';
-    content: RichText;
+    content: IRichText;
     /** The time the document was created */
     createdAt: Scalars['DateTime'];
     /** User that created this document */
-    createdBy?: Maybe<User>;
+    createdBy?: Maybe<IUser>;
     /** Get the document in other stages */
-    documentInStages: Array<Project>;
+    documentInStages: Array<IProject>;
     featured: Scalars['Boolean'];
     /** List of Project versions */
-    history: Array<Version>;
+    history: Array<IVersion>;
     /** The unique identifier */
     id: Scalars['ID'];
     introduction: Scalars['String'];
     /** The time the document was published. Null on documents in draft stage. */
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** User that last published this document */
-    publishedBy?: Maybe<User>;
+    publishedBy?: Maybe<IUser>;
     readTime: Scalars['String'];
-    scheduledIn: Array<ScheduledOperation>;
+    scheduledIn: Array<IScheduledOperation>;
     slug: Scalars['String'];
     /** System stage field */
-    stage: Stage;
-    tags: Array<Tag>;
-    thumbnail: Asset;
+    stage: IStage;
+    tags: Array<ITag>;
+    thumbnail: IAsset;
     title: Scalars['String'];
     /** The time the document was updated */
     updatedAt: Scalars['DateTime'];
     /** User that last updated this document */
-    updatedBy?: Maybe<User>;
+    updatedBy?: Maybe<IUser>;
 };
 
-export type ProjectCreatedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IProjectCreatedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
-export type ProjectDocumentInStagesArgs = {
+export type IProjectDocumentInStagesArgs = {
     includeCurrent?: Scalars['Boolean'];
     inheritLocale?: Scalars['Boolean'];
-    stages?: Array<Stage>;
+    stages?: Array<IStage>;
 };
 
-export type ProjectHistoryArgs = {
+export type IProjectHistoryArgs = {
     limit?: Scalars['Int'];
     skip?: Scalars['Int'];
-    stageOverride?: Maybe<Stage>;
+    stageOverride?: Maybe<IStage>;
 };
 
-export type ProjectPublishedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IProjectPublishedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
-export type ProjectScheduledInArgs = {
+export type IProjectScheduledInArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
+    locales?: Maybe<Array<ILocale>>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<ScheduledOperationWhereInput>;
+    where?: Maybe<IScheduledOperationWhereInput>;
 };
 
-export type ProjectTagsArgs = {
+export type IProjectTagsArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
-    orderBy?: Maybe<TagOrderByInput>;
+    locales?: Maybe<Array<ILocale>>;
+    orderBy?: Maybe<ITagOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<TagWhereInput>;
+    where?: Maybe<ITagWhereInput>;
 };
 
-export type ProjectThumbnailArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IProjectThumbnailArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
-export type ProjectUpdatedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IProjectUpdatedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
-export type ProjectConnectInput = {
+export type IProjectConnectInput = {
     /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-    position?: Maybe<ConnectPositionInput>;
+    position?: Maybe<IConnectPositionInput>;
     /** Document to connect */
-    where: ProjectWhereUniqueInput;
+    where: IProjectWhereUniqueInput;
 };
 
 /** A connection to a list of items. */
-export type ProjectConnection = {
+export type IProjectConnection = {
     __typename?: 'ProjectConnection';
-    aggregate: Aggregate;
+    aggregate: IAggregate;
     /** A list of edges. */
-    edges: Array<ProjectEdge>;
+    edges: Array<IProjectEdge>;
     /** Information to aid in pagination. */
-    pageInfo: PageInfo;
+    pageInfo: IPageInfo;
 };
 
-export type ProjectCreateInput = {
+export type IProjectCreateInput = {
     content: Scalars['RichTextAST'];
     createdAt?: Maybe<Scalars['DateTime']>;
     featured: Scalars['Boolean'];
     introduction: Scalars['String'];
     readTime: Scalars['String'];
     slug: Scalars['String'];
-    tags?: Maybe<TagCreateManyInlineInput>;
-    thumbnail: AssetCreateOneInlineInput;
+    tags?: Maybe<ITagCreateManyInlineInput>;
+    thumbnail: IAssetCreateOneInlineInput;
     title: Scalars['String'];
     updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type ProjectCreateManyInlineInput = {
+export type IProjectCreateManyInlineInput = {
     /** Connect multiple existing Project documents */
-    connect?: Maybe<Array<ProjectWhereUniqueInput>>;
+    connect?: Maybe<Array<IProjectWhereUniqueInput>>;
     /** Create and connect multiple existing Project documents */
-    create?: Maybe<Array<ProjectCreateInput>>;
+    create?: Maybe<Array<IProjectCreateInput>>;
 };
 
-export type ProjectCreateOneInlineInput = {
+export type IProjectCreateOneInlineInput = {
     /** Connect one existing Project document */
-    connect?: Maybe<ProjectWhereUniqueInput>;
+    connect?: Maybe<IProjectWhereUniqueInput>;
     /** Create and connect one Project document */
-    create?: Maybe<ProjectCreateInput>;
+    create?: Maybe<IProjectCreateInput>;
 };
 
 /** An edge in a connection. */
-export type ProjectEdge = {
+export type IProjectEdge = {
     __typename?: 'ProjectEdge';
     /** A cursor for use in pagination. */
     cursor: Scalars['String'];
     /** The item at the end of the edge. */
-    node: Project;
+    node: IProject;
 };
 
 /** Identifies documents */
-export type ProjectManyWhereInput = {
+export type IProjectManyWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<ProjectWhereInput>>;
+    AND?: Maybe<Array<IProjectWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<ProjectWhereInput>>;
+    NOT?: Maybe<Array<IProjectWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<ProjectWhereInput>>;
+    OR?: Maybe<Array<IProjectWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
     createdAt?: Maybe<Scalars['DateTime']>;
@@ -2253,7 +2252,7 @@ export type ProjectManyWhereInput = {
     createdAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    createdBy?: Maybe<UserWhereInput>;
+    createdBy?: Maybe<IUserWhereInput>;
     featured?: Maybe<Scalars['Boolean']>;
     /** All values that are not equal to given value. */
     featured_not?: Maybe<Scalars['Boolean']>;
@@ -2310,7 +2309,7 @@ export type ProjectManyWhereInput = {
     publishedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    publishedBy?: Maybe<UserWhereInput>;
+    publishedBy?: Maybe<IUserWhereInput>;
     readTime?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     readTime_contains?: Maybe<Scalars['String']>;
@@ -2330,9 +2329,9 @@ export type ProjectManyWhereInput = {
     readTime_not_starts_with?: Maybe<Scalars['String']>;
     /** All values starting with the given string. */
     readTime_starts_with?: Maybe<Scalars['String']>;
-    scheduledIn_every?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_none?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_some?: Maybe<ScheduledOperationWhereInput>;
+    scheduledIn_every?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_none?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_some?: Maybe<IScheduledOperationWhereInput>;
     slug?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     slug_contains?: Maybe<Scalars['String']>;
@@ -2352,10 +2351,10 @@ export type ProjectManyWhereInput = {
     slug_not_starts_with?: Maybe<Scalars['String']>;
     /** All values starting with the given string. */
     slug_starts_with?: Maybe<Scalars['String']>;
-    tags_every?: Maybe<TagWhereInput>;
-    tags_none?: Maybe<TagWhereInput>;
-    tags_some?: Maybe<TagWhereInput>;
-    thumbnail?: Maybe<AssetWhereInput>;
+    tags_every?: Maybe<ITagWhereInput>;
+    tags_none?: Maybe<ITagWhereInput>;
+    tags_some?: Maybe<ITagWhereInput>;
+    thumbnail?: Maybe<IAssetWhereInput>;
     title?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     title_contains?: Maybe<Scalars['String']>;
@@ -2390,10 +2389,10 @@ export type ProjectManyWhereInput = {
     updatedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    updatedBy?: Maybe<UserWhereInput>;
+    updatedBy?: Maybe<IUserWhereInput>;
 };
 
-export enum ProjectOrderByInput {
+export enum IProjectOrderByInput {
     CreatedAtAsc = 'createdAt_ASC',
     CreatedAtDesc = 'createdAt_DESC',
     FeaturedAsc = 'featured_ASC',
@@ -2414,35 +2413,35 @@ export enum ProjectOrderByInput {
     UpdatedAtDesc = 'updatedAt_DESC',
 }
 
-export type ProjectUpdateInput = {
+export type IProjectUpdateInput = {
     content?: Maybe<Scalars['RichTextAST']>;
     featured?: Maybe<Scalars['Boolean']>;
     introduction?: Maybe<Scalars['String']>;
     readTime?: Maybe<Scalars['String']>;
     slug?: Maybe<Scalars['String']>;
-    tags?: Maybe<TagUpdateManyInlineInput>;
-    thumbnail?: Maybe<AssetUpdateOneInlineInput>;
+    tags?: Maybe<ITagUpdateManyInlineInput>;
+    thumbnail?: Maybe<IAssetUpdateOneInlineInput>;
     title?: Maybe<Scalars['String']>;
 };
 
-export type ProjectUpdateManyInlineInput = {
+export type IProjectUpdateManyInlineInput = {
     /** Connect multiple existing Project documents */
-    connect?: Maybe<Array<ProjectConnectInput>>;
+    connect?: Maybe<Array<IProjectConnectInput>>;
     /** Create and connect multiple Project documents */
-    create?: Maybe<Array<ProjectCreateInput>>;
+    create?: Maybe<Array<IProjectCreateInput>>;
     /** Delete multiple Project documents */
-    delete?: Maybe<Array<ProjectWhereUniqueInput>>;
+    delete?: Maybe<Array<IProjectWhereUniqueInput>>;
     /** Disconnect multiple Project documents */
-    disconnect?: Maybe<Array<ProjectWhereUniqueInput>>;
+    disconnect?: Maybe<Array<IProjectWhereUniqueInput>>;
     /** Override currently-connected documents with multiple existing Project documents */
-    set?: Maybe<Array<ProjectWhereUniqueInput>>;
+    set?: Maybe<Array<IProjectWhereUniqueInput>>;
     /** Update multiple Project documents */
-    update?: Maybe<Array<ProjectUpdateWithNestedWhereUniqueInput>>;
+    update?: Maybe<Array<IProjectUpdateWithNestedWhereUniqueInput>>;
     /** Upsert multiple Project documents */
-    upsert?: Maybe<Array<ProjectUpsertWithNestedWhereUniqueInput>>;
+    upsert?: Maybe<Array<IProjectUpsertWithNestedWhereUniqueInput>>;
 };
 
-export type ProjectUpdateManyInput = {
+export type IProjectUpdateManyInput = {
     content?: Maybe<Scalars['RichTextAST']>;
     featured?: Maybe<Scalars['Boolean']>;
     introduction?: Maybe<Scalars['String']>;
@@ -2450,57 +2449,57 @@ export type ProjectUpdateManyInput = {
     title?: Maybe<Scalars['String']>;
 };
 
-export type ProjectUpdateManyWithNestedWhereInput = {
+export type IProjectUpdateManyWithNestedWhereInput = {
     /** Update many input */
-    data: ProjectUpdateManyInput;
+    data: IProjectUpdateManyInput;
     /** Document search */
-    where: ProjectWhereInput;
+    where: IProjectWhereInput;
 };
 
-export type ProjectUpdateOneInlineInput = {
+export type IProjectUpdateOneInlineInput = {
     /** Connect existing Project document */
-    connect?: Maybe<ProjectWhereUniqueInput>;
+    connect?: Maybe<IProjectWhereUniqueInput>;
     /** Create and connect one Project document */
-    create?: Maybe<ProjectCreateInput>;
+    create?: Maybe<IProjectCreateInput>;
     /** Delete currently connected Project document */
     delete?: Maybe<Scalars['Boolean']>;
     /** Disconnect currently connected Project document */
     disconnect?: Maybe<Scalars['Boolean']>;
     /** Update single Project document */
-    update?: Maybe<ProjectUpdateWithNestedWhereUniqueInput>;
+    update?: Maybe<IProjectUpdateWithNestedWhereUniqueInput>;
     /** Upsert single Project document */
-    upsert?: Maybe<ProjectUpsertWithNestedWhereUniqueInput>;
+    upsert?: Maybe<IProjectUpsertWithNestedWhereUniqueInput>;
 };
 
-export type ProjectUpdateWithNestedWhereUniqueInput = {
+export type IProjectUpdateWithNestedWhereUniqueInput = {
     /** Document to update */
-    data: ProjectUpdateInput;
+    data: IProjectUpdateInput;
     /** Unique document search */
-    where: ProjectWhereUniqueInput;
+    where: IProjectWhereUniqueInput;
 };
 
-export type ProjectUpsertInput = {
+export type IProjectUpsertInput = {
     /** Create document if it didn't exist */
-    create: ProjectCreateInput;
+    create: IProjectCreateInput;
     /** Update document if it exists */
-    update: ProjectUpdateInput;
+    update: IProjectUpdateInput;
 };
 
-export type ProjectUpsertWithNestedWhereUniqueInput = {
+export type IProjectUpsertWithNestedWhereUniqueInput = {
     /** Upsert data */
-    data: ProjectUpsertInput;
+    data: IProjectUpsertInput;
     /** Unique document search */
-    where: ProjectWhereUniqueInput;
+    where: IProjectWhereUniqueInput;
 };
 
 /** Identifies documents */
-export type ProjectWhereInput = {
+export type IProjectWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<ProjectWhereInput>>;
+    AND?: Maybe<Array<IProjectWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<ProjectWhereInput>>;
+    NOT?: Maybe<Array<IProjectWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<ProjectWhereInput>>;
+    OR?: Maybe<Array<IProjectWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
     createdAt?: Maybe<Scalars['DateTime']>;
@@ -2518,7 +2517,7 @@ export type ProjectWhereInput = {
     createdAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    createdBy?: Maybe<UserWhereInput>;
+    createdBy?: Maybe<IUserWhereInput>;
     featured?: Maybe<Scalars['Boolean']>;
     /** All values that are not equal to given value. */
     featured_not?: Maybe<Scalars['Boolean']>;
@@ -2575,7 +2574,7 @@ export type ProjectWhereInput = {
     publishedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    publishedBy?: Maybe<UserWhereInput>;
+    publishedBy?: Maybe<IUserWhereInput>;
     readTime?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     readTime_contains?: Maybe<Scalars['String']>;
@@ -2595,9 +2594,9 @@ export type ProjectWhereInput = {
     readTime_not_starts_with?: Maybe<Scalars['String']>;
     /** All values starting with the given string. */
     readTime_starts_with?: Maybe<Scalars['String']>;
-    scheduledIn_every?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_none?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_some?: Maybe<ScheduledOperationWhereInput>;
+    scheduledIn_every?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_none?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_some?: Maybe<IScheduledOperationWhereInput>;
     slug?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     slug_contains?: Maybe<Scalars['String']>;
@@ -2617,10 +2616,10 @@ export type ProjectWhereInput = {
     slug_not_starts_with?: Maybe<Scalars['String']>;
     /** All values starting with the given string. */
     slug_starts_with?: Maybe<Scalars['String']>;
-    tags_every?: Maybe<TagWhereInput>;
-    tags_none?: Maybe<TagWhereInput>;
-    tags_some?: Maybe<TagWhereInput>;
-    thumbnail?: Maybe<AssetWhereInput>;
+    tags_every?: Maybe<ITagWhereInput>;
+    tags_none?: Maybe<ITagWhereInput>;
+    tags_some?: Maybe<ITagWhereInput>;
+    thumbnail?: Maybe<IAssetWhereInput>;
     title?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     title_contains?: Maybe<Scalars['String']>;
@@ -2655,312 +2654,312 @@ export type ProjectWhereInput = {
     updatedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    updatedBy?: Maybe<UserWhereInput>;
+    updatedBy?: Maybe<IUserWhereInput>;
 };
 
 /** References Project record uniquely */
-export type ProjectWhereUniqueInput = {
+export type IProjectWhereUniqueInput = {
     id?: Maybe<Scalars['ID']>;
     slug?: Maybe<Scalars['String']>;
 };
 
-export type PublishLocaleInput = {
+export type IPublishLocaleInput = {
     /** Locales to publish */
-    locale: Locale;
+    locale: ILocale;
     /** Stages to publish selected locales to */
-    stages: Array<Stage>;
+    stages: Array<IStage>;
 };
 
-export type Query = {
+export type IQuery = {
     __typename?: 'Query';
     /** Retrieve a single asset */
-    asset?: Maybe<Asset>;
+    asset?: Maybe<IAsset>;
     /** Retrieve document version */
-    assetVersion?: Maybe<DocumentVersion>;
+    assetVersion?: Maybe<IDocumentVersion>;
     /** Retrieve multiple assets */
-    assets: Array<Asset>;
+    assets: Array<IAsset>;
     /** Retrieve multiple assets using the Relay connection interface */
-    assetsConnection: AssetConnection;
+    assetsConnection: IAssetConnection;
     /** Retrieve a single blog */
-    blog?: Maybe<Blog>;
+    blog?: Maybe<IBlog>;
     /** Retrieve document version */
-    blogVersion?: Maybe<DocumentVersion>;
+    blogVersion?: Maybe<IDocumentVersion>;
     /** Retrieve multiple blogs */
-    blogs: Array<Blog>;
+    blogs: Array<IBlog>;
     /** Retrieve multiple blogs using the Relay connection interface */
-    blogsConnection: BlogConnection;
+    blogsConnection: IBlogConnection;
     /** Fetches an object given its ID */
-    node?: Maybe<Node>;
+    node?: Maybe<INode>;
     /** Retrieve a single project */
-    project?: Maybe<Project>;
+    project?: Maybe<IProject>;
     /** Retrieve document version */
-    projectVersion?: Maybe<DocumentVersion>;
+    projectVersion?: Maybe<IDocumentVersion>;
     /** Retrieve multiple projects */
-    projects: Array<Project>;
+    projects: Array<IProject>;
     /** Retrieve multiple projects using the Relay connection interface */
-    projectsConnection: ProjectConnection;
+    projectsConnection: IProjectConnection;
     /** Retrieve a single scheduledOperation */
-    scheduledOperation?: Maybe<ScheduledOperation>;
+    scheduledOperation?: Maybe<IScheduledOperation>;
     /** Retrieve multiple scheduledOperations */
-    scheduledOperations: Array<ScheduledOperation>;
+    scheduledOperations: Array<IScheduledOperation>;
     /** Retrieve multiple scheduledOperations using the Relay connection interface */
-    scheduledOperationsConnection: ScheduledOperationConnection;
+    scheduledOperationsConnection: IScheduledOperationConnection;
     /** Retrieve a single scheduledRelease */
-    scheduledRelease?: Maybe<ScheduledRelease>;
+    scheduledRelease?: Maybe<IScheduledRelease>;
     /** Retrieve multiple scheduledReleases */
-    scheduledReleases: Array<ScheduledRelease>;
+    scheduledReleases: Array<IScheduledRelease>;
     /** Retrieve multiple scheduledReleases using the Relay connection interface */
-    scheduledReleasesConnection: ScheduledReleaseConnection;
+    scheduledReleasesConnection: IScheduledReleaseConnection;
     /** Retrieve a single tag */
-    tag?: Maybe<Tag>;
+    tag?: Maybe<ITag>;
     /** Retrieve document version */
-    tagVersion?: Maybe<DocumentVersion>;
+    tagVersion?: Maybe<IDocumentVersion>;
     /** Retrieve multiple tags */
-    tags: Array<Tag>;
+    tags: Array<ITag>;
     /** Retrieve multiple tags using the Relay connection interface */
-    tagsConnection: TagConnection;
+    tagsConnection: ITagConnection;
     /** Retrieve a single user */
-    user?: Maybe<User>;
+    user?: Maybe<IUser>;
     /** Retrieve multiple users */
-    users: Array<User>;
+    users: Array<IUser>;
     /** Retrieve multiple users using the Relay connection interface */
-    usersConnection: UserConnection;
+    usersConnection: IUserConnection;
 };
 
-export type QueryAssetArgs = {
-    locales?: Array<Locale>;
-    stage?: Stage;
-    where: AssetWhereUniqueInput;
+export type IQueryAssetArgs = {
+    locales?: Array<ILocale>;
+    stage?: IStage;
+    where: IAssetWhereUniqueInput;
 };
 
-export type QueryAssetVersionArgs = {
-    where: VersionWhereInput;
+export type IQueryAssetVersionArgs = {
+    where: IVersionWhereInput;
 };
 
-export type QueryAssetsArgs = {
+export type IQueryAssetsArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<AssetOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<IAssetOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<AssetWhereInput>;
+    stage?: IStage;
+    where?: Maybe<IAssetWhereInput>;
 };
 
-export type QueryAssetsConnectionArgs = {
+export type IQueryAssetsConnectionArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<AssetOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<IAssetOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<AssetWhereInput>;
+    stage?: IStage;
+    where?: Maybe<IAssetWhereInput>;
 };
 
-export type QueryBlogArgs = {
-    locales?: Array<Locale>;
-    stage?: Stage;
-    where: BlogWhereUniqueInput;
+export type IQueryBlogArgs = {
+    locales?: Array<ILocale>;
+    stage?: IStage;
+    where: IBlogWhereUniqueInput;
 };
 
-export type QueryBlogVersionArgs = {
-    where: VersionWhereInput;
+export type IQueryBlogVersionArgs = {
+    where: IVersionWhereInput;
 };
 
-export type QueryBlogsArgs = {
+export type IQueryBlogsArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<BlogOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<IBlogOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<BlogWhereInput>;
+    stage?: IStage;
+    where?: Maybe<IBlogWhereInput>;
 };
 
-export type QueryBlogsConnectionArgs = {
+export type IQueryBlogsConnectionArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<BlogOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<IBlogOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<BlogWhereInput>;
+    stage?: IStage;
+    where?: Maybe<IBlogWhereInput>;
 };
 
-export type QueryNodeArgs = {
+export type IQueryNodeArgs = {
     id: Scalars['ID'];
-    locales?: Array<Locale>;
-    stage?: Stage;
+    locales?: Array<ILocale>;
+    stage?: IStage;
 };
 
-export type QueryProjectArgs = {
-    locales?: Array<Locale>;
-    stage?: Stage;
-    where: ProjectWhereUniqueInput;
+export type IQueryProjectArgs = {
+    locales?: Array<ILocale>;
+    stage?: IStage;
+    where: IProjectWhereUniqueInput;
 };
 
-export type QueryProjectVersionArgs = {
-    where: VersionWhereInput;
+export type IQueryProjectVersionArgs = {
+    where: IVersionWhereInput;
 };
 
-export type QueryProjectsArgs = {
+export type IQueryProjectsArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<ProjectOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<IProjectOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<ProjectWhereInput>;
+    stage?: IStage;
+    where?: Maybe<IProjectWhereInput>;
 };
 
-export type QueryProjectsConnectionArgs = {
+export type IQueryProjectsConnectionArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<ProjectOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<IProjectOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<ProjectWhereInput>;
+    stage?: IStage;
+    where?: Maybe<IProjectWhereInput>;
 };
 
-export type QueryScheduledOperationArgs = {
-    locales?: Array<Locale>;
-    stage?: Stage;
-    where: ScheduledOperationWhereUniqueInput;
+export type IQueryScheduledOperationArgs = {
+    locales?: Array<ILocale>;
+    stage?: IStage;
+    where: IScheduledOperationWhereUniqueInput;
 };
 
-export type QueryScheduledOperationsArgs = {
+export type IQueryScheduledOperationsArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<ScheduledOperationOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<IScheduledOperationOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<ScheduledOperationWhereInput>;
+    stage?: IStage;
+    where?: Maybe<IScheduledOperationWhereInput>;
 };
 
-export type QueryScheduledOperationsConnectionArgs = {
+export type IQueryScheduledOperationsConnectionArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<ScheduledOperationOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<IScheduledOperationOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<ScheduledOperationWhereInput>;
+    stage?: IStage;
+    where?: Maybe<IScheduledOperationWhereInput>;
 };
 
-export type QueryScheduledReleaseArgs = {
-    locales?: Array<Locale>;
-    stage?: Stage;
-    where: ScheduledReleaseWhereUniqueInput;
+export type IQueryScheduledReleaseArgs = {
+    locales?: Array<ILocale>;
+    stage?: IStage;
+    where: IScheduledReleaseWhereUniqueInput;
 };
 
-export type QueryScheduledReleasesArgs = {
+export type IQueryScheduledReleasesArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<ScheduledReleaseOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<IScheduledReleaseOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<ScheduledReleaseWhereInput>;
+    stage?: IStage;
+    where?: Maybe<IScheduledReleaseWhereInput>;
 };
 
-export type QueryScheduledReleasesConnectionArgs = {
+export type IQueryScheduledReleasesConnectionArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<ScheduledReleaseOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<IScheduledReleaseOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<ScheduledReleaseWhereInput>;
+    stage?: IStage;
+    where?: Maybe<IScheduledReleaseWhereInput>;
 };
 
-export type QueryTagArgs = {
-    locales?: Array<Locale>;
-    stage?: Stage;
-    where: TagWhereUniqueInput;
+export type IQueryTagArgs = {
+    locales?: Array<ILocale>;
+    stage?: IStage;
+    where: ITagWhereUniqueInput;
 };
 
-export type QueryTagVersionArgs = {
-    where: VersionWhereInput;
+export type IQueryTagVersionArgs = {
+    where: IVersionWhereInput;
 };
 
-export type QueryTagsArgs = {
+export type IQueryTagsArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<TagOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<ITagOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<TagWhereInput>;
+    stage?: IStage;
+    where?: Maybe<ITagWhereInput>;
 };
 
-export type QueryTagsConnectionArgs = {
+export type IQueryTagsConnectionArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<TagOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<ITagOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<TagWhereInput>;
+    stage?: IStage;
+    where?: Maybe<ITagWhereInput>;
 };
 
-export type QueryUserArgs = {
-    locales?: Array<Locale>;
-    stage?: Stage;
-    where: UserWhereUniqueInput;
+export type IQueryUserArgs = {
+    locales?: Array<ILocale>;
+    stage?: IStage;
+    where: IUserWhereUniqueInput;
 };
 
-export type QueryUsersArgs = {
+export type IQueryUsersArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<UserOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<IUserOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<UserWhereInput>;
+    stage?: IStage;
+    where?: Maybe<IUserWhereInput>;
 };
 
-export type QueryUsersConnectionArgs = {
+export type IQueryUsersConnectionArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Array<Locale>;
-    orderBy?: Maybe<UserOrderByInput>;
+    locales?: Array<ILocale>;
+    orderBy?: Maybe<IUserOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    stage?: Stage;
-    where?: Maybe<UserWhereInput>;
+    stage?: IStage;
+    where?: Maybe<IUserWhereInput>;
 };
 
 /** Representing a RGBA color value: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba() */
-export type Rgba = {
+export type IRgba = {
     __typename?: 'RGBA';
     a: Scalars['RGBATransparency'];
     b: Scalars['RGBAHue'];
@@ -2969,7 +2968,7 @@ export type Rgba = {
 };
 
 /** Input type representing a RGBA color value: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba() */
-export type RgbaInput = {
+export type IRgbaInput = {
     a: Scalars['RGBATransparency'];
     b: Scalars['RGBAHue'];
     g: Scalars['RGBAHue'];
@@ -2977,7 +2976,7 @@ export type RgbaInput = {
 };
 
 /** Custom type representing a rich text value comprising of raw rich text ast, html, markdown and text values */
-export type RichText = {
+export type IRichText = {
     __typename?: 'RichText';
     /** Returns HTMl representation */
     html: Scalars['String'];
@@ -2990,17 +2989,17 @@ export type RichText = {
 };
 
 /** Scheduled Operation system model */
-export type ScheduledOperation = Node & {
+export type IScheduledOperation = INode & {
     __typename?: 'ScheduledOperation';
-    affectedDocuments: Array<ScheduledOperationAffectedDocument>;
+    affectedDocuments: Array<IScheduledOperationAffectedDocument>;
     /** The time the document was created */
     createdAt: Scalars['DateTime'];
     /** User that created this document */
-    createdBy?: Maybe<User>;
+    createdBy?: Maybe<IUser>;
     /** Operation description */
     description?: Maybe<Scalars['String']>;
     /** Get the document in other stages */
-    documentInStages: Array<ScheduledOperation>;
+    documentInStages: Array<IScheduledOperation>;
     /** Operation error message */
     errorMessage?: Maybe<Scalars['String']>;
     /** The unique identifier */
@@ -3008,104 +3007,108 @@ export type ScheduledOperation = Node & {
     /** The time the document was published. Null on documents in draft stage. */
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** User that last published this document */
-    publishedBy?: Maybe<User>;
+    publishedBy?: Maybe<IUser>;
     /** Raw operation payload including all details, this field is subject to change */
     rawPayload: Scalars['Json'];
     /** The release this operation is scheduled for */
-    release?: Maybe<ScheduledRelease>;
+    release?: Maybe<IScheduledRelease>;
     /** System stage field */
-    stage: Stage;
+    stage: IStage;
     /** operation Status */
-    status: ScheduledOperationStatus;
+    status: IScheduledOperationStatus;
     /** The time the document was updated */
     updatedAt: Scalars['DateTime'];
     /** User that last updated this document */
-    updatedBy?: Maybe<User>;
+    updatedBy?: Maybe<IUser>;
 };
 
 /** Scheduled Operation system model */
-export type ScheduledOperationAffectedDocumentsArgs = {
+export type IScheduledOperationAffectedDocumentsArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
+    locales?: Maybe<Array<ILocale>>;
     skip?: Maybe<Scalars['Int']>;
 };
 
 /** Scheduled Operation system model */
-export type ScheduledOperationCreatedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IScheduledOperationCreatedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
 /** Scheduled Operation system model */
-export type ScheduledOperationDocumentInStagesArgs = {
+export type IScheduledOperationDocumentInStagesArgs = {
     includeCurrent?: Scalars['Boolean'];
     inheritLocale?: Scalars['Boolean'];
-    stages?: Array<Stage>;
+    stages?: Array<IStage>;
 };
 
 /** Scheduled Operation system model */
-export type ScheduledOperationPublishedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IScheduledOperationPublishedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
 /** Scheduled Operation system model */
-export type ScheduledOperationReleaseArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IScheduledOperationReleaseArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
 /** Scheduled Operation system model */
-export type ScheduledOperationUpdatedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IScheduledOperationUpdatedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Blog | Project | Tag;
+export type IScheduledOperationAffectedDocument =
+    | IAsset
+    | IBlog
+    | IProject
+    | ITag;
 
-export type ScheduledOperationConnectInput = {
+export type IScheduledOperationConnectInput = {
     /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-    position?: Maybe<ConnectPositionInput>;
+    position?: Maybe<IConnectPositionInput>;
     /** Document to connect */
-    where: ScheduledOperationWhereUniqueInput;
+    where: IScheduledOperationWhereUniqueInput;
 };
 
 /** A connection to a list of items. */
-export type ScheduledOperationConnection = {
+export type IScheduledOperationConnection = {
     __typename?: 'ScheduledOperationConnection';
-    aggregate: Aggregate;
+    aggregate: IAggregate;
     /** A list of edges. */
-    edges: Array<ScheduledOperationEdge>;
+    edges: Array<IScheduledOperationEdge>;
     /** Information to aid in pagination. */
-    pageInfo: PageInfo;
+    pageInfo: IPageInfo;
 };
 
-export type ScheduledOperationCreateManyInlineInput = {
+export type IScheduledOperationCreateManyInlineInput = {
     /** Connect multiple existing ScheduledOperation documents */
-    connect?: Maybe<Array<ScheduledOperationWhereUniqueInput>>;
+    connect?: Maybe<Array<IScheduledOperationWhereUniqueInput>>;
 };
 
-export type ScheduledOperationCreateOneInlineInput = {
+export type IScheduledOperationCreateOneInlineInput = {
     /** Connect one existing ScheduledOperation document */
-    connect?: Maybe<ScheduledOperationWhereUniqueInput>;
+    connect?: Maybe<IScheduledOperationWhereUniqueInput>;
 };
 
 /** An edge in a connection. */
-export type ScheduledOperationEdge = {
+export type IScheduledOperationEdge = {
     __typename?: 'ScheduledOperationEdge';
     /** A cursor for use in pagination. */
     cursor: Scalars['String'];
     /** The item at the end of the edge. */
-    node: ScheduledOperation;
+    node: IScheduledOperation;
 };
 
 /** Identifies documents */
-export type ScheduledOperationManyWhereInput = {
+export type IScheduledOperationManyWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<ScheduledOperationWhereInput>>;
+    AND?: Maybe<Array<IScheduledOperationWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<ScheduledOperationWhereInput>>;
+    NOT?: Maybe<Array<IScheduledOperationWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<ScheduledOperationWhereInput>>;
+    OR?: Maybe<Array<IScheduledOperationWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
     createdAt?: Maybe<Scalars['DateTime']>;
@@ -3123,7 +3126,7 @@ export type ScheduledOperationManyWhereInput = {
     createdAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    createdBy?: Maybe<UserWhereInput>;
+    createdBy?: Maybe<IUserWhereInput>;
     description?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     description_contains?: Maybe<Scalars['String']>;
@@ -3196,15 +3199,15 @@ export type ScheduledOperationManyWhereInput = {
     publishedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    publishedBy?: Maybe<UserWhereInput>;
-    release?: Maybe<ScheduledReleaseWhereInput>;
-    status?: Maybe<ScheduledOperationStatus>;
+    publishedBy?: Maybe<IUserWhereInput>;
+    release?: Maybe<IScheduledReleaseWhereInput>;
+    status?: Maybe<IScheduledOperationStatus>;
     /** All values that are contained in given list. */
-    status_in?: Maybe<Array<ScheduledOperationStatus>>;
+    status_in?: Maybe<Array<IScheduledOperationStatus>>;
     /** All values that are not equal to given value. */
-    status_not?: Maybe<ScheduledOperationStatus>;
+    status_not?: Maybe<IScheduledOperationStatus>;
     /** All values that are not contained in given list. */
-    status_not_in?: Maybe<Array<ScheduledOperationStatus>>;
+    status_not_in?: Maybe<Array<IScheduledOperationStatus>>;
     updatedAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     updatedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -3220,10 +3223,10 @@ export type ScheduledOperationManyWhereInput = {
     updatedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    updatedBy?: Maybe<UserWhereInput>;
+    updatedBy?: Maybe<IUserWhereInput>;
 };
 
-export enum ScheduledOperationOrderByInput {
+export enum IScheduledOperationOrderByInput {
     CreatedAtAsc = 'createdAt_ASC',
     CreatedAtDesc = 'createdAt_DESC',
     DescriptionAsc = 'description_ASC',
@@ -3241,7 +3244,7 @@ export enum ScheduledOperationOrderByInput {
 }
 
 /** System Scheduled Operation Status */
-export enum ScheduledOperationStatus {
+export enum IScheduledOperationStatus {
     Canceled = 'CANCELED',
     Completed = 'COMPLETED',
     Failed = 'FAILED',
@@ -3249,30 +3252,30 @@ export enum ScheduledOperationStatus {
     Pending = 'PENDING',
 }
 
-export type ScheduledOperationUpdateManyInlineInput = {
+export type IScheduledOperationUpdateManyInlineInput = {
     /** Connect multiple existing ScheduledOperation documents */
-    connect?: Maybe<Array<ScheduledOperationConnectInput>>;
+    connect?: Maybe<Array<IScheduledOperationConnectInput>>;
     /** Disconnect multiple ScheduledOperation documents */
-    disconnect?: Maybe<Array<ScheduledOperationWhereUniqueInput>>;
+    disconnect?: Maybe<Array<IScheduledOperationWhereUniqueInput>>;
     /** Override currently-connected documents with multiple existing ScheduledOperation documents */
-    set?: Maybe<Array<ScheduledOperationWhereUniqueInput>>;
+    set?: Maybe<Array<IScheduledOperationWhereUniqueInput>>;
 };
 
-export type ScheduledOperationUpdateOneInlineInput = {
+export type IScheduledOperationUpdateOneInlineInput = {
     /** Connect existing ScheduledOperation document */
-    connect?: Maybe<ScheduledOperationWhereUniqueInput>;
+    connect?: Maybe<IScheduledOperationWhereUniqueInput>;
     /** Disconnect currently connected ScheduledOperation document */
     disconnect?: Maybe<Scalars['Boolean']>;
 };
 
 /** Identifies documents */
-export type ScheduledOperationWhereInput = {
+export type IScheduledOperationWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<ScheduledOperationWhereInput>>;
+    AND?: Maybe<Array<IScheduledOperationWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<ScheduledOperationWhereInput>>;
+    NOT?: Maybe<Array<IScheduledOperationWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<ScheduledOperationWhereInput>>;
+    OR?: Maybe<Array<IScheduledOperationWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
     createdAt?: Maybe<Scalars['DateTime']>;
@@ -3290,7 +3293,7 @@ export type ScheduledOperationWhereInput = {
     createdAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    createdBy?: Maybe<UserWhereInput>;
+    createdBy?: Maybe<IUserWhereInput>;
     description?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     description_contains?: Maybe<Scalars['String']>;
@@ -3363,15 +3366,15 @@ export type ScheduledOperationWhereInput = {
     publishedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    publishedBy?: Maybe<UserWhereInput>;
-    release?: Maybe<ScheduledReleaseWhereInput>;
-    status?: Maybe<ScheduledOperationStatus>;
+    publishedBy?: Maybe<IUserWhereInput>;
+    release?: Maybe<IScheduledReleaseWhereInput>;
+    status?: Maybe<IScheduledOperationStatus>;
     /** All values that are contained in given list. */
-    status_in?: Maybe<Array<ScheduledOperationStatus>>;
+    status_in?: Maybe<Array<IScheduledOperationStatus>>;
     /** All values that are not equal to given value. */
-    status_not?: Maybe<ScheduledOperationStatus>;
+    status_not?: Maybe<IScheduledOperationStatus>;
     /** All values that are not contained in given list. */
-    status_not_in?: Maybe<Array<ScheduledOperationStatus>>;
+    status_not_in?: Maybe<Array<IScheduledOperationStatus>>;
     updatedAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     updatedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -3387,25 +3390,25 @@ export type ScheduledOperationWhereInput = {
     updatedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    updatedBy?: Maybe<UserWhereInput>;
+    updatedBy?: Maybe<IUserWhereInput>;
 };
 
 /** References ScheduledOperation record uniquely */
-export type ScheduledOperationWhereUniqueInput = {
+export type IScheduledOperationWhereUniqueInput = {
     id?: Maybe<Scalars['ID']>;
 };
 
 /** Scheduled Release system model */
-export type ScheduledRelease = Node & {
+export type IScheduledRelease = INode & {
     __typename?: 'ScheduledRelease';
     /** The time the document was created */
     createdAt: Scalars['DateTime'];
     /** User that created this document */
-    createdBy?: Maybe<User>;
+    createdBy?: Maybe<IUser>;
     /** Release description */
     description?: Maybe<Scalars['String']>;
     /** Get the document in other stages */
-    documentInStages: Array<ScheduledRelease>;
+    documentInStages: Array<IScheduledRelease>;
     /** Release error message */
     errorMessage?: Maybe<Scalars['String']>;
     /** The unique identifier */
@@ -3415,77 +3418,77 @@ export type ScheduledRelease = Node & {
     /** Whether scheduled release is implicit */
     isImplicit: Scalars['Boolean'];
     /** Operations to run with this release */
-    operations: Array<ScheduledOperation>;
+    operations: Array<IScheduledOperation>;
     /** The time the document was published. Null on documents in draft stage. */
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** User that last published this document */
-    publishedBy?: Maybe<User>;
+    publishedBy?: Maybe<IUser>;
     /** Release date and time */
     releaseAt?: Maybe<Scalars['DateTime']>;
     /** System stage field */
-    stage: Stage;
+    stage: IStage;
     /** Release Status */
-    status: ScheduledReleaseStatus;
+    status: IScheduledReleaseStatus;
     /** Release Title */
     title?: Maybe<Scalars['String']>;
     /** The time the document was updated */
     updatedAt: Scalars['DateTime'];
     /** User that last updated this document */
-    updatedBy?: Maybe<User>;
+    updatedBy?: Maybe<IUser>;
 };
 
 /** Scheduled Release system model */
-export type ScheduledReleaseCreatedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IScheduledReleaseCreatedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
 /** Scheduled Release system model */
-export type ScheduledReleaseDocumentInStagesArgs = {
+export type IScheduledReleaseDocumentInStagesArgs = {
     includeCurrent?: Scalars['Boolean'];
     inheritLocale?: Scalars['Boolean'];
-    stages?: Array<Stage>;
+    stages?: Array<IStage>;
 };
 
 /** Scheduled Release system model */
-export type ScheduledReleaseOperationsArgs = {
+export type IScheduledReleaseOperationsArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
-    orderBy?: Maybe<ScheduledOperationOrderByInput>;
+    locales?: Maybe<Array<ILocale>>;
+    orderBy?: Maybe<IScheduledOperationOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<ScheduledOperationWhereInput>;
+    where?: Maybe<IScheduledOperationWhereInput>;
 };
 
 /** Scheduled Release system model */
-export type ScheduledReleasePublishedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IScheduledReleasePublishedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
 /** Scheduled Release system model */
-export type ScheduledReleaseUpdatedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type IScheduledReleaseUpdatedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
-export type ScheduledReleaseConnectInput = {
+export type IScheduledReleaseConnectInput = {
     /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-    position?: Maybe<ConnectPositionInput>;
+    position?: Maybe<IConnectPositionInput>;
     /** Document to connect */
-    where: ScheduledReleaseWhereUniqueInput;
+    where: IScheduledReleaseWhereUniqueInput;
 };
 
 /** A connection to a list of items. */
-export type ScheduledReleaseConnection = {
+export type IScheduledReleaseConnection = {
     __typename?: 'ScheduledReleaseConnection';
-    aggregate: Aggregate;
+    aggregate: IAggregate;
     /** A list of edges. */
-    edges: Array<ScheduledReleaseEdge>;
+    edges: Array<IScheduledReleaseEdge>;
     /** Information to aid in pagination. */
-    pageInfo: PageInfo;
+    pageInfo: IPageInfo;
 };
 
-export type ScheduledReleaseCreateInput = {
+export type IScheduledReleaseCreateInput = {
     createdAt?: Maybe<Scalars['DateTime']>;
     description?: Maybe<Scalars['String']>;
     errorMessage?: Maybe<Scalars['String']>;
@@ -3495,37 +3498,37 @@ export type ScheduledReleaseCreateInput = {
     updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type ScheduledReleaseCreateManyInlineInput = {
+export type IScheduledReleaseCreateManyInlineInput = {
     /** Connect multiple existing ScheduledRelease documents */
-    connect?: Maybe<Array<ScheduledReleaseWhereUniqueInput>>;
+    connect?: Maybe<Array<IScheduledReleaseWhereUniqueInput>>;
     /** Create and connect multiple existing ScheduledRelease documents */
-    create?: Maybe<Array<ScheduledReleaseCreateInput>>;
+    create?: Maybe<Array<IScheduledReleaseCreateInput>>;
 };
 
-export type ScheduledReleaseCreateOneInlineInput = {
+export type IScheduledReleaseCreateOneInlineInput = {
     /** Connect one existing ScheduledRelease document */
-    connect?: Maybe<ScheduledReleaseWhereUniqueInput>;
+    connect?: Maybe<IScheduledReleaseWhereUniqueInput>;
     /** Create and connect one ScheduledRelease document */
-    create?: Maybe<ScheduledReleaseCreateInput>;
+    create?: Maybe<IScheduledReleaseCreateInput>;
 };
 
 /** An edge in a connection. */
-export type ScheduledReleaseEdge = {
+export type IScheduledReleaseEdge = {
     __typename?: 'ScheduledReleaseEdge';
     /** A cursor for use in pagination. */
     cursor: Scalars['String'];
     /** The item at the end of the edge. */
-    node: ScheduledRelease;
+    node: IScheduledRelease;
 };
 
 /** Identifies documents */
-export type ScheduledReleaseManyWhereInput = {
+export type IScheduledReleaseManyWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<ScheduledReleaseWhereInput>>;
+    AND?: Maybe<Array<IScheduledReleaseWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<ScheduledReleaseWhereInput>>;
+    NOT?: Maybe<Array<IScheduledReleaseWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<ScheduledReleaseWhereInput>>;
+    OR?: Maybe<Array<IScheduledReleaseWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
     createdAt?: Maybe<Scalars['DateTime']>;
@@ -3543,7 +3546,7 @@ export type ScheduledReleaseManyWhereInput = {
     createdAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    createdBy?: Maybe<UserWhereInput>;
+    createdBy?: Maybe<IUserWhereInput>;
     description?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     description_contains?: Maybe<Scalars['String']>;
@@ -3607,9 +3610,9 @@ export type ScheduledReleaseManyWhereInput = {
     isImplicit?: Maybe<Scalars['Boolean']>;
     /** All values that are not equal to given value. */
     isImplicit_not?: Maybe<Scalars['Boolean']>;
-    operations_every?: Maybe<ScheduledOperationWhereInput>;
-    operations_none?: Maybe<ScheduledOperationWhereInput>;
-    operations_some?: Maybe<ScheduledOperationWhereInput>;
+    operations_every?: Maybe<IScheduledOperationWhereInput>;
+    operations_none?: Maybe<IScheduledOperationWhereInput>;
+    operations_some?: Maybe<IScheduledOperationWhereInput>;
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     publishedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -3625,7 +3628,7 @@ export type ScheduledReleaseManyWhereInput = {
     publishedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    publishedBy?: Maybe<UserWhereInput>;
+    publishedBy?: Maybe<IUserWhereInput>;
     releaseAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     releaseAt_gt?: Maybe<Scalars['DateTime']>;
@@ -3641,13 +3644,13 @@ export type ScheduledReleaseManyWhereInput = {
     releaseAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     releaseAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    status?: Maybe<ScheduledReleaseStatus>;
+    status?: Maybe<IScheduledReleaseStatus>;
     /** All values that are contained in given list. */
-    status_in?: Maybe<Array<ScheduledReleaseStatus>>;
+    status_in?: Maybe<Array<IScheduledReleaseStatus>>;
     /** All values that are not equal to given value. */
-    status_not?: Maybe<ScheduledReleaseStatus>;
+    status_not?: Maybe<IScheduledReleaseStatus>;
     /** All values that are not contained in given list. */
-    status_not_in?: Maybe<Array<ScheduledReleaseStatus>>;
+    status_not_in?: Maybe<Array<IScheduledReleaseStatus>>;
     title?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     title_contains?: Maybe<Scalars['String']>;
@@ -3682,10 +3685,10 @@ export type ScheduledReleaseManyWhereInput = {
     updatedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    updatedBy?: Maybe<UserWhereInput>;
+    updatedBy?: Maybe<IUserWhereInput>;
 };
 
-export enum ScheduledReleaseOrderByInput {
+export enum IScheduledReleaseOrderByInput {
     CreatedAtAsc = 'createdAt_ASC',
     CreatedAtDesc = 'createdAt_DESC',
     DescriptionAsc = 'description_ASC',
@@ -3711,14 +3714,14 @@ export enum ScheduledReleaseOrderByInput {
 }
 
 /** System Scheduled Release Status */
-export enum ScheduledReleaseStatus {
+export enum IScheduledReleaseStatus {
     Completed = 'COMPLETED',
     Failed = 'FAILED',
     InProgress = 'IN_PROGRESS',
     Pending = 'PENDING',
 }
 
-export type ScheduledReleaseUpdateInput = {
+export type IScheduledReleaseUpdateInput = {
     description?: Maybe<Scalars['String']>;
     errorMessage?: Maybe<Scalars['String']>;
     isActive?: Maybe<Scalars['Boolean']>;
@@ -3726,24 +3729,24 @@ export type ScheduledReleaseUpdateInput = {
     title?: Maybe<Scalars['String']>;
 };
 
-export type ScheduledReleaseUpdateManyInlineInput = {
+export type IScheduledReleaseUpdateManyInlineInput = {
     /** Connect multiple existing ScheduledRelease documents */
-    connect?: Maybe<Array<ScheduledReleaseConnectInput>>;
+    connect?: Maybe<Array<IScheduledReleaseConnectInput>>;
     /** Create and connect multiple ScheduledRelease documents */
-    create?: Maybe<Array<ScheduledReleaseCreateInput>>;
+    create?: Maybe<Array<IScheduledReleaseCreateInput>>;
     /** Delete multiple ScheduledRelease documents */
-    delete?: Maybe<Array<ScheduledReleaseWhereUniqueInput>>;
+    delete?: Maybe<Array<IScheduledReleaseWhereUniqueInput>>;
     /** Disconnect multiple ScheduledRelease documents */
-    disconnect?: Maybe<Array<ScheduledReleaseWhereUniqueInput>>;
+    disconnect?: Maybe<Array<IScheduledReleaseWhereUniqueInput>>;
     /** Override currently-connected documents with multiple existing ScheduledRelease documents */
-    set?: Maybe<Array<ScheduledReleaseWhereUniqueInput>>;
+    set?: Maybe<Array<IScheduledReleaseWhereUniqueInput>>;
     /** Update multiple ScheduledRelease documents */
-    update?: Maybe<Array<ScheduledReleaseUpdateWithNestedWhereUniqueInput>>;
+    update?: Maybe<Array<IScheduledReleaseUpdateWithNestedWhereUniqueInput>>;
     /** Upsert multiple ScheduledRelease documents */
-    upsert?: Maybe<Array<ScheduledReleaseUpsertWithNestedWhereUniqueInput>>;
+    upsert?: Maybe<Array<IScheduledReleaseUpsertWithNestedWhereUniqueInput>>;
 };
 
-export type ScheduledReleaseUpdateManyInput = {
+export type IScheduledReleaseUpdateManyInput = {
     description?: Maybe<Scalars['String']>;
     errorMessage?: Maybe<Scalars['String']>;
     isActive?: Maybe<Scalars['Boolean']>;
@@ -3751,57 +3754,57 @@ export type ScheduledReleaseUpdateManyInput = {
     title?: Maybe<Scalars['String']>;
 };
 
-export type ScheduledReleaseUpdateManyWithNestedWhereInput = {
+export type IScheduledReleaseUpdateManyWithNestedWhereInput = {
     /** Update many input */
-    data: ScheduledReleaseUpdateManyInput;
+    data: IScheduledReleaseUpdateManyInput;
     /** Document search */
-    where: ScheduledReleaseWhereInput;
+    where: IScheduledReleaseWhereInput;
 };
 
-export type ScheduledReleaseUpdateOneInlineInput = {
+export type IScheduledReleaseUpdateOneInlineInput = {
     /** Connect existing ScheduledRelease document */
-    connect?: Maybe<ScheduledReleaseWhereUniqueInput>;
+    connect?: Maybe<IScheduledReleaseWhereUniqueInput>;
     /** Create and connect one ScheduledRelease document */
-    create?: Maybe<ScheduledReleaseCreateInput>;
+    create?: Maybe<IScheduledReleaseCreateInput>;
     /** Delete currently connected ScheduledRelease document */
     delete?: Maybe<Scalars['Boolean']>;
     /** Disconnect currently connected ScheduledRelease document */
     disconnect?: Maybe<Scalars['Boolean']>;
     /** Update single ScheduledRelease document */
-    update?: Maybe<ScheduledReleaseUpdateWithNestedWhereUniqueInput>;
+    update?: Maybe<IScheduledReleaseUpdateWithNestedWhereUniqueInput>;
     /** Upsert single ScheduledRelease document */
-    upsert?: Maybe<ScheduledReleaseUpsertWithNestedWhereUniqueInput>;
+    upsert?: Maybe<IScheduledReleaseUpsertWithNestedWhereUniqueInput>;
 };
 
-export type ScheduledReleaseUpdateWithNestedWhereUniqueInput = {
+export type IScheduledReleaseUpdateWithNestedWhereUniqueInput = {
     /** Document to update */
-    data: ScheduledReleaseUpdateInput;
+    data: IScheduledReleaseUpdateInput;
     /** Unique document search */
-    where: ScheduledReleaseWhereUniqueInput;
+    where: IScheduledReleaseWhereUniqueInput;
 };
 
-export type ScheduledReleaseUpsertInput = {
+export type IScheduledReleaseUpsertInput = {
     /** Create document if it didn't exist */
-    create: ScheduledReleaseCreateInput;
+    create: IScheduledReleaseCreateInput;
     /** Update document if it exists */
-    update: ScheduledReleaseUpdateInput;
+    update: IScheduledReleaseUpdateInput;
 };
 
-export type ScheduledReleaseUpsertWithNestedWhereUniqueInput = {
+export type IScheduledReleaseUpsertWithNestedWhereUniqueInput = {
     /** Upsert data */
-    data: ScheduledReleaseUpsertInput;
+    data: IScheduledReleaseUpsertInput;
     /** Unique document search */
-    where: ScheduledReleaseWhereUniqueInput;
+    where: IScheduledReleaseWhereUniqueInput;
 };
 
 /** Identifies documents */
-export type ScheduledReleaseWhereInput = {
+export type IScheduledReleaseWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<ScheduledReleaseWhereInput>>;
+    AND?: Maybe<Array<IScheduledReleaseWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<ScheduledReleaseWhereInput>>;
+    NOT?: Maybe<Array<IScheduledReleaseWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<ScheduledReleaseWhereInput>>;
+    OR?: Maybe<Array<IScheduledReleaseWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
     createdAt?: Maybe<Scalars['DateTime']>;
@@ -3819,7 +3822,7 @@ export type ScheduledReleaseWhereInput = {
     createdAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    createdBy?: Maybe<UserWhereInput>;
+    createdBy?: Maybe<IUserWhereInput>;
     description?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     description_contains?: Maybe<Scalars['String']>;
@@ -3883,9 +3886,9 @@ export type ScheduledReleaseWhereInput = {
     isImplicit?: Maybe<Scalars['Boolean']>;
     /** All values that are not equal to given value. */
     isImplicit_not?: Maybe<Scalars['Boolean']>;
-    operations_every?: Maybe<ScheduledOperationWhereInput>;
-    operations_none?: Maybe<ScheduledOperationWhereInput>;
-    operations_some?: Maybe<ScheduledOperationWhereInput>;
+    operations_every?: Maybe<IScheduledOperationWhereInput>;
+    operations_none?: Maybe<IScheduledOperationWhereInput>;
+    operations_some?: Maybe<IScheduledOperationWhereInput>;
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     publishedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -3901,7 +3904,7 @@ export type ScheduledReleaseWhereInput = {
     publishedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    publishedBy?: Maybe<UserWhereInput>;
+    publishedBy?: Maybe<IUserWhereInput>;
     releaseAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     releaseAt_gt?: Maybe<Scalars['DateTime']>;
@@ -3917,13 +3920,13 @@ export type ScheduledReleaseWhereInput = {
     releaseAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     releaseAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    status?: Maybe<ScheduledReleaseStatus>;
+    status?: Maybe<IScheduledReleaseStatus>;
     /** All values that are contained in given list. */
-    status_in?: Maybe<Array<ScheduledReleaseStatus>>;
+    status_in?: Maybe<Array<IScheduledReleaseStatus>>;
     /** All values that are not equal to given value. */
-    status_not?: Maybe<ScheduledReleaseStatus>;
+    status_not?: Maybe<IScheduledReleaseStatus>;
     /** All values that are not contained in given list. */
-    status_not_in?: Maybe<Array<ScheduledReleaseStatus>>;
+    status_not_in?: Maybe<Array<IScheduledReleaseStatus>>;
     title?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     title_contains?: Maybe<Scalars['String']>;
@@ -3958,194 +3961,194 @@ export type ScheduledReleaseWhereInput = {
     updatedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    updatedBy?: Maybe<UserWhereInput>;
+    updatedBy?: Maybe<IUserWhereInput>;
 };
 
 /** References ScheduledRelease record uniquely */
-export type ScheduledReleaseWhereUniqueInput = {
+export type IScheduledReleaseWhereUniqueInput = {
     id?: Maybe<Scalars['ID']>;
 };
 
 /** Stage system enumeration */
-export enum Stage {
+export enum IStage {
     /** The Draft is the default stage for all your content. */
     Draft = 'DRAFT',
     /** The Published stage is where you can publish your content to. */
     Published = 'PUBLISHED',
 }
 
-export enum SystemDateTimeFieldVariation {
+export enum ISystemDateTimeFieldVariation {
     Base = 'BASE',
     Combined = 'COMBINED',
     Localization = 'LOCALIZATION',
 }
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
-export type Tag = Node & {
+export type ITag = INode & {
     __typename?: 'Tag';
-    blog: Array<Blog>;
+    blog: Array<IBlog>;
     color: Scalars['String'];
-    colorScheme: ColorScheme;
+    colorScheme: IColorScheme;
     /** The time the document was created */
     createdAt: Scalars['DateTime'];
     /** User that created this document */
-    createdBy?: Maybe<User>;
+    createdBy?: Maybe<IUser>;
     /** Get the document in other stages */
-    documentInStages: Array<Tag>;
+    documentInStages: Array<ITag>;
     /** List of Tag versions */
-    history: Array<Version>;
+    history: Array<IVersion>;
     /** The unique identifier */
     id: Scalars['ID'];
-    project: Array<Project>;
+    project: Array<IProject>;
     /** The time the document was published. Null on documents in draft stage. */
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** User that last published this document */
-    publishedBy?: Maybe<User>;
-    scheduledIn: Array<ScheduledOperation>;
+    publishedBy?: Maybe<IUser>;
+    scheduledIn: Array<IScheduledOperation>;
     /** System stage field */
-    stage: Stage;
+    stage: IStage;
     /** The time the document was updated */
     updatedAt: Scalars['DateTime'];
     /** User that last updated this document */
-    updatedBy?: Maybe<User>;
+    updatedBy?: Maybe<IUser>;
     value: Scalars['String'];
 };
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
-export type TagBlogArgs = {
+export type ITagBlogArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
-    orderBy?: Maybe<BlogOrderByInput>;
+    locales?: Maybe<Array<ILocale>>;
+    orderBy?: Maybe<IBlogOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<BlogWhereInput>;
+    where?: Maybe<IBlogWhereInput>;
 };
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
-export type TagCreatedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type ITagCreatedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
-export type TagDocumentInStagesArgs = {
+export type ITagDocumentInStagesArgs = {
     includeCurrent?: Scalars['Boolean'];
     inheritLocale?: Scalars['Boolean'];
-    stages?: Array<Stage>;
+    stages?: Array<IStage>;
 };
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
-export type TagHistoryArgs = {
+export type ITagHistoryArgs = {
     limit?: Scalars['Int'];
     skip?: Scalars['Int'];
-    stageOverride?: Maybe<Stage>;
+    stageOverride?: Maybe<IStage>;
 };
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
-export type TagProjectArgs = {
+export type ITagProjectArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
-    orderBy?: Maybe<ProjectOrderByInput>;
+    locales?: Maybe<Array<ILocale>>;
+    orderBy?: Maybe<IProjectOrderByInput>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<ProjectWhereInput>;
+    where?: Maybe<IProjectWhereInput>;
 };
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
-export type TagPublishedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type ITagPublishedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
-export type TagScheduledInArgs = {
+export type ITagScheduledInArgs = {
     after?: Maybe<Scalars['String']>;
     before?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
     last?: Maybe<Scalars['Int']>;
-    locales?: Maybe<Array<Locale>>;
+    locales?: Maybe<Array<ILocale>>;
     skip?: Maybe<Scalars['Int']>;
-    where?: Maybe<ScheduledOperationWhereInput>;
+    where?: Maybe<IScheduledOperationWhereInput>;
 };
 
 /** A way of categorizing blog posts, projects and bytes learning series.  */
-export type TagUpdatedByArgs = {
-    locales?: Maybe<Array<Locale>>;
+export type ITagUpdatedByArgs = {
+    locales?: Maybe<Array<ILocale>>;
 };
 
-export type TagConnectInput = {
+export type ITagConnectInput = {
     /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-    position?: Maybe<ConnectPositionInput>;
+    position?: Maybe<IConnectPositionInput>;
     /** Document to connect */
-    where: TagWhereUniqueInput;
+    where: ITagWhereUniqueInput;
 };
 
 /** A connection to a list of items. */
-export type TagConnection = {
+export type ITagConnection = {
     __typename?: 'TagConnection';
-    aggregate: Aggregate;
+    aggregate: IAggregate;
     /** A list of edges. */
-    edges: Array<TagEdge>;
+    edges: Array<ITagEdge>;
     /** Information to aid in pagination. */
-    pageInfo: PageInfo;
+    pageInfo: IPageInfo;
 };
 
-export type TagCreateInput = {
-    blog?: Maybe<BlogCreateManyInlineInput>;
+export type ITagCreateInput = {
+    blog?: Maybe<IBlogCreateManyInlineInput>;
     color: Scalars['String'];
-    colorScheme: ColorScheme;
+    colorScheme: IColorScheme;
     createdAt?: Maybe<Scalars['DateTime']>;
-    project?: Maybe<ProjectCreateManyInlineInput>;
+    project?: Maybe<IProjectCreateManyInlineInput>;
     updatedAt?: Maybe<Scalars['DateTime']>;
     value: Scalars['String'];
 };
 
-export type TagCreateManyInlineInput = {
+export type ITagCreateManyInlineInput = {
     /** Connect multiple existing Tag documents */
-    connect?: Maybe<Array<TagWhereUniqueInput>>;
+    connect?: Maybe<Array<ITagWhereUniqueInput>>;
     /** Create and connect multiple existing Tag documents */
-    create?: Maybe<Array<TagCreateInput>>;
+    create?: Maybe<Array<ITagCreateInput>>;
 };
 
-export type TagCreateOneInlineInput = {
+export type ITagCreateOneInlineInput = {
     /** Connect one existing Tag document */
-    connect?: Maybe<TagWhereUniqueInput>;
+    connect?: Maybe<ITagWhereUniqueInput>;
     /** Create and connect one Tag document */
-    create?: Maybe<TagCreateInput>;
+    create?: Maybe<ITagCreateInput>;
 };
 
 /** An edge in a connection. */
-export type TagEdge = {
+export type ITagEdge = {
     __typename?: 'TagEdge';
     /** A cursor for use in pagination. */
     cursor: Scalars['String'];
     /** The item at the end of the edge. */
-    node: Tag;
+    node: ITag;
 };
 
 /** Identifies documents */
-export type TagManyWhereInput = {
+export type ITagManyWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<TagWhereInput>>;
+    AND?: Maybe<Array<ITagWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<TagWhereInput>>;
+    NOT?: Maybe<Array<ITagWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<TagWhereInput>>;
+    OR?: Maybe<Array<ITagWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
-    blog_every?: Maybe<BlogWhereInput>;
-    blog_none?: Maybe<BlogWhereInput>;
-    blog_some?: Maybe<BlogWhereInput>;
+    blog_every?: Maybe<IBlogWhereInput>;
+    blog_none?: Maybe<IBlogWhereInput>;
+    blog_some?: Maybe<IBlogWhereInput>;
     color?: Maybe<Scalars['String']>;
-    colorScheme?: Maybe<ColorScheme>;
+    colorScheme?: Maybe<IColorScheme>;
     /** All values that are contained in given list. */
-    colorScheme_in?: Maybe<Array<ColorScheme>>;
+    colorScheme_in?: Maybe<Array<IColorScheme>>;
     /** All values that are not equal to given value. */
-    colorScheme_not?: Maybe<ColorScheme>;
+    colorScheme_not?: Maybe<IColorScheme>;
     /** All values that are not contained in given list. */
-    colorScheme_not_in?: Maybe<Array<ColorScheme>>;
+    colorScheme_not_in?: Maybe<Array<IColorScheme>>;
     /** All values containing the given string. */
     color_contains?: Maybe<Scalars['String']>;
     /** All values ending with the given string. */
@@ -4179,7 +4182,7 @@ export type TagManyWhereInput = {
     createdAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    createdBy?: Maybe<UserWhereInput>;
+    createdBy?: Maybe<IUserWhereInput>;
     id?: Maybe<Scalars['ID']>;
     /** All values containing the given string. */
     id_contains?: Maybe<Scalars['ID']>;
@@ -4199,9 +4202,9 @@ export type TagManyWhereInput = {
     id_not_starts_with?: Maybe<Scalars['ID']>;
     /** All values starting with the given string. */
     id_starts_with?: Maybe<Scalars['ID']>;
-    project_every?: Maybe<ProjectWhereInput>;
-    project_none?: Maybe<ProjectWhereInput>;
-    project_some?: Maybe<ProjectWhereInput>;
+    project_every?: Maybe<IProjectWhereInput>;
+    project_none?: Maybe<IProjectWhereInput>;
+    project_some?: Maybe<IProjectWhereInput>;
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     publishedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -4217,10 +4220,10 @@ export type TagManyWhereInput = {
     publishedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    publishedBy?: Maybe<UserWhereInput>;
-    scheduledIn_every?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_none?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_some?: Maybe<ScheduledOperationWhereInput>;
+    publishedBy?: Maybe<IUserWhereInput>;
+    scheduledIn_every?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_none?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_some?: Maybe<IScheduledOperationWhereInput>;
     updatedAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     updatedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -4236,7 +4239,7 @@ export type TagManyWhereInput = {
     updatedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    updatedBy?: Maybe<UserWhereInput>;
+    updatedBy?: Maybe<IUserWhereInput>;
     value?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     value_contains?: Maybe<Scalars['String']>;
@@ -4258,7 +4261,7 @@ export type TagManyWhereInput = {
     value_starts_with?: Maybe<Scalars['String']>;
 };
 
-export enum TagOrderByInput {
+export enum ITagOrderByInput {
     ColorSchemeAsc = 'colorScheme_ASC',
     ColorSchemeDesc = 'colorScheme_DESC',
     ColorAsc = 'color_ASC',
@@ -4275,101 +4278,101 @@ export enum TagOrderByInput {
     ValueDesc = 'value_DESC',
 }
 
-export type TagUpdateInput = {
-    blog?: Maybe<BlogUpdateManyInlineInput>;
+export type ITagUpdateInput = {
+    blog?: Maybe<IBlogUpdateManyInlineInput>;
     color?: Maybe<Scalars['String']>;
-    colorScheme?: Maybe<ColorScheme>;
-    project?: Maybe<ProjectUpdateManyInlineInput>;
+    colorScheme?: Maybe<IColorScheme>;
+    project?: Maybe<IProjectUpdateManyInlineInput>;
     value?: Maybe<Scalars['String']>;
 };
 
-export type TagUpdateManyInlineInput = {
+export type ITagUpdateManyInlineInput = {
     /** Connect multiple existing Tag documents */
-    connect?: Maybe<Array<TagConnectInput>>;
+    connect?: Maybe<Array<ITagConnectInput>>;
     /** Create and connect multiple Tag documents */
-    create?: Maybe<Array<TagCreateInput>>;
+    create?: Maybe<Array<ITagCreateInput>>;
     /** Delete multiple Tag documents */
-    delete?: Maybe<Array<TagWhereUniqueInput>>;
+    delete?: Maybe<Array<ITagWhereUniqueInput>>;
     /** Disconnect multiple Tag documents */
-    disconnect?: Maybe<Array<TagWhereUniqueInput>>;
+    disconnect?: Maybe<Array<ITagWhereUniqueInput>>;
     /** Override currently-connected documents with multiple existing Tag documents */
-    set?: Maybe<Array<TagWhereUniqueInput>>;
+    set?: Maybe<Array<ITagWhereUniqueInput>>;
     /** Update multiple Tag documents */
-    update?: Maybe<Array<TagUpdateWithNestedWhereUniqueInput>>;
+    update?: Maybe<Array<ITagUpdateWithNestedWhereUniqueInput>>;
     /** Upsert multiple Tag documents */
-    upsert?: Maybe<Array<TagUpsertWithNestedWhereUniqueInput>>;
+    upsert?: Maybe<Array<ITagUpsertWithNestedWhereUniqueInput>>;
 };
 
-export type TagUpdateManyInput = {
+export type ITagUpdateManyInput = {
     color?: Maybe<Scalars['String']>;
-    colorScheme?: Maybe<ColorScheme>;
+    colorScheme?: Maybe<IColorScheme>;
     value?: Maybe<Scalars['String']>;
 };
 
-export type TagUpdateManyWithNestedWhereInput = {
+export type ITagUpdateManyWithNestedWhereInput = {
     /** Update many input */
-    data: TagUpdateManyInput;
+    data: ITagUpdateManyInput;
     /** Document search */
-    where: TagWhereInput;
+    where: ITagWhereInput;
 };
 
-export type TagUpdateOneInlineInput = {
+export type ITagUpdateOneInlineInput = {
     /** Connect existing Tag document */
-    connect?: Maybe<TagWhereUniqueInput>;
+    connect?: Maybe<ITagWhereUniqueInput>;
     /** Create and connect one Tag document */
-    create?: Maybe<TagCreateInput>;
+    create?: Maybe<ITagCreateInput>;
     /** Delete currently connected Tag document */
     delete?: Maybe<Scalars['Boolean']>;
     /** Disconnect currently connected Tag document */
     disconnect?: Maybe<Scalars['Boolean']>;
     /** Update single Tag document */
-    update?: Maybe<TagUpdateWithNestedWhereUniqueInput>;
+    update?: Maybe<ITagUpdateWithNestedWhereUniqueInput>;
     /** Upsert single Tag document */
-    upsert?: Maybe<TagUpsertWithNestedWhereUniqueInput>;
+    upsert?: Maybe<ITagUpsertWithNestedWhereUniqueInput>;
 };
 
-export type TagUpdateWithNestedWhereUniqueInput = {
+export type ITagUpdateWithNestedWhereUniqueInput = {
     /** Document to update */
-    data: TagUpdateInput;
+    data: ITagUpdateInput;
     /** Unique document search */
-    where: TagWhereUniqueInput;
+    where: ITagWhereUniqueInput;
 };
 
-export type TagUpsertInput = {
+export type ITagUpsertInput = {
     /** Create document if it didn't exist */
-    create: TagCreateInput;
+    create: ITagCreateInput;
     /** Update document if it exists */
-    update: TagUpdateInput;
+    update: ITagUpdateInput;
 };
 
-export type TagUpsertWithNestedWhereUniqueInput = {
+export type ITagUpsertWithNestedWhereUniqueInput = {
     /** Upsert data */
-    data: TagUpsertInput;
+    data: ITagUpsertInput;
     /** Unique document search */
-    where: TagWhereUniqueInput;
+    where: ITagWhereUniqueInput;
 };
 
 /** Identifies documents */
-export type TagWhereInput = {
+export type ITagWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<TagWhereInput>>;
+    AND?: Maybe<Array<ITagWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<TagWhereInput>>;
+    NOT?: Maybe<Array<ITagWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<TagWhereInput>>;
+    OR?: Maybe<Array<ITagWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
-    blog_every?: Maybe<BlogWhereInput>;
-    blog_none?: Maybe<BlogWhereInput>;
-    blog_some?: Maybe<BlogWhereInput>;
+    blog_every?: Maybe<IBlogWhereInput>;
+    blog_none?: Maybe<IBlogWhereInput>;
+    blog_some?: Maybe<IBlogWhereInput>;
     color?: Maybe<Scalars['String']>;
-    colorScheme?: Maybe<ColorScheme>;
+    colorScheme?: Maybe<IColorScheme>;
     /** All values that are contained in given list. */
-    colorScheme_in?: Maybe<Array<ColorScheme>>;
+    colorScheme_in?: Maybe<Array<IColorScheme>>;
     /** All values that are not equal to given value. */
-    colorScheme_not?: Maybe<ColorScheme>;
+    colorScheme_not?: Maybe<IColorScheme>;
     /** All values that are not contained in given list. */
-    colorScheme_not_in?: Maybe<Array<ColorScheme>>;
+    colorScheme_not_in?: Maybe<Array<IColorScheme>>;
     /** All values containing the given string. */
     color_contains?: Maybe<Scalars['String']>;
     /** All values ending with the given string. */
@@ -4403,7 +4406,7 @@ export type TagWhereInput = {
     createdAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    createdBy?: Maybe<UserWhereInput>;
+    createdBy?: Maybe<IUserWhereInput>;
     id?: Maybe<Scalars['ID']>;
     /** All values containing the given string. */
     id_contains?: Maybe<Scalars['ID']>;
@@ -4423,9 +4426,9 @@ export type TagWhereInput = {
     id_not_starts_with?: Maybe<Scalars['ID']>;
     /** All values starting with the given string. */
     id_starts_with?: Maybe<Scalars['ID']>;
-    project_every?: Maybe<ProjectWhereInput>;
-    project_none?: Maybe<ProjectWhereInput>;
-    project_some?: Maybe<ProjectWhereInput>;
+    project_every?: Maybe<IProjectWhereInput>;
+    project_none?: Maybe<IProjectWhereInput>;
+    project_some?: Maybe<IProjectWhereInput>;
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     publishedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -4441,10 +4444,10 @@ export type TagWhereInput = {
     publishedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    publishedBy?: Maybe<UserWhereInput>;
-    scheduledIn_every?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_none?: Maybe<ScheduledOperationWhereInput>;
-    scheduledIn_some?: Maybe<ScheduledOperationWhereInput>;
+    publishedBy?: Maybe<IUserWhereInput>;
+    scheduledIn_every?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_none?: Maybe<IScheduledOperationWhereInput>;
+    scheduledIn_some?: Maybe<IScheduledOperationWhereInput>;
     updatedAt?: Maybe<Scalars['DateTime']>;
     /** All values greater than the given value. */
     updatedAt_gt?: Maybe<Scalars['DateTime']>;
@@ -4460,7 +4463,7 @@ export type TagWhereInput = {
     updatedAt_not?: Maybe<Scalars['DateTime']>;
     /** All values that are not contained in given list. */
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
-    updatedBy?: Maybe<UserWhereInput>;
+    updatedBy?: Maybe<IUserWhereInput>;
     value?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     value_contains?: Maybe<Scalars['String']>;
@@ -4483,30 +4486,30 @@ export type TagWhereInput = {
 };
 
 /** References Tag record uniquely */
-export type TagWhereUniqueInput = {
+export type ITagWhereUniqueInput = {
     id?: Maybe<Scalars['ID']>;
 };
 
-export type UnpublishLocaleInput = {
+export type IUnpublishLocaleInput = {
     /** Locales to unpublish */
-    locale: Locale;
+    locale: ILocale;
     /** Stages to unpublish selected locales from */
-    stages: Array<Stage>;
+    stages: Array<IStage>;
 };
 
 /** User system model */
-export type User = Node & {
+export type IUser = INode & {
     __typename?: 'User';
     /** The time the document was created */
     createdAt: Scalars['DateTime'];
     /** Get the document in other stages */
-    documentInStages: Array<User>;
+    documentInStages: Array<IUser>;
     /** The unique identifier */
     id: Scalars['ID'];
     /** Flag to determine if user is active or not */
     isActive: Scalars['Boolean'];
     /** User Kind. Can be either MEMBER, PAT or PUBLIC */
-    kind: UserKind;
+    kind: IUserKind;
     /** The username */
     name: Scalars['String'];
     /** Profile Picture url */
@@ -4514,56 +4517,56 @@ export type User = Node & {
     /** The time the document was published. Null on documents in draft stage. */
     publishedAt?: Maybe<Scalars['DateTime']>;
     /** System stage field */
-    stage: Stage;
+    stage: IStage;
     /** The time the document was updated */
     updatedAt: Scalars['DateTime'];
 };
 
 /** User system model */
-export type UserDocumentInStagesArgs = {
+export type IUserDocumentInStagesArgs = {
     includeCurrent?: Scalars['Boolean'];
     inheritLocale?: Scalars['Boolean'];
-    stages?: Array<Stage>;
+    stages?: Array<IStage>;
 };
 
-export type UserConnectInput = {
+export type IUserConnectInput = {
     /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-    position?: Maybe<ConnectPositionInput>;
+    position?: Maybe<IConnectPositionInput>;
     /** Document to connect */
-    where: UserWhereUniqueInput;
+    where: IUserWhereUniqueInput;
 };
 
 /** A connection to a list of items. */
-export type UserConnection = {
+export type IUserConnection = {
     __typename?: 'UserConnection';
-    aggregate: Aggregate;
+    aggregate: IAggregate;
     /** A list of edges. */
-    edges: Array<UserEdge>;
+    edges: Array<IUserEdge>;
     /** Information to aid in pagination. */
-    pageInfo: PageInfo;
+    pageInfo: IPageInfo;
 };
 
-export type UserCreateManyInlineInput = {
+export type IUserCreateManyInlineInput = {
     /** Connect multiple existing User documents */
-    connect?: Maybe<Array<UserWhereUniqueInput>>;
+    connect?: Maybe<Array<IUserWhereUniqueInput>>;
 };
 
-export type UserCreateOneInlineInput = {
+export type IUserCreateOneInlineInput = {
     /** Connect one existing User document */
-    connect?: Maybe<UserWhereUniqueInput>;
+    connect?: Maybe<IUserWhereUniqueInput>;
 };
 
 /** An edge in a connection. */
-export type UserEdge = {
+export type IUserEdge = {
     __typename?: 'UserEdge';
     /** A cursor for use in pagination. */
     cursor: Scalars['String'];
     /** The item at the end of the edge. */
-    node: User;
+    node: IUser;
 };
 
 /** System User Kind */
-export enum UserKind {
+export enum IUserKind {
     Member = 'MEMBER',
     Pat = 'PAT',
     Public = 'PUBLIC',
@@ -4571,13 +4574,13 @@ export enum UserKind {
 }
 
 /** Identifies documents */
-export type UserManyWhereInput = {
+export type IUserManyWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<UserWhereInput>>;
+    AND?: Maybe<Array<IUserWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<UserWhereInput>>;
+    NOT?: Maybe<Array<IUserWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<UserWhereInput>>;
+    OR?: Maybe<Array<IUserWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
     createdAt?: Maybe<Scalars['DateTime']>;
@@ -4617,13 +4620,13 @@ export type UserManyWhereInput = {
     isActive?: Maybe<Scalars['Boolean']>;
     /** All values that are not equal to given value. */
     isActive_not?: Maybe<Scalars['Boolean']>;
-    kind?: Maybe<UserKind>;
+    kind?: Maybe<IUserKind>;
     /** All values that are contained in given list. */
-    kind_in?: Maybe<Array<UserKind>>;
+    kind_in?: Maybe<Array<IUserKind>>;
     /** All values that are not equal to given value. */
-    kind_not?: Maybe<UserKind>;
+    kind_not?: Maybe<IUserKind>;
     /** All values that are not contained in given list. */
-    kind_not_in?: Maybe<Array<UserKind>>;
+    kind_not_in?: Maybe<Array<IUserKind>>;
     name?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     name_contains?: Maybe<Scalars['String']>;
@@ -4694,7 +4697,7 @@ export type UserManyWhereInput = {
     updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>;
 };
 
-export enum UserOrderByInput {
+export enum IUserOrderByInput {
     CreatedAtAsc = 'createdAt_ASC',
     CreatedAtDesc = 'createdAt_DESC',
     IdAsc = 'id_ASC',
@@ -4713,30 +4716,30 @@ export enum UserOrderByInput {
     UpdatedAtDesc = 'updatedAt_DESC',
 }
 
-export type UserUpdateManyInlineInput = {
+export type IUserUpdateManyInlineInput = {
     /** Connect multiple existing User documents */
-    connect?: Maybe<Array<UserConnectInput>>;
+    connect?: Maybe<Array<IUserConnectInput>>;
     /** Disconnect multiple User documents */
-    disconnect?: Maybe<Array<UserWhereUniqueInput>>;
+    disconnect?: Maybe<Array<IUserWhereUniqueInput>>;
     /** Override currently-connected documents with multiple existing User documents */
-    set?: Maybe<Array<UserWhereUniqueInput>>;
+    set?: Maybe<Array<IUserWhereUniqueInput>>;
 };
 
-export type UserUpdateOneInlineInput = {
+export type IUserUpdateOneInlineInput = {
     /** Connect existing User document */
-    connect?: Maybe<UserWhereUniqueInput>;
+    connect?: Maybe<IUserWhereUniqueInput>;
     /** Disconnect currently connected User document */
     disconnect?: Maybe<Scalars['Boolean']>;
 };
 
 /** Identifies documents */
-export type UserWhereInput = {
+export type IUserWhereInput = {
     /** Logical AND on all given filters. */
-    AND?: Maybe<Array<UserWhereInput>>;
+    AND?: Maybe<Array<IUserWhereInput>>;
     /** Logical NOT on all given filters combined by AND. */
-    NOT?: Maybe<Array<UserWhereInput>>;
+    NOT?: Maybe<Array<IUserWhereInput>>;
     /** Logical OR on all given filters. */
-    OR?: Maybe<Array<UserWhereInput>>;
+    OR?: Maybe<Array<IUserWhereInput>>;
     /** Contains search across all appropriate fields. */
     _search?: Maybe<Scalars['String']>;
     createdAt?: Maybe<Scalars['DateTime']>;
@@ -4776,13 +4779,13 @@ export type UserWhereInput = {
     isActive?: Maybe<Scalars['Boolean']>;
     /** All values that are not equal to given value. */
     isActive_not?: Maybe<Scalars['Boolean']>;
-    kind?: Maybe<UserKind>;
+    kind?: Maybe<IUserKind>;
     /** All values that are contained in given list. */
-    kind_in?: Maybe<Array<UserKind>>;
+    kind_in?: Maybe<Array<IUserKind>>;
     /** All values that are not equal to given value. */
-    kind_not?: Maybe<UserKind>;
+    kind_not?: Maybe<IUserKind>;
     /** All values that are not contained in given list. */
-    kind_not_in?: Maybe<Array<UserKind>>;
+    kind_not_in?: Maybe<Array<IUserKind>>;
     name?: Maybe<Scalars['String']>;
     /** All values containing the given string. */
     name_contains?: Maybe<Scalars['String']>;
@@ -4854,25 +4857,25 @@ export type UserWhereInput = {
 };
 
 /** References User record uniquely */
-export type UserWhereUniqueInput = {
+export type IUserWhereUniqueInput = {
     id?: Maybe<Scalars['ID']>;
 };
 
-export type Version = {
+export type IVersion = {
     __typename?: 'Version';
     createdAt: Scalars['DateTime'];
     id: Scalars['ID'];
     revision: Scalars['Int'];
-    stage: Stage;
+    stage: IStage;
 };
 
-export type VersionWhereInput = {
+export type IVersionWhereInput = {
     id: Scalars['ID'];
     revision: Scalars['Int'];
-    stage: Stage;
+    stage: IStage;
 };
 
-export enum _FilterKind {
+export enum I_FilterKind {
     And = 'AND',
     Not = 'NOT',
     Or = 'OR',
@@ -4900,7 +4903,7 @@ export enum _FilterKind {
     StartsWith = 'starts_with',
 }
 
-export enum _MutationInputFieldKind {
+export enum I_MutationInputFieldKind {
     Enum = 'enum',
     Relation = 'relation',
     RichText = 'richText',
@@ -4910,7 +4913,7 @@ export enum _MutationInputFieldKind {
     Virtual = 'virtual',
 }
 
-export enum _MutationKind {
+export enum I_MutationKind {
     Create = 'create',
     Delete = 'delete',
     DeleteMany = 'deleteMany',
@@ -4923,42 +4926,42 @@ export enum _MutationKind {
     Upsert = 'upsert',
 }
 
-export enum _OrderDirection {
+export enum I_OrderDirection {
     Asc = 'asc',
     Desc = 'desc',
 }
 
-export enum _RelationInputCardinality {
+export enum I_RelationInputCardinality {
     Many = 'many',
     One = 'one',
 }
 
-export enum _RelationInputKind {
+export enum I_RelationInputKind {
     Create = 'create',
     Update = 'update',
 }
 
-export enum _RelationKind {
+export enum I_RelationKind {
     Regular = 'regular',
     Union = 'union',
 }
 
-export enum _SystemDateTimeFieldVariation {
+export enum I_SystemDateTimeFieldVariation {
     Base = 'base',
     Combined = 'combined',
     Localization = 'localization',
 }
 
-export type GetAllBlogSlugsQueryVariables = Exact<{ [key: string]: never }>;
+export type IGetAllBlogSlugsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetAllBlogSlugsQuery = {
+export type IGetAllBlogSlugsQuery = {
     __typename?: 'Query';
     blogs: Array<{ __typename?: 'Blog'; slug: string }>;
 };
 
-export type GetAllBlogsQueryVariables = Exact<{ [key: string]: never }>;
+export type IGetAllBlogsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetAllBlogsQuery = {
+export type IGetAllBlogsQuery = {
     __typename?: 'Query';
     blogs: Array<{
         __typename?: 'Blog';
@@ -4975,21 +4978,21 @@ export type GetAllBlogsQuery = {
             __typename?: 'Tag';
             id: string;
             value: string;
-            colorScheme: ColorScheme;
+            colorScheme: IColorScheme;
         }>;
     }>;
 };
 
-export type GetAllProjectSlugsQueryVariables = Exact<{ [key: string]: never }>;
+export type IGetAllProjectSlugsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetAllProjectSlugsQuery = {
+export type IGetAllProjectSlugsQuery = {
     __typename?: 'Query';
     projects: Array<{ __typename?: 'Project'; slug: string }>;
 };
 
-export type GetAllProjectsQueryVariables = Exact<{ [key: string]: never }>;
+export type IGetAllProjectsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetAllProjectsQuery = {
+export type IGetAllProjectsQuery = {
     __typename?: 'Query';
     projects: Array<{
         __typename?: 'Project';
@@ -5006,14 +5009,14 @@ export type GetAllProjectsQuery = {
             __typename?: 'Tag';
             id: string;
             value: string;
-            colorScheme: ColorScheme;
+            colorScheme: IColorScheme;
         }>;
     }>;
 };
 
-export type GetFeaturedBlogsQueryVariables = Exact<{ [key: string]: never }>;
+export type IGetFeaturedBlogsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetFeaturedBlogsQuery = {
+export type IGetFeaturedBlogsQuery = {
     __typename?: 'Query';
     blogs: Array<{
         __typename?: 'Blog';
@@ -5029,14 +5032,16 @@ export type GetFeaturedBlogsQuery = {
             __typename?: 'Tag';
             id: string;
             value: string;
-            colorScheme: ColorScheme;
+            colorScheme: IColorScheme;
         }>;
     }>;
 };
 
-export type GetFeaturedProjectsQueryVariables = Exact<{ [key: string]: never }>;
+export type IGetFeaturedProjectsQueryVariables = Exact<{
+    [key: string]: never;
+}>;
 
-export type GetFeaturedProjectsQuery = {
+export type IGetFeaturedProjectsQuery = {
     __typename?: 'Query';
     projects: Array<{
         __typename?: 'Project';
@@ -5052,16 +5057,16 @@ export type GetFeaturedProjectsQuery = {
             __typename?: 'Tag';
             id: string;
             value: string;
-            colorScheme: ColorScheme;
+            colorScheme: IColorScheme;
         }>;
     }>;
 };
 
-export type GetSingleBlogBySlugQueryVariables = Exact<{
+export type IGetSingleBlogBySlugQueryVariables = Exact<{
     slug: Scalars['String'];
 }>;
 
-export type GetSingleBlogBySlugQuery = {
+export type IGetSingleBlogBySlugQuery = {
     __typename?: 'Query';
     blog?:
         | {
@@ -5084,18 +5089,18 @@ export type GetSingleBlogBySlugQuery = {
                   __typename?: 'Tag';
                   id: string;
                   value: string;
-                  colorScheme: ColorScheme;
+                  colorScheme: IColorScheme;
               }>;
           }
         | null
         | undefined;
 };
 
-export type GetSingleProjectBySlugQueryVariables = Exact<{
+export type IGetSingleProjectBySlugQueryVariables = Exact<{
     slug: Scalars['String'];
 }>;
 
-export type GetSingleProjectBySlugQuery = {
+export type IGetSingleProjectBySlugQuery = {
     __typename?: 'Query';
     project?:
         | {
@@ -5118,7 +5123,7 @@ export type GetSingleProjectBySlugQuery = {
                   __typename?: 'Tag';
                   id: string;
                   value: string;
-                  colorScheme: ColorScheme;
+                  colorScheme: IColorScheme;
               }>;
           }
         | null
@@ -5132,55 +5137,9 @@ export const GetAllBlogSlugsDocument = gql`
         }
     }
 `;
-
-/**
- * __useGetAllBlogSlugsQuery__
- *
- * To run a query within a React component, call `useGetAllBlogSlugsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAllBlogSlugsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetAllBlogSlugsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetAllBlogSlugsQuery(
-    baseOptions?: Apollo.QueryHookOptions<
-        GetAllBlogSlugsQuery,
-        GetAllBlogSlugsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<GetAllBlogSlugsQuery, GetAllBlogSlugsQueryVariables>(
-        GetAllBlogSlugsDocument,
-        options
-    );
-}
-export function useGetAllBlogSlugsLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<
-        GetAllBlogSlugsQuery,
-        GetAllBlogSlugsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery<
-        GetAllBlogSlugsQuery,
-        GetAllBlogSlugsQueryVariables
-    >(GetAllBlogSlugsDocument, options);
-}
-export type GetAllBlogSlugsQueryHookResult = ReturnType<
-    typeof useGetAllBlogSlugsQuery
->;
-export type GetAllBlogSlugsLazyQueryHookResult = ReturnType<
-    typeof useGetAllBlogSlugsLazyQuery
->;
 export type GetAllBlogSlugsQueryResult = Apollo.QueryResult<
-    GetAllBlogSlugsQuery,
-    GetAllBlogSlugsQueryVariables
+    IGetAllBlogSlugsQuery,
+    IGetAllBlogSlugsQueryVariables
 >;
 export const GetAllBlogsDocument = gql`
     query getAllBlogs {
@@ -5207,53 +5166,9 @@ export const GetAllBlogsDocument = gql`
         }
     }
 `;
-
-/**
- * __useGetAllBlogsQuery__
- *
- * To run a query within a React component, call `useGetAllBlogsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAllBlogsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetAllBlogsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetAllBlogsQuery(
-    baseOptions?: Apollo.QueryHookOptions<
-        GetAllBlogsQuery,
-        GetAllBlogsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<GetAllBlogsQuery, GetAllBlogsQueryVariables>(
-        GetAllBlogsDocument,
-        options
-    );
-}
-export function useGetAllBlogsLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<
-        GetAllBlogsQuery,
-        GetAllBlogsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery<GetAllBlogsQuery, GetAllBlogsQueryVariables>(
-        GetAllBlogsDocument,
-        options
-    );
-}
-export type GetAllBlogsQueryHookResult = ReturnType<typeof useGetAllBlogsQuery>;
-export type GetAllBlogsLazyQueryHookResult = ReturnType<
-    typeof useGetAllBlogsLazyQuery
->;
 export type GetAllBlogsQueryResult = Apollo.QueryResult<
-    GetAllBlogsQuery,
-    GetAllBlogsQueryVariables
+    IGetAllBlogsQuery,
+    IGetAllBlogsQueryVariables
 >;
 export const GetAllProjectSlugsDocument = gql`
     query getAllProjectSlugs {
@@ -5262,55 +5177,9 @@ export const GetAllProjectSlugsDocument = gql`
         }
     }
 `;
-
-/**
- * __useGetAllProjectSlugsQuery__
- *
- * To run a query within a React component, call `useGetAllProjectSlugsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAllProjectSlugsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetAllProjectSlugsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetAllProjectSlugsQuery(
-    baseOptions?: Apollo.QueryHookOptions<
-        GetAllProjectSlugsQuery,
-        GetAllProjectSlugsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<
-        GetAllProjectSlugsQuery,
-        GetAllProjectSlugsQueryVariables
-    >(GetAllProjectSlugsDocument, options);
-}
-export function useGetAllProjectSlugsLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<
-        GetAllProjectSlugsQuery,
-        GetAllProjectSlugsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery<
-        GetAllProjectSlugsQuery,
-        GetAllProjectSlugsQueryVariables
-    >(GetAllProjectSlugsDocument, options);
-}
-export type GetAllProjectSlugsQueryHookResult = ReturnType<
-    typeof useGetAllProjectSlugsQuery
->;
-export type GetAllProjectSlugsLazyQueryHookResult = ReturnType<
-    typeof useGetAllProjectSlugsLazyQuery
->;
 export type GetAllProjectSlugsQueryResult = Apollo.QueryResult<
-    GetAllProjectSlugsQuery,
-    GetAllProjectSlugsQueryVariables
+    IGetAllProjectSlugsQuery,
+    IGetAllProjectSlugsQueryVariables
 >;
 export const GetAllProjectsDocument = gql`
     query getAllProjects {
@@ -5337,55 +5206,9 @@ export const GetAllProjectsDocument = gql`
         }
     }
 `;
-
-/**
- * __useGetAllProjectsQuery__
- *
- * To run a query within a React component, call `useGetAllProjectsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAllProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetAllProjectsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetAllProjectsQuery(
-    baseOptions?: Apollo.QueryHookOptions<
-        GetAllProjectsQuery,
-        GetAllProjectsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<GetAllProjectsQuery, GetAllProjectsQueryVariables>(
-        GetAllProjectsDocument,
-        options
-    );
-}
-export function useGetAllProjectsLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<
-        GetAllProjectsQuery,
-        GetAllProjectsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery<
-        GetAllProjectsQuery,
-        GetAllProjectsQueryVariables
-    >(GetAllProjectsDocument, options);
-}
-export type GetAllProjectsQueryHookResult = ReturnType<
-    typeof useGetAllProjectsQuery
->;
-export type GetAllProjectsLazyQueryHookResult = ReturnType<
-    typeof useGetAllProjectsLazyQuery
->;
 export type GetAllProjectsQueryResult = Apollo.QueryResult<
-    GetAllProjectsQuery,
-    GetAllProjectsQueryVariables
+    IGetAllProjectsQuery,
+    IGetAllProjectsQueryVariables
 >;
 export const GetFeaturedBlogsDocument = gql`
     query getFeaturedBlogs {
@@ -5409,55 +5232,9 @@ export const GetFeaturedBlogsDocument = gql`
         }
     }
 `;
-
-/**
- * __useGetFeaturedBlogsQuery__
- *
- * To run a query within a React component, call `useGetFeaturedBlogsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetFeaturedBlogsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetFeaturedBlogsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetFeaturedBlogsQuery(
-    baseOptions?: Apollo.QueryHookOptions<
-        GetFeaturedBlogsQuery,
-        GetFeaturedBlogsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<
-        GetFeaturedBlogsQuery,
-        GetFeaturedBlogsQueryVariables
-    >(GetFeaturedBlogsDocument, options);
-}
-export function useGetFeaturedBlogsLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<
-        GetFeaturedBlogsQuery,
-        GetFeaturedBlogsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery<
-        GetFeaturedBlogsQuery,
-        GetFeaturedBlogsQueryVariables
-    >(GetFeaturedBlogsDocument, options);
-}
-export type GetFeaturedBlogsQueryHookResult = ReturnType<
-    typeof useGetFeaturedBlogsQuery
->;
-export type GetFeaturedBlogsLazyQueryHookResult = ReturnType<
-    typeof useGetFeaturedBlogsLazyQuery
->;
 export type GetFeaturedBlogsQueryResult = Apollo.QueryResult<
-    GetFeaturedBlogsQuery,
-    GetFeaturedBlogsQueryVariables
+    IGetFeaturedBlogsQuery,
+    IGetFeaturedBlogsQueryVariables
 >;
 export const GetFeaturedProjectsDocument = gql`
     query getFeaturedProjects {
@@ -5481,55 +5258,9 @@ export const GetFeaturedProjectsDocument = gql`
         }
     }
 `;
-
-/**
- * __useGetFeaturedProjectsQuery__
- *
- * To run a query within a React component, call `useGetFeaturedProjectsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetFeaturedProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetFeaturedProjectsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetFeaturedProjectsQuery(
-    baseOptions?: Apollo.QueryHookOptions<
-        GetFeaturedProjectsQuery,
-        GetFeaturedProjectsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<
-        GetFeaturedProjectsQuery,
-        GetFeaturedProjectsQueryVariables
-    >(GetFeaturedProjectsDocument, options);
-}
-export function useGetFeaturedProjectsLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<
-        GetFeaturedProjectsQuery,
-        GetFeaturedProjectsQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery<
-        GetFeaturedProjectsQuery,
-        GetFeaturedProjectsQueryVariables
-    >(GetFeaturedProjectsDocument, options);
-}
-export type GetFeaturedProjectsQueryHookResult = ReturnType<
-    typeof useGetFeaturedProjectsQuery
->;
-export type GetFeaturedProjectsLazyQueryHookResult = ReturnType<
-    typeof useGetFeaturedProjectsLazyQuery
->;
 export type GetFeaturedProjectsQueryResult = Apollo.QueryResult<
-    GetFeaturedProjectsQuery,
-    GetFeaturedProjectsQueryVariables
+    IGetFeaturedProjectsQuery,
+    IGetFeaturedProjectsQueryVariables
 >;
 export const GetSingleBlogBySlugDocument = gql`
     query getSingleBlogBySlug($slug: String!) {
@@ -5558,56 +5289,9 @@ export const GetSingleBlogBySlugDocument = gql`
         }
     }
 `;
-
-/**
- * __useGetSingleBlogBySlugQuery__
- *
- * To run a query within a React component, call `useGetSingleBlogBySlugQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetSingleBlogBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetSingleBlogBySlugQuery({
- *   variables: {
- *      slug: // value for 'slug'
- *   },
- * });
- */
-export function useGetSingleBlogBySlugQuery(
-    baseOptions: Apollo.QueryHookOptions<
-        GetSingleBlogBySlugQuery,
-        GetSingleBlogBySlugQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<
-        GetSingleBlogBySlugQuery,
-        GetSingleBlogBySlugQueryVariables
-    >(GetSingleBlogBySlugDocument, options);
-}
-export function useGetSingleBlogBySlugLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<
-        GetSingleBlogBySlugQuery,
-        GetSingleBlogBySlugQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery<
-        GetSingleBlogBySlugQuery,
-        GetSingleBlogBySlugQueryVariables
-    >(GetSingleBlogBySlugDocument, options);
-}
-export type GetSingleBlogBySlugQueryHookResult = ReturnType<
-    typeof useGetSingleBlogBySlugQuery
->;
-export type GetSingleBlogBySlugLazyQueryHookResult = ReturnType<
-    typeof useGetSingleBlogBySlugLazyQuery
->;
 export type GetSingleBlogBySlugQueryResult = Apollo.QueryResult<
-    GetSingleBlogBySlugQuery,
-    GetSingleBlogBySlugQueryVariables
+    IGetSingleBlogBySlugQuery,
+    IGetSingleBlogBySlugQueryVariables
 >;
 export const GetSingleProjectBySlugDocument = gql`
     query getSingleProjectBySlug($slug: String!) {
@@ -5636,54 +5320,7 @@ export const GetSingleProjectBySlugDocument = gql`
         }
     }
 `;
-
-/**
- * __useGetSingleProjectBySlugQuery__
- *
- * To run a query within a React component, call `useGetSingleProjectBySlugQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetSingleProjectBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetSingleProjectBySlugQuery({
- *   variables: {
- *      slug: // value for 'slug'
- *   },
- * });
- */
-export function useGetSingleProjectBySlugQuery(
-    baseOptions: Apollo.QueryHookOptions<
-        GetSingleProjectBySlugQuery,
-        GetSingleProjectBySlugQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<
-        GetSingleProjectBySlugQuery,
-        GetSingleProjectBySlugQueryVariables
-    >(GetSingleProjectBySlugDocument, options);
-}
-export function useGetSingleProjectBySlugLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<
-        GetSingleProjectBySlugQuery,
-        GetSingleProjectBySlugQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery<
-        GetSingleProjectBySlugQuery,
-        GetSingleProjectBySlugQueryVariables
-    >(GetSingleProjectBySlugDocument, options);
-}
-export type GetSingleProjectBySlugQueryHookResult = ReturnType<
-    typeof useGetSingleProjectBySlugQuery
->;
-export type GetSingleProjectBySlugLazyQueryHookResult = ReturnType<
-    typeof useGetSingleProjectBySlugLazyQuery
->;
 export type GetSingleProjectBySlugQueryResult = Apollo.QueryResult<
-    GetSingleProjectBySlugQuery,
-    GetSingleProjectBySlugQueryVariables
+    IGetSingleProjectBySlugQuery,
+    IGetSingleProjectBySlugQueryVariables
 >;
