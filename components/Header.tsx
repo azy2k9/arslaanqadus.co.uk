@@ -30,8 +30,16 @@ const Header = () => {
     const { colorMode, toggleColorMode } = useColorMode();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const drawerSize = useBreakpointValue({ base: 'full', md: 'sm' });
-    const headingSize = useBreakpointValue(['sm', 'md', 'lg', 'xl']);
-    const buttonSize = useBreakpointValue(['md', 'lg', 'xl']);
+    const headingSize = useBreakpointValue({
+        base: 'sm',
+        sm: 'md',
+        md: 'lg',
+        lg: 'xl',
+    });
+    const buttonSize = useBreakpointValue({
+        base: 'md',
+        sm: 'lg',
+    });
 
     return (
         <Flex justify="space-between" alignItems="center" h="10vh">
