@@ -6,7 +6,7 @@ import {
     InputRightElement,
     InputProps as ChakraInputProps,
 } from '@chakra-ui/input';
-import React, { FocusEventHandler, useState } from 'react';
+import React, { useState } from 'react';
 
 import Icon from '@chakra-ui/icon';
 import {
@@ -22,10 +22,6 @@ interface FormFieldProps extends ChakraInputProps {
     name: string;
     placeholder?: string;
     onChange: React.ChangeEventHandler;
-    // onBlur:
-    //     | React.FocusEventHandler<HTMLInputElement>
-    //     | React.FocusEventHandler<HTMLTextAreaElement>
-    //     | React.FocusEventHandler<HTMLSelectElement>;
     value: string | ReadonlyArray<string> | number;
     error?: string;
     type?: 'text' | 'select' | 'password' | 'number' | 'date' | 'textarea';
@@ -40,9 +36,6 @@ const FormField = (props: FormFieldProps) => {
         isInvalid,
         name,
         placeholder,
-        onChange,
-        onBlur,
-        value,
         error,
         type = 'text',
         children,
