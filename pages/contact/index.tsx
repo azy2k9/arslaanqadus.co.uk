@@ -51,9 +51,6 @@ const Contact = () => {
         }),
     });
 
-    console.log(formik.errors);
-    console.log(formik.touched);
-
     return (
         <Layout title="Contact">
             <Center>
