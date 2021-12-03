@@ -4,7 +4,7 @@ import ChakraNextImage from './Image';
 import Link from 'next/link';
 import { Avatar } from '@chakra-ui/avatar';
 import { dateFormatter } from '../helpers';
-import { Blog } from '../generated/types';
+import { IBlog } from '../generated/types';
 
 const BlogPost = ({
     thumbnail,
@@ -14,7 +14,7 @@ const BlogPost = ({
     readTime,
     slug,
     createdAt,
-}: Blog) => {
+}: IBlog) => {
     return (
         <Link href={slug} passHref>
             <Flex

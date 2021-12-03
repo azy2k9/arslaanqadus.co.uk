@@ -14,7 +14,9 @@ import {
     InputLeftAddon,
     InputRightAddon,
     Select,
+    SelectProps as ChakraSelectProps,
     Textarea,
+    TextareaProps as ChakraTextareaProps,
 } from '@chakra-ui/react';
 
 interface FormFieldProps extends ChakraInputProps {
@@ -57,7 +59,7 @@ const FormField = (props: FormFieldProps) => {
                         borderWidth: 2,
                         borderColor: isInvalid ? 'red' : 'green.500',
                     }}
-                    {...props}
+                    {...(props as ChakraSelectProps)}
                 >
                     {children}
                 </Select>
@@ -81,7 +83,7 @@ const FormField = (props: FormFieldProps) => {
                             borderColor: isInvalid ? 'red' : 'green.500',
                         }}
                         autoComplete="off"
-                        {...props}
+                        {...(props as ChakraTextareaProps)}
                     >
                         {children}
                     </Textarea>
