@@ -22,7 +22,6 @@ const BlogPost = ({
                 m={['1rem', '0.5rem']}
                 _hover={{ cursor: 'pointer' }}
                 boxShadow={'2xl'}
-                borderRadius="md"
             >
                 <ChakraNextImage src={thumbnail.url} h="250px" />
                 <Box p="0.5rem">

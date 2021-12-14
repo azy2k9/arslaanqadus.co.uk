@@ -8,7 +8,7 @@ const Intro = () => {
         <>
             <Flex
                 flexDir="column"
-                px="2rem"
+                m="2rem"
                 height={['83vh', '84vh']}
                 justify="center"
             >

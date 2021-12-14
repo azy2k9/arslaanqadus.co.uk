@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Heading, SimpleGrid } from '@chakra-ui/layout';
+import { Center, Flex, Heading, SimpleGrid } from '@chakra-ui/layout';
 import SkillCard from '../components/SkillCard';
 import { useColorMode } from '@chakra-ui/color-mode';
 
@@ -7,9 +7,9 @@ const Skills = () => {
     const { colorMode } = useColorMode();
     return (
         <>
-            <Flex justifyContent="center" p="16">
-                <Heading>My Skills</Heading>
-            </Flex>
+            <Center>
+                <Heading p="8">My Skills</Heading>
+            </Center>
             <SimpleGrid columns={[1, 2, 3]}>
                 <SkillCard
                     title="Front End"

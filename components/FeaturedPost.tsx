@@ -40,9 +40,8 @@ const FeaturedPost = ({
     return (
         <Flex
             flexDir="column"
-            m="1rem"
+            m={['1rem', '0.5rem']}
             px={type === 'blog' ? '1rem' : 'initial'}
-            borderRadius="md"
             alignItems={['center', null, flexDirection]}
         >
             {type === 'project' && typeof img === 'string' && (

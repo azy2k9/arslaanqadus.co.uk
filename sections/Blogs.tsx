@@ -10,7 +10,7 @@ const Blogs = ({ blogs }: Props) => {
     return (
         <>
             <Center>
-                <Heading py="16">Recent Blog Posts</Heading>
+                <Heading pt="24" pb="8">Recent Blog Posts</Heading>
             </Center>
             <Box>
                 {blogs.map((blog, index) => (

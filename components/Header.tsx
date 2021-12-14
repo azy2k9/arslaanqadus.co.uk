@@ -33,23 +33,34 @@ const Header = () => {
     const headingSize = useBreakpointValue({
         base: 'sm',
         sm: 'md',
-        md: 'lg',
-        lg: 'xl',
+        md: 'xl',
+        lg: '2xl',
     });
     const buttonSize = useBreakpointValue({
-        base: 'md',
-        sm: 'lg',
+        base: '0.85rem',
+        sm: '1rem',
+        md: '1.5rem',
+        lg: '2rem',
+    });
+
+    const containers = useBreakpointValue({
+        base: '7rem',
+        xs: '7rem',
+        sm: '12rem',
+        md: '16rem',
     });
 
     return (
         <Flex justify="space-between" alignItems="center" h="10vh">
-            <Flex w="xs">
+            <Flex w={containers} justifyContent="space-evenly">
                 <IconButtonLink
                     aria-label="Twitter"
                     target="_blank"
                     href="https://twitter.com/reactdevjnr"
                     variant="ghost"
-                    size={buttonSize}
+                    fontSize={buttonSize}
+                    px={['0', '0', '2', '4']}
+                    py={['0', '0', '3', '6']}
                 >
                     <BsTwitter />
                 </IconButtonLink>
@@ -58,7 +69,9 @@ const Header = () => {
                     target="_blank"
                     href="https://www.linkedin.com/in/arslaan-qadus/"
                     variant="ghost"
-                    size={buttonSize}
+                    fontSize={buttonSize}
+                    px={['0', '0', '2', '4']}
+                    py={['0', '0', '3', '6']}
                 >
                     <BsLinkedin />
                 </IconButtonLink>
@@ -67,8 +80,9 @@ const Header = () => {
                     target="_blank"
                     href="https://github.com/azy2k9"
                     variant="ghost"
-                    // mx="1"
-                    size={buttonSize}
+                    fontSize={buttonSize}
+                    px={['0', '0', '2', '4']}
+                    py={['0', '0', '3', '6']}
                 >
                     <BsGithub />
                 </IconButtonLink>
@@ -85,12 +99,14 @@ const Header = () => {
                     </Heading>
                 </IconButtonLink>
             </Flex>
-            <Flex w="xs" justify="flex-end" alignItems="center">
+            <Flex w={containers} justifyContent="flex-end" alignItems="center">
                 <IconButton
                     aria-label="Github"
                     variant="ghost"
                     onClick={toggleColorMode}
-                    size={buttonSize}
+                    fontSize={buttonSize}
+                    px={['0', '0', '2', '4']}
+                    py={['0', '0', '3', '6']}
                 >
                     {colorMode === 'light' ? (
                         <BsMoonStarsFill />
@@ -102,12 +118,14 @@ const Header = () => {
                     aria-label="menu"
                     variant="ghost"
                     onClick={onOpen}
-                    size={buttonSize}
+                    fontSize={buttonSize}
+                    px={['0', '0', '2', '4']}
+                    py={['0', '0', '3', '6']}
                 >
                     {isOpen ? (
                         <Icon as={CgClose} />
                     ) : (
-                        <Icon as={HiMenu} fontSize="xl" />
+                        <Icon as={HiMenu} fontSize={buttonSize} />
                     )}
                 </IconButton>
                 <Drawer

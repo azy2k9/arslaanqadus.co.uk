@@ -7,7 +7,7 @@ export type NextChakraImageProps = Omit<BoxProps, 'as'> & ImageProps;
 const ChakraNextImage = (props: NextChakraImageProps) => {
     const { src, alt, ...rest } = props;
     return (
-        <Box position="relative" {...rest} mt={-6} mx={-6}>
+        <Box position="relative" {...rest}> 
             <NextImage objectFit="cover" layout="fill" src={src} alt={alt} />
         </Box>
     );

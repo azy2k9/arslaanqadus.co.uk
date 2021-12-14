@@ -17,7 +17,7 @@ interface Props {
 const Projects = ({ projects }: Props) => {
     return (
         <Layout title="Projects">
-            <SimpleGrid columns={[1, null, null, 2]}>
+            <SimpleGrid columns={[1, 2, null, 2]}>
                 {projects.map((project) => (
                     <FeaturedPost
                         key={project.id}

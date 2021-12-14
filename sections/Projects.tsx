@@ -11,7 +11,7 @@ const Projects = ({ projects }: Props) => {
     return (
         <>
             <Center>
-                <Heading py="16">Recent Projects</Heading>
+                <Heading pt="24" pb="8">Recent Projects</Heading>
             </Center>
             <Box>
                 <SimpleGrid columns={[1, null, null, 2]}>
