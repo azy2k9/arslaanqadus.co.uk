@@ -9,7 +9,7 @@ const Intro = () => {
         <>
             <VStack h={["100vh", "85vh", "90vh"]} justifyContent={{ base: 'space-around', lg: 'space-evenly'}} >
                 <Container maxW="container.md" centerContent>
-                    <Flex maxW={["fit-content"]} h={["48", 'xs']} justifyContent="center">
+                    <Flex maxW={["fit-content"]} justifyContent="center">
                         <Avatar src="/me.png" size={'full'} />
                     </Flex>
                     <Heading
