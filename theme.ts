@@ -7,7 +7,6 @@ const config: ThemeConfig = {
 const Theme = {
     colors: {
         primary: '#200065',
-        text: {},
     },
     config,
     fonts: {

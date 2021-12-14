@@ -3,6 +3,7 @@ import { Flex, Heading, Text } from '@chakra-ui/layout';
 import { ThemeTypings } from '@chakra-ui/styled-system';
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { Theme } from '../theme';
 
 interface IProps {
     title: string;
@@ -22,8 +23,8 @@ const SkillCard = ({ title, skills, color }: IProps) => {
             flexDir="column"
             alignItems="center"
             bgColor={color}
-            color="white"
             borderRadius="xl"
+            color="white"
             py="2rem"
             my="1rem"
             mx={isHovering ? "0.5rem" : "1rem"}

@@ -1,32 +1,29 @@
 import { Avatar } from '@chakra-ui/avatar';
-import { Container, Flex, Heading } from '@chakra-ui/layout';
+import { Container, Flex, Heading, VStack } from '@chakra-ui/layout';
+import { useBreakpointValue } from '@chakra-ui/media-query';
 import React from 'react';
 import ScrollDown from '../components/ScrollDown';
 
 const Intro = () => {
     return (
         <>
-            <Flex
-                flexDir="column"
-                m="2rem"
-                height={['83vh', '84vh']}
-                justify="center"
-            >
-                <Flex maxW="fit-content" alignSelf="center">
-                    <Avatar src="/me.png" size="full" />
-                </Flex>
-                <Container maxW="container.md" pt="2rem" pb="2.5rem">
+            <VStack h={["100vh", "85vh", "90vh"]} justifyContent={{ base: 'space-around', lg: 'space-evenly'}} >
+                <Container maxW="container.md" centerContent>
+                    <Flex maxW={["fit-content"]} h={["48", 'xs']} justifyContent="center">
+                        <Avatar src="/me.png" size={'full'} />
+                    </Flex>
                     <Heading
+                        py={["2", "4"]}
                         textAlign="center"
                         fontSize={['xx-large', 'xxx-large']}
                     >
                         Hi.
                     </Heading>
                     <Heading
-                        fontSize={['lg', 'xl', '1.75rem']}
                         fontWeight="medium"
-                        pt="4"
                         textAlign="center"
+                        fontSize={{ base: 'md', sm: 'lg', md: '2xl' }}
+                        maxW={["md", "lg", "xl" ]}
                     >
                         Im Arslaan. A Full Stack Web Developer. Im currently
                         working at Evergreen-Life developing health and
@@ -44,7 +41,7 @@ const Intro = () => {
                         }
                     />
                 </Flex>
-            </Flex>
+            </VStack>
         </>
     );
 };

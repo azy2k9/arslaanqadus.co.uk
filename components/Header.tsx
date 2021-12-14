@@ -34,13 +34,11 @@ const Header = () => {
         base: 'sm',
         sm: 'md',
         md: 'xl',
-        lg: '2xl',
     });
     const buttonSize = useBreakpointValue({
         base: '0.85rem',
         sm: '1rem',
         md: '1.5rem',
-        lg: '2rem',
     });
 
     const containers = useBreakpointValue({
@@ -51,7 +49,7 @@ const Header = () => {
     });
 
     return (
-        <Flex justify="space-between" alignItems="center" h="10vh">
+        <Flex alignItems="center"> 
             <Flex w={containers} justifyContent="space-evenly">
                 <IconButtonLink
                     aria-label="Twitter"
@@ -87,7 +85,7 @@ const Header = () => {
                     <BsGithub />
                 </IconButtonLink>
             </Flex>
-            <Flex w="md" justify="center">
+            <Flex w="full" justify="center">
                 <IconButtonLink
                     aria-label="Home"
                     href="/"
