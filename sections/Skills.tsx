@@ -10,7 +10,7 @@ const Skills = () => {
             <Center>
                 <Heading p="8">My Skills</Heading>
             </Center>
-            <SimpleGrid columns={[1, 2, 3]}>
+            <SimpleGrid columns={[1, null, 3]}>
                 <SkillCard
                     title="Front End"
                     skills={[

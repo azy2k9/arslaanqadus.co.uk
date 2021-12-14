@@ -27,12 +27,12 @@ const SkillCard = ({ title, skills, color }: IProps) => {
             color="white"
             py="2rem"
             my="1rem"
-            mx={isHovering ? "0.5rem" : "1rem"}
+            mx={isHovering ? "0.25rem" : "0.5rem"}
             transition="0.2s linear"
             onMouseEnter={onHover}
             onMouseLeave={offHover}
         >
-            <Heading>{title}</Heading>
+            <Heading textAlign="center" size={"lg"}>{title}</Heading>
             <Flex flexDir="column" pt="2rem" flex="1" placeContent="center">
                 {skills.map((skill) => (
                     <Text

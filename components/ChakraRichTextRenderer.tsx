@@ -7,9 +7,11 @@ import {
 import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 import ChakraNextLink from '../components/ChakraNextLink';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import { Box, Code, Container, Heading, Text } from '@chakra-ui/layout';
+import { Box, Code, Container, Heading, HStack, Text } from '@chakra-ui/layout';
 import { RichTextContent } from '@graphcms/rich-text-types';
 import ChakraNextImage from '../components/Image';
+import { IconButton } from '@chakra-ui/button';
+import { ClipboardCopyIcon } from '@heroicons/react/solid';
 
 const ChakraRichTextRenderer: React.FC<{ content: RichTextContent }> = ({
     content,
@@ -80,20 +82,36 @@ const ChakraRichTextRenderer: React.FC<{ content: RichTextContent }> = ({
                     );
                 },
                 code_block: ({ children }) => {
+                    let content = '';
+
+                    
+                    /* @ts-ignore: This should just be valid every single time... */
+                    children?.props.content.map((child) => (content += child.text));
+
                     return (
                         <Box py="8">
+                            <HStack justifyContent="flex-end">
+                                <IconButton
+                                    aria-label="Copy To Clipboard"
+                                    color="teal"
+                                    fontSize="20px"
+                                    icon={<ClipboardCopyIcon />}
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(content);
+                                    }}
+                                ></IconButton>
+                            </HStack>
                             <SyntaxHighlighter
                                 style={
                                     colorMode === 'light'
                                         ? solarizedLight
                                         : solarizedDark
                                 }
-                                showLineNumbers
-                                language="javascript"
+                                // showLineNumbers
                                 wrapLongLines
+                                language="javascript"
                             >
-                                {/* @ts-ignore: This should just be valid every single time... */}
-                                {children?.props.content[0].text}
+                                {content}
                             </SyntaxHighlighter>
                         </Box>
                     );
