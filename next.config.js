@@ -16,6 +16,6 @@ module.exports = {
     ignoreDuringBuilds: true
   },
   images: {
-    domains: ['picsum.photos', 'media.graphcms.com'],
+    domains: ['picsum.photos', 'media.graphcms.com', 'media.graphassets.com'],
   },
 };
