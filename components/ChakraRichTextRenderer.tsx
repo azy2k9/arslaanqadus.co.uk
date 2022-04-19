@@ -84,7 +84,6 @@ const ChakraRichTextRenderer: React.FC<{ content: RichTextContent }> = ({
                 code_block: ({ children }) => {
                     let content = '';
 
-                    
                     /* @ts-ignore: This should just be valid every single time... */
                     children?.props.content.map((child) => (content += child.text));
 
