@@ -7,7 +7,7 @@ import {
 import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 import ChakraNextLink from '../components/ChakraNextLink';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import { Box, Code, Container, Heading, HStack, Text } from '@chakra-ui/layout';
+import { Box, Code, Container, Heading, Flex, Text } from '@chakra-ui/layout';
 import { RichTextContent } from '@graphcms/rich-text-types';
 import ChakraNextImage from '../components/Image';
 import { IconButton } from '@chakra-ui/button';
@@ -85,34 +85,41 @@ const ChakraRichTextRenderer: React.FC<{ content: RichTextContent }> = ({
                     let content = '';
 
                     /* @ts-ignore: This should just be valid every single time... */
-                    children?.props.content.map((child) => (content += child.text));
+                    children?.props.content.map(
+                        (child: { text: string }) => (content += child.text)
+                    );
 
                     return (
-                        <Box py="8">
-                            <HStack justifyContent="flex-end">
-                                <IconButton
-                                    aria-label="Copy To Clipboard"
-                                    color="teal"
-                                    fontSize="20px"
-                                    icon={<ClipboardCopyIcon />}
-                                    onClick={() => {
-                                        navigator.clipboard.writeText(content);
-                                    }}
-                                ></IconButton>
-                            </HStack>
+                        <Flex py="8" flexDir={'row-reverse'}>
+                            <IconButton
+                                position={'absolute'}
+                                marginRight="2"
+                                marginTop="2"
+                                aria-label="Copy To Clipboard"
+                                color="teal"
+                                size={'sm'}
+                                icon={<ClipboardCopyIcon width={24} />}
+                                onClick={() => {
+                                    navigator.clipboard.writeText(content);
+                                }}
+                            />
                             <SyntaxHighlighter
                                 style={
                                     colorMode === 'light'
                                         ? solarizedLight
                                         : solarizedDark
                                 }
-                                // showLineNumbers
+                                customStyle={{
+                                    width: '100%',
+                                    display: 'flex',
+                                }}
+                                showLineNumbers
                                 wrapLongLines
                                 language="javascript"
                             >
                                 {content}
                             </SyntaxHighlighter>
-                        </Box>
+                        </Flex>
                     );
                 },
                 h1: ({ children }) => {
