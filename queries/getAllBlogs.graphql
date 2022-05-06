@@ -1,23 +1,26 @@
 query getAllBlogs {
     blogs {
-        id,
-        title,
-        slug,
-        featured,
-        readTime,
-        introduction,
+        id
+        title
+        slug
+        featured
+        readTime
+        introduction
         content {
             markdown
-        },
+        }
         thumbnail {
-            id,
+            id
             url
-        },
+            fileName
+            height
+            width
+        }
         tags {
-            id,
+            id
             value
             colorScheme
-        },
-        createdAt,
+        }
+        createdAt
     }
 }

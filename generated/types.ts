@@ -4919,6 +4919,8 @@ export enum I_MutationKind {
     DeleteMany = 'deleteMany',
     Publish = 'publish',
     PublishMany = 'publishMany',
+    SchedulePublish = 'schedulePublish',
+    ScheduleUnpublish = 'scheduleUnpublish',
     Unpublish = 'unpublish',
     UnpublishMany = 'unpublishMany',
     Update = 'update',
@@ -4973,7 +4975,14 @@ export type IGetAllBlogsQuery = {
         introduction: string;
         createdAt: any;
         content: { __typename?: 'RichText'; markdown: string };
-        thumbnail: { __typename?: 'Asset'; id: string; url: string };
+        thumbnail: {
+            __typename?: 'Asset';
+            id: string;
+            url: string;
+            fileName: string;
+            height?: number | null | undefined;
+            width?: number | null | undefined;
+        };
         tags: Array<{
             __typename?: 'Tag';
             id: string;
@@ -5004,7 +5013,14 @@ export type IGetAllProjectsQuery = {
         introduction: string;
         createdAt: any;
         content: { __typename?: 'RichText'; markdown: string };
-        thumbnail: { __typename?: 'Asset'; id: string; url: string };
+        thumbnail: {
+            __typename?: 'Asset';
+            id: string;
+            url: string;
+            fileName: string;
+            height?: number | null | undefined;
+            width?: number | null | undefined;
+        };
         tags: Array<{
             __typename?: 'Tag';
             id: string;
@@ -5027,7 +5043,14 @@ export type IGetFeaturedBlogsQuery = {
         introduction: string;
         createdAt: any;
         readTime: string;
-        thumbnail: { __typename?: 'Asset'; id: string; url: string };
+        thumbnail: {
+            __typename?: 'Asset';
+            id: string;
+            url: string;
+            fileName: string;
+            height?: number | null | undefined;
+            width?: number | null | undefined;
+        };
         tags: Array<{
             __typename?: 'Tag';
             id: string;
@@ -5052,7 +5075,14 @@ export type IGetFeaturedProjectsQuery = {
         introduction: string;
         createdAt: any;
         readTime: string;
-        thumbnail: { __typename?: 'Asset'; id: string; url: string };
+        thumbnail: {
+            __typename?: 'Asset';
+            id: string;
+            url: string;
+            fileName: string;
+            height?: number | null | undefined;
+            width?: number | null | undefined;
+        };
         tags: Array<{
             __typename?: 'Tag';
             id: string;
@@ -5084,7 +5114,14 @@ export type IGetSingleBlogBySlugQuery = {
                   html: string;
                   raw: any;
               };
-              thumbnail: { __typename?: 'Asset'; id: string; url: string };
+              thumbnail: {
+                  __typename?: 'Asset';
+                  id: string;
+                  url: string;
+                  fileName: string;
+                  height?: number | null | undefined;
+                  width?: number | null | undefined;
+              };
               tags: Array<{
                   __typename?: 'Tag';
                   id: string;
@@ -5118,7 +5155,14 @@ export type IGetSingleProjectBySlugQuery = {
                   html: string;
                   raw: any;
               };
-              thumbnail: { __typename?: 'Asset'; id: string; url: string };
+              thumbnail: {
+                  __typename?: 'Asset';
+                  id: string;
+                  url: string;
+                  fileName: string;
+                  height?: number | null | undefined;
+                  width?: number | null | undefined;
+              };
               tags: Array<{
                   __typename?: 'Tag';
                   id: string;
@@ -5156,6 +5200,9 @@ export const GetAllBlogsDocument = gql`
             thumbnail {
                 id
                 url
+                fileName
+                height
+                width
             }
             tags {
                 id
@@ -5196,6 +5243,9 @@ export const GetAllProjectsDocument = gql`
             thumbnail {
                 id
                 url
+                fileName
+                height
+                width
             }
             tags {
                 id
@@ -5220,6 +5270,9 @@ export const GetFeaturedBlogsDocument = gql`
             thumbnail {
                 id
                 url
+                fileName
+                height
+                width
             }
             introduction
             createdAt
@@ -5246,6 +5299,9 @@ export const GetFeaturedProjectsDocument = gql`
             thumbnail {
                 id
                 url
+                fileName
+                height
+                width
             }
             introduction
             createdAt
@@ -5279,6 +5335,9 @@ export const GetSingleBlogBySlugDocument = gql`
             thumbnail {
                 id
                 url
+                fileName
+                height
+                width
             }
             tags {
                 id
@@ -5310,6 +5369,9 @@ export const GetSingleProjectBySlugDocument = gql`
             thumbnail {
                 id
                 url
+                fileName
+                height
+                width
             }
             tags {
                 id

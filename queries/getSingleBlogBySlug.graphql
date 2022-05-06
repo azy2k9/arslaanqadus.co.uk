@@ -1,25 +1,28 @@
 query getSingleBlogBySlug($slug: String!) {
     blog(where: { slug: $slug }) {
-        id,
-        title,
-        slug,
-        featured,
-        readTime,
-        introduction,
+        id
+        title
+        slug
+        featured
+        readTime
+        introduction
         content {
             markdown
             html
             raw
-        },
+        }
         thumbnail {
-            id,
+            id
             url
-        },
+            fileName
+            height
+            width
+        }
         tags {
-            id,
+            id
             value
             colorScheme
-        },
-        createdAt,
+        }
+        createdAt
     }
 }

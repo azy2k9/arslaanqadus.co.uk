@@ -7,6 +7,9 @@ query getFeaturedBlogs {
         thumbnail {
             id
             url
+            fileName
+            height
+            width
         }
         introduction
         createdAt
