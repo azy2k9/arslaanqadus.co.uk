@@ -55,7 +55,7 @@ const Layout = ({
                 style={{ height: '100%', overflowY: 'scroll' }}
             >
                 <Header />
-                <Container maxW={['xs', 'md', 'xl', '5xl', '6xl']}>
+                <Container>
                     {enableHeading && (
                         <Heading textAlign="center" py={['8', '16']}>
                             {title}

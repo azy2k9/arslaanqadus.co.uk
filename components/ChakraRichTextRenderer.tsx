@@ -96,7 +96,12 @@ const ChakraRichTextRenderer: React.FC<{ content: RichTextContent }> = ({
                                 marginRight="2"
                                 marginTop="2"
                                 aria-label="Copy To Clipboard"
-                                color="teal"
+                                color={
+                                    colorMode === 'light' ? 'white' : 'teal.300'
+                                }
+                                bgColor={
+                                    colorMode === 'light' ? 'yellow.400' : ''
+                                }
                                 size={'sm'}
                                 icon={<ClipboardCopyIcon width={24} />}
                                 onClick={() => {

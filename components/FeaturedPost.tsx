@@ -1,11 +1,12 @@
 import Icon from '@chakra-ui/icon';
 import { Badge, Flex, Heading, Text } from '@chakra-ui/layout';
-import { useBreakpointValue } from '@chakra-ui/media-query';
 import { ThemeTypings } from '@chakra-ui/styled-system';
 import { FaArrowRight } from 'react-icons/fa';
 import { IAsset } from '../generated/types';
 import IconButtonLink from './IconButtonLink';
 import NextImage from 'next/image';
+import { useColorModeValue } from '@chakra-ui/react';
+
 interface IProps {
     title: string;
     previewText: string;
@@ -29,37 +30,47 @@ const FeaturedPost = ({
     img,
     slug,
 }: IProps) => {
-    const headingSize = useBreakpointValue(['xl']);
     const flexDirection =
         direction === 'left'
-            ? 'flex-start'
+            ? 'start'
             : direction === 'center'
             ? 'center'
-            : 'flex-end';
+            : 'end';
+    const bgColor = useColorModeValue('gray.200', 'gray.700');
 
     return (
         <Flex
             flexDir="column"
-            m={['1rem', '0.5rem']}
+            m={'2'}
             px={type === 'blog' ? '1rem' : 'initial'}
             alignItems={['center', null, flexDirection]}
+            bgColor={type === 'project' ? bgColor : 'inherit'}
+            borderRadius={'lg'}
+            boxShadow={type === 'project' ? 'lg' : 'inherit'}
         >
             {type === 'project' && img && (
-                <Flex w="full" justify="center">
+                <Flex
+                    h={['xs', null, 'md']}
+                    w="full"
+                    position={'relative'}
+                    overflow="hidden"
+                    borderTopRadius={'lg'}
+                >
                     <NextImage
+                        objectFit="cover"
+                        layout="fill"
                         src={img.url}
                         alt={img.fileName}
-                        height={img.height as number}
-                        width={img.width as number}
                         priority
                     />
                 </Flex>
             )}
             <Heading
-                size={headingSize}
+                size={'lg'}
                 textAlign={['center', null, direction]}
                 fontWeight="bold"
-                pt={type === 'project' ? '0.5rem' : 'initial'}
+                pt={type === 'project' ? '1rem' : 'initial'}
+                px={['4']}
             >
                 {title}
             </Heading>
@@ -78,21 +89,19 @@ const FeaturedPost = ({
                 ))}
             </Flex>
             <Text
-                pb="1rem"
-                textAlign={['center', null, direction]}
-                maxW={['container.md', null, null, 'container.lg']}
+                py="2"
+                px={['2', '4', '8']}
+                textAlign={['center', null, flexDirection]}
             >
                 {previewText}
             </Text>
-            <Flex justify="center">
+            <Flex justify="center" pb="2">
                 <IconButtonLink
                     href={slug}
                     aria-label="article"
                     borderRadius="full"
-                    pt="2rem"
-                    pb="2rem"
-                    pl="1.25rem"
-                    pr="1.25rem"
+                    pt="1rem"
+                    pb="1rem"
                 >
                     <Icon as={FaArrowRight} boxSize="1.5rem" />
                 </IconButtonLink>

@@ -16,7 +16,7 @@ const Projects = ({ projects }: Props) => {
                 </Heading>
             </Center>
             <Box>
-                <SimpleGrid columns={[1, null, null, 2]}>
+                <SimpleGrid columns={[1, null, null, 2]} m="2">
                     {projects.map((project) => (
                         <FeaturedPost
                             key={project.id}
