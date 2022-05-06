@@ -3,14 +3,15 @@ import { Badge, Flex, Heading, Text } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { ThemeTypings } from '@chakra-ui/styled-system';
 import { FaArrowRight } from 'react-icons/fa';
+import { IAsset } from '../generated/types';
 import IconButtonLink from './IconButtonLink';
-import ChakraNextImage from './Image';
+import NextImage from 'next/image';
 interface IProps {
     title: string;
     previewText: string;
     direction?: 'left' | 'right' | 'center';
     type?: 'blog' | 'project';
-    img?: string;
+    img?: IAsset;
     slug: string;
     tags: Array<{
         id: string;
@@ -29,7 +30,6 @@ const FeaturedPost = ({
     slug,
 }: IProps) => {
     const headingSize = useBreakpointValue(['xl']);
-    const imageSize = useBreakpointValue(['sm', 'md', 'md', 'md', 'lg']);
     const flexDirection =
         direction === 'left'
             ? 'flex-start'
@@ -44,12 +44,14 @@ const FeaturedPost = ({
             px={type === 'blog' ? '1rem' : 'initial'}
             alignItems={['center', null, flexDirection]}
         >
-            {type === 'project' && typeof img === 'string' && (
+            {type === 'project' && img && (
                 <Flex w="full" justify="center">
-                    <ChakraNextImage
-                        src={img}
-                        h={['250px', '300px', 'sm', 'lg']}
-                        width={imageSize}
+                    <NextImage
+                        src={img.url}
+                        alt={img.fileName}
+                        height={img.height as number}
+                        width={img.width as number}
+                        priority
                     />
                 </Flex>
             )}

@@ -26,7 +26,7 @@ const Projects = ({ projects }: Props) => {
                         previewText={project.introduction}
                         direction="center"
                         tags={project.tags}
-                        img={project.thumbnail.url}
+                        img={project.thumbnail}
                         slug={'/project/' + project.slug}
                     />
                 ))}

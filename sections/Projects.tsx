@@ -11,7 +11,9 @@ const Projects = ({ projects }: Props) => {
     return (
         <>
             <Center>
-                <Heading pt="24" pb="8">Recent Projects</Heading>
+                <Heading pt="24" pb="8">
+                    Recent Projects
+                </Heading>
             </Center>
             <Box>
                 <SimpleGrid columns={[1, null, null, 2]}>
@@ -23,7 +25,7 @@ const Projects = ({ projects }: Props) => {
                             previewText={project.introduction}
                             direction="center"
                             tags={project.tags}
-                            img={project.thumbnail.url}
+                            img={project.thumbnail}
                             slug={'/project/' + project.slug}
                         />
                     ))}

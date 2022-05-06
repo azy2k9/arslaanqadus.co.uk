@@ -1,6 +1,6 @@
 import { Badge, Box, Flex, Heading, Stack, Text } from '@chakra-ui/layout';
 import React from 'react';
-import ChakraNextImage from './Image';
+import NextImage from 'next/image';
 import Link from 'next/link';
 import { Avatar } from '@chakra-ui/avatar';
 import { dateFormatter } from '../helpers';
@@ -23,7 +23,13 @@ const BlogPost = ({
                 _hover={{ cursor: 'pointer' }}
                 boxShadow={'2xl'}
             >
-                <ChakraNextImage src={thumbnail.url} h="250px" />
+                <NextImage
+                    src={thumbnail.url}
+                    alt={thumbnail.fileName}
+                    height={thumbnail.height as number}
+                    width={thumbnail.width as number}
+                    priority
+                />
                 <Box p="0.5rem">
                     {tags.map(({ id, value, colorScheme }) => (
                         <Badge

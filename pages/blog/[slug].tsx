@@ -6,7 +6,6 @@ import { ParsedUrlQuery } from 'querystring';
 import React from 'react';
 import client from '../../apolloClient';
 import ChakraRichTextRenderer from '../../components/ChakraRichTextRenderer';
-import ChakraNextImage from '../../components/Image';
 import Layout from '../../components/Layout';
 import {
     IBlog,
@@ -16,6 +15,7 @@ import {
     IGetSingleBlogBySlugQuery,
     IGetSingleBlogBySlugQueryVariables,
 } from '../../generated/types';
+import NextImage from 'next/image';
 
 const Blog = ({ blog }: { blog: IBlog }) => {
     const { isFallback } = useRouter();
@@ -26,10 +26,12 @@ const Blog = ({ blog }: { blog: IBlog }) => {
 
     return (
         <Layout title={blog.title} isFallback={isFallback}>
-            <ChakraNextImage
+            <NextImage
                 src={blog.thumbnail.url}
-                alt={blog.title + ' - Image'}
-                h={['250px', '300px', 'sm', 'lg']}
+                alt={blog.thumbnail.fileName}
+                height={blog.thumbnail.height as number}
+                width={blog.thumbnail.width as number}
+                priority
             />
             <Center py={'4'}>
                 {blog.tags.map((tag) => (

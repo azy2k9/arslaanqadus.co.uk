@@ -9,9 +9,9 @@ import ChakraNextLink from '../components/ChakraNextLink';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { Box, Code, Container, Heading, Flex, Text } from '@chakra-ui/layout';
 import { RichTextContent } from '@graphcms/rich-text-types';
-import ChakraNextImage from '../components/Image';
 import { IconButton } from '@chakra-ui/button';
 import { ClipboardCopyIcon } from '@heroicons/react/solid';
+import NextImage from 'next/image';
 
 const ChakraRichTextRenderer: React.FC<{ content: RichTextContent }> = ({
     content,
@@ -177,12 +177,12 @@ const ChakraRichTextRenderer: React.FC<{ content: RichTextContent }> = ({
 
                     return (
                         <Box p="4">
-                            <ChakraNextImage
+                            <NextImage
                                 src={src as string}
                                 width={width}
                                 height={height}
-                                title={title}
                                 alt={altText}
+                                priority
                             />
                         </Box>
                     );

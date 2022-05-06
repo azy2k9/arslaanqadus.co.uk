@@ -7,7 +7,6 @@ import { ParsedUrlQuery } from 'querystring';
 import React from 'react';
 import client from '../../apolloClient';
 import ChakraRichTextRenderer from '../../components/ChakraRichTextRenderer';
-import ChakraNextImage from '../../components/Image';
 import Layout from '../../components/Layout';
 import {
     IProject,
@@ -17,6 +16,7 @@ import {
     IGetSingleProjectBySlugQuery,
     IGetSingleProjectBySlugQueryVariables,
 } from '../../generated/types';
+import NextImage from 'next/image';
 
 const Project = ({ project }: { project: IProject }) => {
     const { isFallback } = useRouter();
@@ -27,10 +27,12 @@ const Project = ({ project }: { project: IProject }) => {
 
     return (
         <Layout title={project.title} isFallback={isFallback}>
-            <ChakraNextImage
+            <NextImage
                 src={project.thumbnail.url}
-                alt={project.title + ' - Image'}
-                h={['250px', '300px', 'sm', 'lg']}
+                alt={project.thumbnail.fileName}
+                height={project.thumbnail.height as number}
+                width={project.thumbnail.width as number}
+                priority
             />
             <Center py={'4'}>
                 {project.tags.map((tag) => (
