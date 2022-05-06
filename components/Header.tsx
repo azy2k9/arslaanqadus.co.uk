@@ -32,13 +32,12 @@ const Header = () => {
     const drawerSize = useBreakpointValue({ base: 'full', md: 'sm' });
     const headingSize = useBreakpointValue({
         base: 'sm',
-        sm: 'md',
-        md: 'xl',
+        sm: 'lg',
     });
     const buttonSize = useBreakpointValue({
         base: '0.85rem',
         sm: '1rem',
-        md: '1.5rem',
+        md: '1.25rem',
     });
 
     const containers = useBreakpointValue({
@@ -49,7 +48,7 @@ const Header = () => {
     });
 
     return (
-        <Flex alignItems="center"> 
+        <Flex alignItems="center" pt="8">
             <Flex w={containers} justifyContent="space-evenly">
                 <IconButtonLink
                     aria-label="Twitter"
