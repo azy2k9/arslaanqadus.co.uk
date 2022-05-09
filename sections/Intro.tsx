@@ -7,13 +7,21 @@ import ScrollDown from '../components/ScrollDown';
 const Intro = () => {
     return (
         <>
-            <VStack h={["100vh", "85vh", "90vh"]} justifyContent={{ base: 'space-around', lg: 'space-evenly'}} >
-                <Container maxW="container.md" centerContent>
-                    <Flex maxW={["fit-content"]} justifyContent="center">
+            <VStack
+                h={['100vh', '85vh', '90vh']}
+                justifyContent={{ base: 'space-around', lg: 'space-evenly' }}
+            >
+                <Container
+                    maxW="container.md"
+                    centerContent
+                    flex={2}
+                    justifyContent="flex-end"
+                >
+                    <Flex maxW={['fit-content']} justifyContent="center">
                         <Avatar src="/me.png" size={'full'} />
                     </Flex>
                     <Heading
-                        py={["2", "4"]}
+                        py={['2', '4']}
                         textAlign="center"
                         fontSize={['xx-large', 'xxx-large']}
                     >
@@ -23,14 +31,14 @@ const Intro = () => {
                         fontWeight="medium"
                         textAlign="center"
                         fontSize={{ base: 'md', sm: 'lg', md: '2xl' }}
-                        maxW={["md", "lg", "xl" ]}
+                        maxW={['md', 'lg', 'xl']}
                     >
                         Im Arslaan. A Full Stack Web Developer. Im currently
                         working at Evergreen-Life developing health and
                         wellbeing apps for desktop and mobile.
                     </Heading>
                 </Container>
-                <Flex justify="center">
+                <Flex alignItems="center" flex={1}>
                     <ScrollDown
                         onClick={() =>
                             // @ts-ignore
