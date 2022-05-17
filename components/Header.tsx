@@ -48,7 +48,7 @@ const Header = () => {
     });
 
     return (
-        <Flex alignItems="center" pt="8">
+        <Flex alignItems="center" pt={["2", "4"]}>
             <Flex w={containers} justifyContent="space-evenly">
                 <IconButtonLink
                     aria-label="Twitter"
