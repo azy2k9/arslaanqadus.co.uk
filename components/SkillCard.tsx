@@ -26,6 +26,7 @@ const SkillCard = ({ title, skills, color }: IProps) => {
             borderRadius="xl"
             color="white"
             py="2rem"
+            px="1rem"
             my="1rem"
             mx={isHovering ? "0.25rem" : "0.5rem"}
             transition="0.2s linear"

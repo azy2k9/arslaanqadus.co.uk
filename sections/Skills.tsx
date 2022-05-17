@@ -40,8 +40,10 @@ const Skills = () => {
                     skills={[
                         'Git',
                         'Docker',
-                        'Cordova (Mobile Apps)',
-                        'VS Code',
+                        'GraphCMS',
+                        'Electron',
+                        'Vim (Beginner)',
+                        'VS Code'
                     ]}
                     color={colorMode === 'dark' ? 'green.400' : 'green.600'}
                 />
