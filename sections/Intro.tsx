@@ -38,7 +38,7 @@ const Intro = () => {
                         wellbeing apps for desktop and mobile.
                     </Heading>
                 </Container>
-                <Flex alignItems="center" flex={1}>
+                <Flex alignItems={['flex-start', 'center' ]} flex={1} pt={[8, 0]} marginTop="0">
                     <ScrollDown
                         onClick={() =>
                             // @ts-ignore
