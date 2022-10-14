@@ -29,6 +29,7 @@ const Skills = () => {
                         'Node',
                         'NextJS',
                         'GraphQL',
+                        'tRPC',
                         'Express',
                         'MongoDB',
                         'MySQL',
