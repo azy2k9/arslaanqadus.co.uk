@@ -31,12 +31,11 @@ const Header = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const drawerSize = useBreakpointValue({ base: 'full', md: 'sm' });
     const headingSize = useBreakpointValue({
-        base: 'sm',
+        base: 'md',
         sm: 'lg',
     });
     const buttonSize = useBreakpointValue({
-        base: '0.85rem',
-        sm: '1rem',
+        base: '1rem',
         md: '1.25rem',
     });
 
