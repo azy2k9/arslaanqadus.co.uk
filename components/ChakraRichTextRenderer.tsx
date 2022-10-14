@@ -76,7 +76,7 @@ const ChakraRichTextRenderer: React.FC<{ content: RichTextContent }> = ({
                             <Text as="span" fontSize="3xl">
                                 &ldquo;
                             </Text>
-                            <Text as="span"> {children} </Text>
+                            <Text as="span">{children}</Text>
                             <Text as="span" fontSize="3xl">
                                 &rdquo;
                             </Text>
@@ -85,7 +85,7 @@ const ChakraRichTextRenderer: React.FC<{ content: RichTextContent }> = ({
                 },
                 code: ({ children }) => {
                     return (
-                        <Code variant="solid" p="1.5">
+                        <Code variant="solid" py="0.5" px="1" m="0.5">
                             {children}
                         </Code>
                     );
