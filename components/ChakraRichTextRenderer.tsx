@@ -15,6 +15,7 @@ import {
     Flex,
     Text,
     UnorderedList,
+    OrderedList,
 } from '@chakra-ui/layout';
 import { RichTextContent } from '@graphcms/rich-text-types';
 import { IconButton } from '@chakra-ui/button';
@@ -205,6 +206,13 @@ const ChakraRichTextRenderer: React.FC<{ content: RichTextContent }> = ({
                         <UnorderedList p={{ base: '1rem', md: '1rem 1.5rem' }}>
                             {props.children}
                         </UnorderedList>
+                    );
+                },
+                ol: (props) => {
+                    return (
+                        <OrderedList p={{ base: '1rem', md: '1rem 1.5rem' }}>
+                            {props.children}
+                        </OrderedList>
                     );
                 },
             }}
