@@ -7,7 +7,15 @@ import {
 import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 import ChakraNextLink from '../components/ChakraNextLink';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import { Box, Code, Container, Heading, Flex, Text } from '@chakra-ui/layout';
+import {
+    Box,
+    Code,
+    Container,
+    Heading,
+    Flex,
+    Text,
+    UnorderedList,
+} from '@chakra-ui/layout';
 import { RichTextContent } from '@graphcms/rich-text-types';
 import { IconButton } from '@chakra-ui/button';
 import { ClipboardCopyIcon } from '@heroicons/react/solid';
@@ -190,6 +198,13 @@ const ChakraRichTextRenderer: React.FC<{ content: RichTextContent }> = ({
                                 priority
                             />
                         </Box>
+                    );
+                },
+                ul: (props) => {
+                    return (
+                        <UnorderedList p={{ base: '1rem', md: '1rem 1.5rem' }}>
+                            {props.children}
+                        </UnorderedList>
                     );
                 },
             }}
