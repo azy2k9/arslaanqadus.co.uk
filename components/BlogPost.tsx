@@ -15,6 +15,14 @@ const BlogPost = ({
     slug,
     createdAt,
 }: IBlog) => {
+    const height =
+        typeof thumbnail.height === 'number' && thumbnail.height > 0
+            ? thumbnail.height
+            : 400;
+    const width =
+        typeof thumbnail.width === 'number' && thumbnail.width > 0
+            ? thumbnail.width
+            : 400;
     return (
         <Link href={slug} passHref>
             <Flex
@@ -26,8 +34,8 @@ const BlogPost = ({
                 <NextImage
                     src={thumbnail.url}
                     alt={thumbnail.fileName}
-                    height={thumbnail.height as number}
-                    width={thumbnail.width as number}
+                    height={height}
+                    width={width}
                     priority
                 />
                 <Box p="0.5rem">

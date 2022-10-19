@@ -24,13 +24,22 @@ const Blog = ({ blog }: { blog: IBlog }) => {
         return <Layout title={'Loading'} isFallback={isFallback} />;
     }
 
+    const height =
+        typeof blog.thumbnail.height === 'number' && blog.thumbnail.height > 0
+            ? blog.thumbnail.height
+            : 400;
+    const width =
+        typeof blog.thumbnail.width === 'number' && blog.thumbnail.width > 0
+            ? blog.thumbnail.width
+            : 800;
+
     return (
         <Layout title={blog.title} isFallback={isFallback}>
             <NextImage
                 src={blog.thumbnail.url}
                 alt={blog.thumbnail.fileName}
-                height={blog.thumbnail.height as number}
-                width={blog.thumbnail.width as number}
+                height={height}
+                width={width}
                 priority
             />
             <Center py={'4'}>

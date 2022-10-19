@@ -17,7 +17,7 @@ interface Props {
 const Blogs = ({ blogs }: Props) => {
     return (
         <Layout title="Blogs">
-            <SimpleGrid columns={[1, 2, null, 3]}>
+            <SimpleGrid columns={[1, 2]}>
                 {blogs.map((blog) => (
                     <BlogPost
                         {...blog}
