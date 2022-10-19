@@ -16,6 +16,7 @@ const Intro = () => {
                     centerContent
                     flex={2}
                     justifyContent="flex-end"
+                    pt={{ base: '0', sm: '16' }}
                 >
                     <Flex maxW={['fit-content']} justifyContent="center">
                         <Avatar src="/me.png" size={'full'} />
