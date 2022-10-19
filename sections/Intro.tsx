@@ -34,11 +34,16 @@ const Intro = () => {
                         maxW={['md', 'lg', 'xl']}
                     >
                         Im Arslaan. A Full Stack Web Developer. Im currently
-                        working at Evergreen-Life developing health and
-                        wellbeing apps for desktop and mobile.
+                        working at Tes Global developing eLearning platforms for
+                        the education sector.
                     </Heading>
                 </Container>
-                <Flex alignItems={['flex-start', 'center' ]} flex={1} pt={[8, 0]} marginTop="0">
+                <Flex
+                    alignItems={['flex-start', 'center']}
+                    flex={1}
+                    pt={[8, 0]}
+                    marginTop="0"
+                >
                     <ScrollDown
                         onClick={() =>
                             // @ts-ignore
