@@ -1,5 +1,5 @@
 import React from 'react';
-import { Center, Flex, Heading, SimpleGrid } from '@chakra-ui/layout';
+import { Center, Heading, SimpleGrid } from '@chakra-ui/layout';
 import SkillCard from '../components/SkillCard';
 import { useColorMode } from '@chakra-ui/color-mode';
 
@@ -44,7 +44,7 @@ const Skills = () => {
                         'GraphCMS',
                         'Electron',
                         'Vim (Beginner)',
-                        'VS Code'
+                        'VS Code',
                     ]}
                     color={colorMode === 'dark' ? 'green.400' : 'green.600'}
                 />
