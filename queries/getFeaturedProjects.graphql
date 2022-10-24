@@ -6,10 +6,8 @@ query getFeaturedProjects {
         featured
         thumbnail {
             id
-            url
             fileName
-            height
-            width
+            url(transformation: {image: {resize: {width: 600, height: 600}}})
         }
         introduction
         createdAt

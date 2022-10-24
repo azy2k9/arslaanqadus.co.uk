@@ -11,10 +11,8 @@ query getAllBlogs {
         }
         thumbnail {
             id
-            url
             fileName
-            height
-            width
+            url(transformation: {image: {resize: {width: 400, height: 400}}})
         }
         tags {
             id
