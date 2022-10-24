@@ -13,8 +13,8 @@ query getSingleProjectBySlug($slug: String!) {
         }
         thumbnail {
             id
-            url
             fileName
+            url(transformation: {image: {resize: {width: 1200, height: 1200}}})
             height
             width
         }

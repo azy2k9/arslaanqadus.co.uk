@@ -38,6 +38,11 @@ const FeaturedPost = ({
             : 'end';
     const bgColor = useColorModeValue('gray.200', 'gray.700');
 
+    const height =
+        typeof img?.height === 'number' && img?.height > 0 ? img?.height : 400;
+    const width =
+        typeof img?.width === 'number' && img?.width > 0 ? img?.width : 400;
+
     return (
         <Flex
             flexDir="column"
@@ -57,10 +62,10 @@ const FeaturedPost = ({
                     borderTopRadius={'lg'}
                 >
                     <NextImage
-                        objectFit="cover"
-                        layout="fill"
                         src={img.url}
                         alt={img.fileName}
+                        height={height}
+                        width={width}
                         priority
                     />
                 </Flex>
