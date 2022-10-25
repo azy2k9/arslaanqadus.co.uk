@@ -19,7 +19,11 @@ const Intro = () => {
                     pt={{ base: '0', sm: '16' }}
                 >
                     <Flex maxW={['fit-content']} justifyContent="center">
-                        <Avatar src="/me.png" size={'full'} />
+                        <Avatar
+                            src="/me.png"
+                            size={'full'}
+                            alt="Photo of Arslaan Qadus"
+                        />
                     </Flex>
                     <Heading
                         py={['2', '4']}

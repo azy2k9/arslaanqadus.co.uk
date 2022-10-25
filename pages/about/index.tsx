@@ -8,7 +8,11 @@ const About = () => {
         <Layout title="About">
             <Center pb="8" px="8">
                 <Flex maxW="fit-content" alignSelf="center">
-                    <Avatar src="/me.png" size="full" />
+                    <Avatar
+                        src="/me.png"
+                        size="full"
+                        alt="Photo of Arslaan Qadus"
+                    />
                 </Flex>
             </Center>
             <Container maxWidth="2xl">
