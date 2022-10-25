@@ -22,7 +22,7 @@ const Intro = () => {
                         <Avatar
                             src="/me.png"
                             size={'full'}
-                            alt="Photo of Arslaan Qadus"
+                            name="Arslaan Qadus"
                         />
                     </Flex>
                     <Heading

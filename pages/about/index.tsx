@@ -11,7 +11,7 @@ const About = () => {
                     <Avatar
                         src="/me.png"
                         size="full"
-                        alt="Photo of Arslaan Qadus"
+                        name="Photo of Arslaan Qadus"
                     />
                 </Flex>
             </Center>
