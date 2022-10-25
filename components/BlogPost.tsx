@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Avatar } from '@chakra-ui/avatar';
 import { dateFormatter } from '../helpers';
 import { IBlog } from '../generated/types';
-import { useColorModeValue } from '@chakra-ui/react';
+import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 
 const BlogPost = ({
     thumbnail,
@@ -34,13 +34,15 @@ const BlogPost = ({
                 _hover={{ cursor: 'pointer' }}
                 boxShadow={'2xl'}
             >
-                <NextImage
-                    src={thumbnail.url}
-                    alt={thumbnail.fileName}
-                    height={height}
-                    width={width}
-                    priority
-                />
+                <Box pos="relative" minH={'40'}>
+                    <NextImage
+                        src={thumbnail.url}
+                        alt={thumbnail.fileName}
+                        layout="fill"
+                        objectFit="contain"
+                        priority
+                    />
+                </Box>
                 <Box p="0.5rem">
                     {tags.map(({ id, value, colorScheme }) => (
                         <Badge

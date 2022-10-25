@@ -1,4 +1,4 @@
-import { Center, Text } from '@chakra-ui/layout';
+import { Center, Text, Box } from '@chakra-ui/layout';
 import { Tag } from '@chakra-ui/tag';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
@@ -35,13 +35,15 @@ const Blog = ({ blog }: { blog: IBlog }) => {
 
     return (
         <Layout title={blog.title} isFallback={isFallback}>
-            <NextImage
-                src={blog.thumbnail.url}
-                alt={blog.thumbnail.fileName}
-                height={height}
-                width={width}
-                priority
-            />
+            <Box pos="relative" minH={'xs'}>
+                <NextImage
+                    src={blog.thumbnail.url}
+                    alt={blog.thumbnail.fileName}
+                    layout="fill"
+                    objectFit="contain"
+                    priority
+                />
+            </Box>
             <Center py={'4'}>
                 {blog.tags.map((tag) => (
                     <Tag key={tag.id} colorScheme={tag.colorScheme} mx={'1'}>
