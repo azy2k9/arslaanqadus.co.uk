@@ -1,4 +1,4 @@
-import { Center, Text } from '@chakra-ui/layout';
+import { Center, Text, Box } from '@chakra-ui/layout';
 import { Tag } from '@chakra-ui/tag';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -27,13 +27,15 @@ const Project = ({ project }: { project: IProject }) => {
 
     return (
         <Layout title={project.title} isFallback={isFallback}>
-            <NextImage
-                src={project.thumbnail.url}
-                alt={project.thumbnail.fileName}
-                height={project.thumbnail.height as number}
-                width={project.thumbnail.width as number}
-                priority
-            />
+            <Box pos="relative" minH={'xs'}>
+                <NextImage
+                    src={project.thumbnail.url}
+                    alt={project.thumbnail.fileName}
+                    layout="fill"
+                    objectFit="contain"
+                    priority
+                />
+            </Box>
             <Center py={'4'}>
                 {project.tags.map((tag) => (
                     <Tag key={tag.id} colorScheme={tag.colorScheme} mx={'1'}>

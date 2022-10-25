@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Avatar } from '@chakra-ui/avatar';
 import { dateFormatter } from '../helpers';
 import { IBlog } from '../generated/types';
+import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 
 const BlogPost = ({
     thumbnail,
@@ -23,6 +24,8 @@ const BlogPost = ({
         typeof thumbnail.width === 'number' && thumbnail.width > 0
             ? thumbnail.width
             : 400;
+
+    const color = useColorModeValue('gray.800', 'gray.400');
     return (
         <Link href={slug} passHref>
             <Flex
@@ -31,13 +34,15 @@ const BlogPost = ({
                 _hover={{ cursor: 'pointer' }}
                 boxShadow={'2xl'}
             >
-                <NextImage
-                    src={thumbnail.url}
-                    alt={thumbnail.fileName}
-                    height={height}
-                    width={width}
-                    priority
-                />
+                <Box pos="relative" minH={'40'}>
+                    <NextImage
+                        src={thumbnail.url}
+                        alt={thumbnail.fileName}
+                        layout="fill"
+                        objectFit="contain"
+                        priority
+                    />
+                </Box>
                 <Box p="0.5rem">
                     {tags.map(({ id, value, colorScheme }) => (
                         <Badge
@@ -69,7 +74,7 @@ const BlogPost = ({
                     <Avatar src="/me.png" alt="Author" />
                     <Stack direction={'column'} spacing={0} fontSize={'sm'}>
                         <Text fontWeight={600}>Arslaan Qadus</Text>
-                        <Text color={'gray.500'}>
+                        <Text color={color}>
                             {dateFormatter(createdAt)} · {readTime} read
                         </Text>
                     </Stack>

@@ -179,23 +179,15 @@ const ChakraRichTextRenderer: React.FC<{ content: RichTextContent }> = ({
                     );
                 },
                 img: (props) => {
-                    const {
-                        src,
-                        altText,
-                        width,
-                        height,
-                        title,
-                        handle,
-                        mimeType,
-                    } = props;
+                    const { src, altText, title } = props;
 
                     return (
-                        <Box p="4">
+                        <Box pos="relative" minH={'xs'}>
                             <NextImage
                                 src={src as string}
-                                width={width}
-                                height={height}
-                                alt={altText}
+                                alt={altText || title}
+                                layout="fill"
+                                objectFit="contain"
                                 priority
                             />
                         </Box>
