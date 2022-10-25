@@ -5,7 +5,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import { IAsset } from '../generated/types';
 import IconButtonLink from './IconButtonLink';
 import NextImage from 'next/image';
-import { useColorModeValue } from '@chakra-ui/react';
+import { useColorModeValue } from '@chakra-ui/color-mode';
 
 interface IProps {
     title: string;

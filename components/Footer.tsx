@@ -3,10 +3,10 @@ import {
     Container,
     Stack,
     Text,
-    useColorModeValue,
     useBreakpointValue,
     Icon,
 } from '@chakra-ui/react';
+import { useColorModeValue } from '@chakra-ui/color-mode';
 import IconButtonLink from './IconButtonLink';
 import { BsGithub, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import { HiMail } from 'react-icons/hi';

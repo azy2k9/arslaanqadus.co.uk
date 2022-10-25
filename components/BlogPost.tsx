@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Avatar } from '@chakra-ui/avatar';
 import { dateFormatter } from '../helpers';
 import { IBlog } from '../generated/types';
+import { useColorModeValue } from '@chakra-ui/react';
 
 const BlogPost = ({
     thumbnail,
@@ -23,6 +24,8 @@ const BlogPost = ({
         typeof thumbnail.width === 'number' && thumbnail.width > 0
             ? thumbnail.width
             : 400;
+
+    const color = useColorModeValue('gray.800', 'gray.400');
     return (
         <Link href={slug} passHref>
             <Flex
@@ -69,7 +72,7 @@ const BlogPost = ({
                     <Avatar src="/me.png" alt="Author" />
                     <Stack direction={'column'} spacing={0} fontSize={'sm'}>
                         <Text fontWeight={600}>Arslaan Qadus</Text>
-                        <Text color={'gray.500'}>
+                        <Text color={color}>
                             {dateFormatter(createdAt)} · {readTime} read
                         </Text>
                     </Stack>
