@@ -71,7 +71,7 @@ const BlogPost = ({
                     {introduction}
                 </Text>
                 <Stack direction={'row'} align={'center'} p="1rem">
-                    <Avatar src="/me.png" alt="Author" />
+                    <Avatar src="/me.png" name="Author" />
                     <Stack direction={'column'} spacing={0} fontSize={'sm'}>
                         <Text fontWeight={600}>Arslaan Qadus</Text>
                         <Text color={color}>

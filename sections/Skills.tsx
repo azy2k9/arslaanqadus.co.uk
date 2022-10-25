@@ -21,7 +21,7 @@ const Skills = () => {
                         'Material UI',
                         'Chakra UI',
                     ]}
-                    color={colorMode === 'dark' ? 'blue.300' : 'blue.600'}
+                    color={'blue.600'}
                 />
                 <SkillCard
                     title="Back End"
@@ -34,7 +34,7 @@ const Skills = () => {
                         'MongoDB',
                         'MySQL',
                     ]}
-                    color={colorMode === 'dark' ? 'purple.400' : 'purple.600'}
+                    color={'purple.600'}
                 />
                 <SkillCard
                     title="Other"
@@ -44,9 +44,9 @@ const Skills = () => {
                         'GraphCMS',
                         'Electron',
                         'Vim (Beginner)',
-                        'VS Code'
+                        'VS Code',
                     ]}
-                    color={colorMode === 'dark' ? 'green.400' : 'green.600'}
+                    color={'green.600'}
                 />
             </SimpleGrid>
         </>
