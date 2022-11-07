@@ -54,13 +54,7 @@ const FeaturedPost = ({
             boxShadow={type === 'project' ? 'lg' : 'inherit'}
         >
             {type === 'project' && img && (
-                <Flex
-                    h={['xs', null, 'md']}
-                    w="full"
-                    position={'relative'}
-                    overflow="hidden"
-                    borderTopRadius={'lg'}
-                >
+                <Flex h="full" borderTopRadius={'lg'}>
                     <NextImage
                         src={img.url}
                         alt={img.fileName}
