@@ -22,15 +22,16 @@ const Home = ({
     blogs: IBlog[];
     projects: IProject[];
 }) => {
+    const hasProjectPosts = Boolean(projects.length);
+    const hasBlogPosts = Boolean(blogs.length);
+
     return (
         <Layout title="Homepage" enableHeading={false}>
             <IntroSection />
             <AboutSection />
             <SkillsSection />
-            {Boolean(projects.length) && (
-                <ProjectsSection projects={projects} />
-            )}
-            {Boolean(blogs.length) && <BlogSection blogs={blogs} />}
+            {hasProjectPosts && <ProjectsSection projects={projects} />}
+            {hasBlogPosts && <BlogSection blogs={blogs} />}
         </Layout>
     );
 };
