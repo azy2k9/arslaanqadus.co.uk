@@ -55,7 +55,7 @@ const Layout = ({
                 style={{ height: '100%', overflowY: 'scroll' }}
             >
                 <Header />
-                <Container minW={{ lg: 'container.lg' }}>
+                <Container minW={{ md: 'container.md', lg: 'container.lg' }}>
                     {enableHeading && (
                         <Heading textAlign="center" py={['8', '16']}>
                             {title}
