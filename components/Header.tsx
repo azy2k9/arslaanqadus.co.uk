@@ -1,10 +1,8 @@
 import React from 'react';
-
 import { Flex, Heading } from '@chakra-ui/layout';
 import {
     IconButton,
     useColorMode,
-    useDisclosure,
     useBreakpointValue,
     Drawer,
     DrawerOverlay,
@@ -14,6 +12,7 @@ import {
     DrawerCloseButton,
     Icon,
 } from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/hooks';
 import {
     BsTwitter,
     BsLinkedin,
@@ -47,7 +46,7 @@ const Header = () => {
     });
 
     return (
-        <Flex alignItems="center" pt={["2", "4"]}>
+        <Flex alignItems="center" pt={['2', '4']}>
             <Flex w={containers} justifyContent="space-evenly">
                 <IconButtonLink
                     aria-label="Twitter"

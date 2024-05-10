@@ -1,18 +1,18 @@
-import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
+import EyeIcon from '@heroicons/react/solid/EyeIcon';
+import EyeOffIcon from '@heroicons/react/solid/EyeOffIcon';
 import { FormControl, FormErrorMessage } from '@chakra-ui/form-control';
 import {
     Input,
     InputGroup,
     InputRightElement,
     InputProps as ChakraInputProps,
+    InputLeftAddon,
+    InputRightAddon,
 } from '@chakra-ui/input';
 import React, { useState } from 'react';
-
 import Icon from '@chakra-ui/icon';
 import {
     FormLabel,
-    InputLeftAddon,
-    InputRightAddon,
     Select,
     SelectProps as ChakraSelectProps,
     Textarea,

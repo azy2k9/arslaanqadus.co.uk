@@ -1,6 +1,5 @@
 import { Avatar } from '@chakra-ui/avatar';
 import { Container, Flex, Heading, VStack } from '@chakra-ui/layout';
-import { useBreakpointValue } from '@chakra-ui/media-query';
 import React from 'react';
 import ScrollDown from '../components/ScrollDown';
 
@@ -50,13 +49,18 @@ const Intro = () => {
                     marginTop="0"
                 >
                     <ScrollDown
-                        onClick={() =>
+                        onClick={() => {
+                            // Polyfill the smooth scrolling behavior on iOS
+                            import('smoothscroll-polyfill').then((scroll) =>
+                                scroll.polyfill()
+                            );
+
                             // @ts-ignore
                             // TODO: SPECIFY THE CORRECT SCROLL SECTION HERE.
                             document
                                 .querySelector('.about')
-                                .scrollIntoView({ behavior: 'smooth' })
-                        }
+                                .scrollIntoView({ behavior: 'smooth' });
+                        }}
                     />
                 </Flex>
             </VStack>

@@ -1,6 +1,5 @@
 import { Center, Text, Box } from '@chakra-ui/layout';
 import { Tag } from '@chakra-ui/tag';
-import { RichText } from '@graphcms/rich-text-react-renderer';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
