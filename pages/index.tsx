@@ -27,7 +27,9 @@ const Home = ({
             <IntroSection />
             <AboutSection />
             <SkillsSection />
-            {Boolean(projects.length) && <ProjectsSection projects={projects} />}
+            {Boolean(projects.length) && (
+                <ProjectsSection projects={projects} />
+            )}
             {Boolean(blogs.length) && <BlogSection blogs={blogs} />}
         </Layout>
     );
